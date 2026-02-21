@@ -16,7 +16,7 @@ import Title from "./Title";
 
 const Footer = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-10 border border-blue-400 shadow-lg rounded-3xl bg-blue-500 ">
+    <section className="max-w-7xl mx-auto px-4 py-10 border border-blue-400 shadow-lg rounded-3xl bg-blue-500 mt-10">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-3">
         {/* Column 1 */}
 

@@ -22,18 +22,20 @@ const BestSeller = () => {
         </p>
       </div>
       {/* PRODUCTS */}
-     <section className="max-w-7xl mx-auto px-4 py-10 border border-blue-400 shadow-lg rounded-3xl">
+      <section className="max-w-7xl mx-auto px-4 py-10 border border-blue-400 shadow-lg rounded-3xl">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
-
-          {bestseller.map((item) => (
-            <ProductItem
-              key={item._id}       // ✅ Correct key usage
-              name={item.name}
-              image={item.image}
-              price={item.price}
-            />
-          ))}
-
+          
+            {bestseller.map((item) => (
+              <div key={item._id} className="border rounded-xl p-4 shadow-sm">
+              <ProductItem
+                id={item._id} // ✅ Correct key usage
+                name={item.name}
+                image={item.image}
+                price={item.price}
+              />
+              </div>
+            ))}
+          
         </div>
       </section>
     </>

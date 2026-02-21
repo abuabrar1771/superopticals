@@ -18,6 +18,7 @@ const ProductItem = ({ id, name, image, price }) => {
 
         {/* Content */}
         <div className="p-4 text-center">
+          <h3 className="text-sm font-semibold text-gray-800">{id}</h3>
           <h3 className="text-sm font-semibold text-gray-800">{name}</h3>
           <p className="text-black font-bold mt-1">₹{price}</p>
         </div>
