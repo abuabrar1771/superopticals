@@ -23,8 +23,8 @@ const EGDd = () => {
             <p>Women</p>
             <p>Kids</p> */}
 
-            <h3 className="font-semibold mt-6 mb-3">COLLECTION</h3>
-            {["EyeX", "Tees", "Signature", "Spiderman", "Hipster"].map((i) => (
+            <h3 className="font-semibold mt-6 mb-3">USAGE</h3>
+            {["Regular", "Power"].map((i) => (
               <Link
                 key={i}
                 className="block text-sm text-gray-600 hover:text-black py-1"
@@ -37,7 +37,7 @@ const EGDd = () => {
           {/* COLUMN 2 */}
           <div>
             <h3 className="font-semibold mb-3">SHAPE</h3>
-            {["Rectangle", "Round", "Cat Eye", "Geometric", "Wayfarer"].map(
+            {["Rectangle", "Round", "CatEye", "Aviatar","Wraparound", "Wayfarer"].map(
               (i) => (
                 <Link
                   key={i}
@@ -49,7 +49,7 @@ const EGDd = () => {
             )}
 
             <h3 className="font-semibold mt-6 mb-3">STYLE</h3>
-            {["Rimmed", "Semi-Rimmed", "Rimless"].map((i) => (
+            {["Mirrored", "Tinted", "UV Protection", "Polarized"].map((i) => (
               <Link
                 key={i}
                 className="block text-sm text-gray-600 hover:text-black py-1"
@@ -63,14 +63,12 @@ const EGDd = () => {
           <div>
             <h3 className="font-semibold mb-3">TOP BRANDS</h3>
             {[
-              "Zefr",
-              "Titan",
+              "Ray Ban",
               "Fastrack",
-              "Rayban",
+              "Velocity",
               "Muller",
               "Aristo",
-              "ZESIS",
-              "Dash for Kids",
+              "Okaley",
             ].map((i) => (
               <Link
                 key={i}
@@ -85,7 +83,6 @@ const EGDd = () => {
           <div>
             <h3 className="font-semibold ">FEATURED BRANDS</h3>
             {[
-              "Oakley",
               "Carrera",
               "Stepper",
               "Burberry",
@@ -111,7 +108,7 @@ const EGDd = () => {
               <img
                 src={assets.sgdd}
                 className="w-full h-full object-cover"
-                alt="Eyeglasses"
+                alt="Sunglasses"
               />
             </div>
           </div>

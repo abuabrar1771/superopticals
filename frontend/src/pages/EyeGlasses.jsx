@@ -4,27 +4,65 @@ import { ShopContext } from "../context/ShopContext";
 import ProductItem from "../components/ProductItem";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import EgFDd from "../components/EgFDd";
+import { useMemo } from "react";
+import { useLocation } from "react-router-dom";
 
 const EyeGlasses = () => {
+  const location = useLocation();
   const { products } = useContext(ShopContext);
   const [selectedFilters, setSelectedFilters] = useState({});
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  // const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [openFilter, setOpenFilter] = useState(null);
 
+  const eyeglassesProducts = useMemo(() => {
+    return products.filter((item) => item.category === "EYE GLASS");
+  }, [products]);
+  // ....................MENU ITEM PRODUCTS SHOW <<<<<<<<<<<<<<<<<<<<<
   useEffect(() => {
-    let filtered = products;
+    const query = new URLSearchParams(location.search);
+
+    const gender = query.get("gender");
+    const shape = query.get("shape");
+    const style = query.get("style");
+    const material = query.get("material");
+    const brand = query.get("brand");
+
+    const newFilters = {};
+
+    if (gender && gender !== "All") newFilters.gender = [gender];
+    if (shape) newFilters.shape = [shape];
+    if (style) newFilters.style = [style];
+    if (material) newFilters.material = [material];
+    if (brand) newFilters.brand=[brand];
+
+    if (Object.keys(newFilters).length > 0) {
+    setSelectedFilters((prev) =>
+      JSON.stringify(prev) === JSON.stringify(newFilters) ? prev : newFilters
+    );
+  }
+  }, [location.search]);
+  // ....................MENU ITEM PRODUCTS SHOW END <<<<<<<<<<<<<<<<<<<<<
+  useEffect(() => {
+    let filtered = eyeglassesProducts;
 
     Object.keys(selectedFilters).forEach((key) => {
       if (selectedFilters[key]?.length > 0) {
         filtered = filtered.filter((item) =>
-          selectedFilters[key].includes(item[key]),
+          selectedFilters[key].some((value) => {
+            if (key === "gender") {
+              return item.gender === `FOR ${value.toUpperCase()}`;
+            }
+
+            return item[key]?.toUpperCase() === value.toUpperCase();
+          }),
         );
       }
     });
 
     setFilteredProducts(filtered);
-  }, [selectedFilters, products]);
+  }, [selectedFilters, eyeglassesProducts]);
 
   // GROUPING PRODUCTS
   const shapeBanners = {
@@ -82,8 +120,8 @@ const EyeGlasses = () => {
 
   // const isFilterActive = selectedFilters.length > 0; // adjust to your filters
   const isFilterActive = Object.values(selectedFilters).some(
-  (value) => value && value.length > 0
-);
+    (value) => value && value.length > 0,
+  );
 
   const groupByShape = (products) => {
     return products.reduce((acc, product) => {
@@ -93,7 +131,46 @@ const EyeGlasses = () => {
       return acc;
     }, {});
   };
+  const [pageTitle, setPageTitle] = useState("All Eyeglasses");
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
 
+    const gender = query.get("gender");
+    const shape = query.get("shape");
+    const style = query.get("style");
+    const material = query.get("material");
+    const brand = query.get("brand");
+
+    const newFilters = {};
+    let title = "All Eyeglasses";
+
+    if (gender && gender !== "All") {
+      newFilters.gender = [gender];
+      title = `${gender} Eyeglasses`;
+    }
+
+    if (shape) {
+      newFilters.shape = [shape];
+      title = `${shape} Eyeglasses`;
+    }
+
+    if (style) {
+      newFilters.style = [style];
+      title = `${style} Eyeglasses`;
+    }
+
+    if (material) {
+      newFilters.material = [material];
+      title = `${material} Eyeglasses`;
+    }
+    if(brand){
+      newFilters.brand = [brand];
+      title = `${brand} Eyeglasses`;
+    }
+
+    setSelectedFilters(newFilters);
+    setPageTitle(title);
+  }, [location.search]);
   return (
     <>
       <div>
@@ -120,9 +197,8 @@ const EyeGlasses = () => {
       </div>
 
       <div className=" ">
-        <p className="lg:px-24 font-bold lg:text-3xl sm:text-xl mt-2">
-          Eyeglasses
-        </p>
+         <h1 className="text-2xl mb-4 lg:px-24 font-bold lg:text-3xl sm:text-xl mt-2">{pageTitle}</h1>
+        
         <p className="lg:px-32 italic mb-4 sm:text-sm">
           Eyeglasses that blend style and comfort for every face.
         </p>
@@ -147,6 +223,7 @@ const EyeGlasses = () => {
             <EgFDd
               title="Gender"
               field="gender"
+              products={eyeglassesProducts} 
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -156,6 +233,7 @@ const EyeGlasses = () => {
             <EgFDd
               title="Frame Shape"
               field="shape"
+              products={eyeglassesProducts} 
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -165,6 +243,7 @@ const EyeGlasses = () => {
             <EgFDd
               title="Material"
               field="material"
+              products={eyeglassesProducts} 
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -174,6 +253,16 @@ const EyeGlasses = () => {
             <EgFDd
               title="Frame Style"
               field="style"
+              products={eyeglassesProducts} 
+              selectedFilters={selectedFilters}
+              setSelectedFilters={setSelectedFilters}
+              openFilter={openFilter}
+              setOpenFilter={setOpenFilter}
+            />
+            <EgFDd
+              title="Brand"
+              field="brand"
+              products={eyeglassesProducts} 
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -194,7 +283,9 @@ const EyeGlasses = () => {
                       id={item._id}
                       name={item.shape}
                       image={item.image}
+                       brand={item.brand}
                       price={item.price}
+                     
                     />
                   </div>
                 ))}
@@ -204,7 +295,8 @@ const EyeGlasses = () => {
             {/* ✅ WHEN NO FILTER → GROUP BY SHAPE */}
             {!isFilterActive &&
               (() => {
-                const groupedProducts = groupByShape(products);
+                // const groupedProducts = groupByShape(products);
+                const groupedProducts = groupByShape(eyeglassesProducts);
                 const shapeNames = Object.keys(groupedProducts);
 
                 return (
@@ -261,6 +353,7 @@ const EyeGlasses = () => {
                                 id={item._id}
                                 name={item.shape}
                                 image={item.image}
+                                brand ={item.brand}
                                 price={item.price}
                               />
                             </div>

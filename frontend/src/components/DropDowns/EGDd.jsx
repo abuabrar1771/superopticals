@@ -13,48 +13,63 @@ const EGDd = () => {
             {["All", "Men", "Women", "Kids"].map((i) => (
               <Link
                 key={i}
-                className="block text-sm text-gray-600 hover:text-black py-1"
+                to={`/eyeglasses?gender=${i}`}
+                className="group block py-1 text-sm text-gray-600 hover:text-black"
               >
-                {i}
-              </Link>
-            ))}
-            {/* <p>All</p>
-            <p>Men</p>
-            <p>Women</p>
-            <p>Kids</p> */}
-
-            <h3 className="font-semibold mt-6 mb-3">COLLECTION</h3>
-            {["EyeX", "Tees", "Signature", "Spiderman", "Hipster"].map((i) => (
-              <Link
-                key={i}
-                className="block text-sm text-gray-600 hover:text-black py-1"
-              >
-                {i}
+                <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
+                  {i}
+                </span>
               </Link>
             ))}
           </div>
+          {/* <div>
+           <h3 className="font-semibold mt-6 mb-3">COLLECTION</h3>
+            {["EyeX", "Tees", "Signature", "Spiderman", "Hipster"].map((i) => (
+              <Link
+                key={i}
+                to={`products/EYE GLASS?`}
+                className="block text-sm text-gray-600 hover:text-black py-1"
+              >
+                {i}
+              </Link>
+            ))}
+          </div> */}
 
           {/* COLUMN 2 */}
           <div>
             <h3 className="font-semibold mb-3">SHAPE</h3>
-            {["Rectangle", "Round", "Cat Eye", "Geometric", "Wayfarer"].map(
-              (i) => (
-                <Link
-                  key={i}
-                  className="block text-sm text-gray-600 hover:text-black py-1"
-                >
-                  {i}
-                </Link>
-              ),
-            )}
-
-            <h3 className="font-semibold mt-6 mb-3">STYLE</h3>
-            {["Rimmed", "Semi-Rimmed", "Rimless"].map((i) => (
+            {[
+              { label: "Rectangle", value: "RECTANGLE" },
+              { label: "Round", value: "ROUNDED" },
+              { label: "CatEye", value: "CATEYE" },
+              { label: "Geometric", value: "GEOMETRIC" },
+              { label: "Wayfarer", value: "WAYFARER" },
+            ].map((item) => (
               <Link
-                key={i}
+                key={item.value}
+                to={`/eyeglasses?shape=${item.value}`}
                 className="block text-sm text-gray-600 hover:text-black py-1"
               >
-                {i}
+                <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+
+            <h3 className="font-semibold mt-6 mb-3">STYLE</h3>
+            {[
+              { label: "Rimmed", value: "RIMMED" },
+              { label: "Semi-Rimmed", value: "SEMI-RIMMED" },
+              { label: "Rimless", value: "RIMLESS" },
+            ].map((item) => (
+              <Link
+                key={item.value}
+                to={`/eyeglasses?style=${item.value}`}
+                className="block text-sm text-gray-600 hover:text-black py-1"
+              >
+                <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
+                  {item.label}
+                </span>
               </Link>
             ))}
           </div>
@@ -63,20 +78,18 @@ const EGDd = () => {
           <div>
             <h3 className="font-semibold mb-3">TOP BRANDS</h3>
             {[
-              "Zefr",
-              "Titan",
-              "Fastrack",
-              "Rayban",
-              "Muller",
-              "Aristo",
-              "ZESIS",
-              "Dash for Kids",
-            ].map((i) => (
+              { label: "Oakley", value:"OAKLEY"},
+              { label: "Fastrack", value: "FASTRACK"},
+              { label: "Rayban", value: "RAYBAN"},
+              { label: "ZEISS", value: "ZEISS"},].map((item) => (
               <Link
-                key={i}
+                key={item.value}
+                to={`/eyeglasses?brand=${item.value}`}
                 className="block text-sm text-gray-600 hover:text-black py-1"
               >
-                {i}
+                <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
+                  {item.label}
+                </span>
               </Link>
             ))}
           </div>
@@ -100,7 +113,9 @@ const EGDd = () => {
                 key={i}
                 className="block text-sm text-gray-600 hover:text-black py-1"
               >
-                {i}
+                <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
+                  {i}
+                </span>
               </Link>
             ))}
           </div>

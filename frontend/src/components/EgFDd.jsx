@@ -1,22 +1,29 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import EgFDd from "../components/EgFDd";
 
 const FilterDropdown = ({
   title,
   field,
+  products,
   selectedFilters,
   setSelectedFilters,
   openFilter,
   setOpenFilter,
 }) => {
-  const { products } = useContext(ShopContext);
 
   // 🔹 Step 1 — Apply ALL selected filters to products
   const filteredProducts = products.filter((item) => {
     return Object.entries(selectedFilters).every(([key, values]) => {
       if (!values || values.length === 0) return true;
-      return values.includes(item[key]);
+      if (key === "gender") {
+        return values.some((val) => item.gender === `FOR ${val.toUpperCase()}`);
+      }
+
+      return values.some(
+        (val) => item[key]?.toUpperCase() === val.toUpperCase(),
+      );
     });
   });
 

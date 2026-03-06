@@ -154,75 +154,30 @@ const Navbar_New = () => {
       </div>
       {/* ------------------END OF iconm enuL with dropdown------------------------- */}
       {/* ------------------side bar menu for small screen --------------------------*/}
+      {visible && (
+  <div className="fixed inset-0 z-[9999] bg-black/40">
+    <div className="absolute right-0 top-0 h-full w-72 bg-gray-300 overflow-y-auto">
+
       <div
-        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-gray-400 transition-all ${visible ? "w-full" : "w-0"}`}
+        onClick={() => setVisible(false)}
+        className="flex items-center p-3 gap-4 cursor-pointer border-b"
       >
-        <div className="flex flex-col bg-gray-300 ">
-          <div
-            onClick={() => setVisible(false)}
-            className="flex items-center p-3 gap-4 cursor-pointer"
-          >
-            <img className="h-4 rotate-180" src={assets.dropdown_icon} alt="" />
-            <p>Back</p>
-          </div>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border  hover:bg-gray-600 hover:text-white"
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border  hover:bg-gray-600 hover:text-white"
-            to="/EyeGlasses"
-          >
-            EYE GLASSES
-          </NavLink>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border hover:bg-gray-600 hover:text-white"
-            to="/SunGlasses"
-          >
-            SUN GLASSES
-          </NavLink>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border  hover:bg-gray-600 hover:text-white"
-            to="/PoweredGlasses"
-          >
-            POWERED SUNGLASSES
-          </NavLink>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border  hover:bg-gray-600 hover:text-white"
-            to="/ComputerGlasses"
-          >
-            COMPUTER GLASSES
-          </NavLink>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border  hover:bg-gray-600 hover:text-white"
-            to="/Contactlenses"
-          >
-            CONTACT LENSES
-          </NavLink>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border  hover:bg-gray-600 hover:text-white"
-            to="/   Accessories"
-          >
-            ACCESSORIES
-          </NavLink>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border  hover:bg-gray-600 hover:text-white"
-            to="/Brands"
-          >
-            BRANDS
-          </NavLink>
-        </div>
+        <img className="h-4 rotate-180" src={assets.dropdown_icon} alt="" />
+        <p>Back</p>
       </div>
+
+      <NavLink onClick={() => setVisible(false)} className="block py-3 pl-6 border-b" to="/">Home</NavLink>
+      <NavLink onClick={() => setVisible(false)} className="block py-3 pl-6 border-b" to="/eyeglasses">EYE GLASSES</NavLink>
+      <NavLink onClick={() => setVisible(false)} className="block py-3 pl-6 border-b" to="/sunglasses">SUN GLASSES</NavLink>
+      <NavLink onClick={() => setVisible(false)} className="block py-3 pl-6 border-b" to="/poweredsunglasses">POWERED SUNGLASSES</NavLink>
+      <NavLink onClick={() => setVisible(false)} className="block py-3 pl-6 border-b" to="/computerglasses">COMPUTER GLASSES</NavLink>
+      <NavLink onClick={() => setVisible(false)} className="block py-3 pl-6 border-b" to="/contactlenses">CONTACT LENSES</NavLink>
+      <NavLink onClick={() => setVisible(false)} className="block py-3 pl-6 border-b" to="/accessories">ACCESSORIES</NavLink>
+      <NavLink onClick={() => setVisible(false)} className="block py-3 pl-6 border-b" to="/brands">BRANDS</NavLink>
+
+    </div>
+  </div>
+)}
       {/* ----------      END OF THE side bar menu DIV ----------------             */}
     </div>
     // -----------      END OF THE MAIN DIV ----------------
