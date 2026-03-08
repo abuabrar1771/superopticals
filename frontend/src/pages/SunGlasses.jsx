@@ -12,11 +12,14 @@ const SunGlasses = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [openFilter, setOpenFilter] = useState(null);
 
-  // ✅ STEP 1 — FILTER ONLY SUNGLASSES
-   const sunglassesProducts = useMemo(() => {
-      return products.filter((item) => item.category === "SUN GLASS");
-    }, [products]);
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
+  const sunglassesProducts = useMemo(() => {
+    return products.filter((item) => item.category === "SUN GLASS");
+  }, [products]);
+
   // ✅ STEP 2 — APPLY SELECTED FILTERS
   useEffect(() => {
     let filtered = sunglassesProducts;
@@ -24,7 +27,7 @@ const SunGlasses = () => {
     Object.keys(selectedFilters).forEach((key) => {
       if (selectedFilters[key]?.length > 0) {
         filtered = filtered.filter((item) =>
-          selectedFilters[key].includes(item[key])
+          selectedFilters[key].includes(item[key]),
         );
       }
     });
@@ -33,7 +36,7 @@ const SunGlasses = () => {
   }, [selectedFilters, sunglassesProducts]);
 
   const isFilterActive = Object.values(selectedFilters).some(
-    (value) => value && value.length > 0
+    (value) => value && value.length > 0,
   );
 
   // ✅ GROUP ONLY SUNGLASSES
@@ -57,17 +60,19 @@ const SunGlasses = () => {
 
       {/* HERO BANNER */}
       <div className="w-full max-w-[1450px] mx-auto px-4 my-10">
-        <div className="relative h-[420px] rounded-xl overflow-hidden">
+        <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden">
           <img
             src={assets.sg_banner}
             alt="Sunglasses Banner"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
-          <div className="absolute inset-0 flex items-center justify-end text-white">
-            <div className="text-center">
-              <h2 className="text-2xl font-semibold">Sun Glasses</h2>
-              <p className="text-xl px-5">Starting at ₹2800</p>
+
+         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+
+          <div className="absolute inset-0 flex items-center justify-end sm:justify-end text-orange-800 sm:pr-8">
+            <div className="text-center sm:text-right">
+              <h2 className="text-2xl sm:text-sm md:text-xl font-semibold">Sun Glasses</h2>
+              <p className="text-sm sm:text-lg md:text-xl px-5">Starting at ₹2800</p>
             </div>
           </div>
         </div>
@@ -76,7 +81,6 @@ const SunGlasses = () => {
       {/* MAIN SECTION */}
       <div className="w-full flex justify-center pt-10 border-t">
         <div className="w-full max-w-[1450px] px-4 md:px-0 flex flex-col lg:flex-row gap-6 lg:gap-10">
-
           {/* FILTER SIDEBAR */}
           <aside className="w-full lg:w-[260px] lg:sticky lg:top-24 h-fit">
             <p className="text-xl font-medium flex justify-between mt-8">
@@ -133,7 +137,6 @@ const SunGlasses = () => {
 
           {/* PRODUCTS AREA */}
           <main className="w-full mt-6 lg:mt-0">
-
             {/* WHEN FILTER ACTIVE */}
             {isFilterActive && (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -143,7 +146,7 @@ const SunGlasses = () => {
                       id={item._id}
                       name={item.name}
                       image={item.image}
-                      shape={item.shape}
+                      description={item.description}
                       price={item.price}
                     />
                   </div>
@@ -164,14 +167,14 @@ const SunGlasses = () => {
                               id={item._id}
                               name={item.name}
                               image={item.image}
-                              shape={item.shape}
+                              description={item.description}
                               price={item.price}
                             />
                           </div>
                         ))}
                       </div>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             )}

@@ -12,7 +12,10 @@ const ComputerGlasses = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [openFilter, setOpenFilter] = useState(null);
 
-  // ✅ STEP 1 — FILTER ONLY UVGLASSES
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const uvglassesProducts = useMemo(() => {
     return products.filter((item) => item.category === "UV GLASS");
   }, [products]);
@@ -58,19 +61,20 @@ const ComputerGlasses = () => {
 
       {/* HERO BANNER */}
       <div className="w-full max-w-[1450px] mx-auto px-4 my-10">
-        <div className="relative h-[420px] rounded-xl overflow-hidden">
+       <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden">
           <img
             src={assets.cg_banner_1}
             alt="Sunglasses Banner"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
-          <div className="absolute inset-0 flex items-center justify-end text-white">
-            <div className="text-center">
-              <h2 className="text-2xl font-semibold">Computer UV Glasses</h2>
-              <p className="text-xl px-5">Starting at ₹1500</p>
+         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+
+           <div className="absolute bottom-6 inset-0 flex items-end lg:justify-center sm:justify-end text-orange-800 sm:pr-8">
+            <div className="text-center sm:text-right">
+              <h2 className="text-2xl sm:text-sm md:text-xl font-semibold text-blue-800">Computer UV Glasses</h2>
+              <p className="text-sm sm:text-lg md:text-xl px-5 text-blue-800">Starting at ₹1500</p>
             </div>
-          </div>
+         </div>
         </div>
       </div>
 
@@ -142,7 +146,7 @@ const ComputerGlasses = () => {
                       id={item._id}
                       name={item.name}
                       image={item.image}
-                      shape={item.shape}
+                      description={item.description}
                       price={item.price}
                     />
                   </div>
@@ -163,7 +167,7 @@ const ComputerGlasses = () => {
                               id={item._id}
                               name={item.name}
                               image={item.image}
-                              shape={item.shape}
+                              description={item.description}
                               price={item.price}
                             />
                           </div>

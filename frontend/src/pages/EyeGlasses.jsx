@@ -16,6 +16,10 @@ const EyeGlasses = () => {
 
   const [openFilter, setOpenFilter] = useState(null);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const eyeglassesProducts = useMemo(() => {
     return products.filter((item) => item.category === "EYE GLASS");
   }, [products]);
@@ -35,13 +39,13 @@ const EyeGlasses = () => {
     if (shape) newFilters.shape = [shape];
     if (style) newFilters.style = [style];
     if (material) newFilters.material = [material];
-    if (brand) newFilters.brand=[brand];
+    if (brand) newFilters.brand = [brand];
 
     if (Object.keys(newFilters).length > 0) {
-    setSelectedFilters((prev) =>
-      JSON.stringify(prev) === JSON.stringify(newFilters) ? prev : newFilters
-    );
-  }
+      setSelectedFilters((prev) =>
+        JSON.stringify(prev) === JSON.stringify(newFilters) ? prev : newFilters,
+      );
+    }
   }, [location.search]);
   // ....................MENU ITEM PRODUCTS SHOW END <<<<<<<<<<<<<<<<<<<<<
   useEffect(() => {
@@ -163,7 +167,7 @@ const EyeGlasses = () => {
       newFilters.material = [material];
       title = `${material} Eyeglasses`;
     }
-    if(brand){
+    if (brand) {
       newFilters.brand = [brand];
       title = `${brand} Eyeglasses`;
     }
@@ -179,26 +183,32 @@ const EyeGlasses = () => {
         </p>
       </div>
       <div className="w-full max-w-[1450px] mx-auto px-4 my-10">
-        <div className="relative h-[220px] rounded-xl overflow-hidden">
+        <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden">
           <img
             src={assets.ban_eye}
             alt="Eyeglasses Banner"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
-          <div className="absolute inset-0 flex items-center justify-end text-white">
-            <div className="text-center">
-              <h2 className="text-2xl font-semibold">Frames</h2>
-              <p className="text-xl">Starting at ₹800</p>
+          <div className="absolute inset-0 flex items-center justify-end sm:justify-end text-orange-800 sm:pr-8">
+            <div className="text-center sm:text-right">
+              <h2 className="text-2xl sm:text-sm md:text-xl font-semibold">
+                Frames
+              </h2>
+              <p className="text-sm sm:text-lg md:text-xl px-5">
+                Starting at ₹800
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       <div className=" ">
-         <h1 className="text-2xl mb-4 lg:px-24 font-bold lg:text-3xl sm:text-xl mt-2">{pageTitle}</h1>
-        
+        <h1 className="text-2xl mb-4 lg:px-24 font-bold lg:text-3xl sm:text-xl mt-2">
+          {pageTitle}
+        </h1>
+
         <p className="lg:px-32 italic mb-4 sm:text-sm">
           Eyeglasses that blend style and comfort for every face.
         </p>
@@ -223,7 +233,7 @@ const EyeGlasses = () => {
             <EgFDd
               title="Gender"
               field="gender"
-              products={eyeglassesProducts} 
+              products={eyeglassesProducts}
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -233,7 +243,7 @@ const EyeGlasses = () => {
             <EgFDd
               title="Frame Shape"
               field="shape"
-              products={eyeglassesProducts} 
+              products={eyeglassesProducts}
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -243,7 +253,7 @@ const EyeGlasses = () => {
             <EgFDd
               title="Material"
               field="material"
-              products={eyeglassesProducts} 
+              products={eyeglassesProducts}
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -253,7 +263,7 @@ const EyeGlasses = () => {
             <EgFDd
               title="Frame Style"
               field="style"
-              products={eyeglassesProducts} 
+              products={eyeglassesProducts}
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -262,7 +272,7 @@ const EyeGlasses = () => {
             <EgFDd
               title="Brand"
               field="brand"
-              products={eyeglassesProducts} 
+              products={eyeglassesProducts}
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
               openFilter={openFilter}
@@ -283,9 +293,9 @@ const EyeGlasses = () => {
                       id={item._id}
                       name={item.shape}
                       image={item.image}
-                       brand={item.brand}
+                      description={item.description}
+                      brand={item.brand}
                       price={item.price}
-                     
                     />
                   </div>
                 ))}
@@ -353,7 +363,8 @@ const EyeGlasses = () => {
                                 id={item._id}
                                 name={item.shape}
                                 image={item.image}
-                                brand ={item.brand}
+                                brand={item.brand}
+                                description={item.description}
                                 price={item.price}
                               />
                             </div>
