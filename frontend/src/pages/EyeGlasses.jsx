@@ -6,6 +6,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import EgFDd from "../components/EgFDd";
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
+import Title from "../components/Title";
 
 const EyeGlasses = () => {
   const location = useLocation();
@@ -15,6 +16,10 @@ const EyeGlasses = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [openFilter, setOpenFilter] = useState(null);
+  const [sortType, setSortType] = useState("relavent");
+  const { search, showSearch } = useContext(ShopContext);
+
+   const isSearchActive = showSearch && search?.trim() !== "";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -32,6 +37,8 @@ const EyeGlasses = () => {
     const style = query.get("style");
     const material = query.get("material");
     const brand = query.get("brand");
+
+   
 
     const newFilters = {};
 
@@ -56,7 +63,8 @@ const EyeGlasses = () => {
         filtered = filtered.filter((item) =>
           selectedFilters[key].some((value) => {
             if (key === "gender") {
-              return item.gender === `FOR ${value.toUpperCase()}`;
+              // return item.gender === `FOR ${value.toUpperCase()}`;
+              return item.gender?.toUpperCase().includes(value.toUpperCase());
             }
 
             return item[key]?.toUpperCase() === value.toUpperCase();
@@ -64,9 +72,27 @@ const EyeGlasses = () => {
         );
       }
     });
+    if (sortType === "low-high") {
+      filtered = filtered.sort((a, b) => a.price - b.price);
+    }
 
-    setFilteredProducts(filtered);
-  }, [selectedFilters, eyeglassesProducts]);
+    if (sortType === "high-low") {
+      filtered = filtered.sort((a, b) => b.price - a.price);
+    }
+    //APPLY search bar control to search the product
+
+    if (showSearch && search && search.trim() !== "") {
+      filtered = filtered.filter(
+        (item) =>
+          item.name?.toLowerCase().includes(search.toLowerCase()) ||
+          item.brand?.toLowerCase().includes(search.toLowerCase()) ||
+          item.shape?.toLowerCase().includes(search.toLowerCase()) ||
+          item.description?.toLowerCase().includes(search.toLowerCase()),
+      );
+    }
+
+    setFilteredProducts([...filtered]);
+  }, [selectedFilters, eyeglassesProducts, sortType, search, showSearch]);
 
   // GROUPING PRODUCTS
   const shapeBanners = {
@@ -175,6 +201,7 @@ const EyeGlasses = () => {
     setSelectedFilters(newFilters);
     setPageTitle(title);
   }, [location.search]);
+
   return (
     <>
       <div>
@@ -280,15 +307,25 @@ const EyeGlasses = () => {
             />
           </aside>
           {/* <section className="max-w-7xl mx-auto px-4 py-10 border border-blue-400 shadow-lg rounded-3xl"> */}
-          <main className="w-full mt-6 lg:mt-0">
-            {/* ✅ WHEN FILTER IS ACTIVE → NORMAL GRID */}
-            {isFilterActive && (
+          <main className="w-full mt-6 lg:mt-0 self-start">
+            <div className=" z-50 bg-white flex justify-between items-center text-base sm:text-2xl mb-6 py-2">
+              <Title text1={"ALL"} text2={"COLLECTIONS"} />
+
+              <select
+                onChange={(e) => setSortType(e.target.value)}
+                className="border-2 border-gray-300 text-sm px-2 py-1 rounded"
+              >
+                <option value="relavent">Sort by Relevant</option>
+                <option value="low-high">Sort by Low to High</option>
+                <option value="high-low">Sort by High to Low</option>
+              </select>
+            </div>
+            {/* WHEN FILTER IS ACTIVE → NORMAL GRID */}
+
+            {(isFilterActive || isSearchActive) && (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredProducts.map((item) => (
-                  <div
-                    key={item._id}
-                    className="border rounded-xl p-4 shadow-sm"
-                  >
+                  <div key={item._id}>
                     <ProductItem
                       id={item._id}
                       name={item.shape}
@@ -303,7 +340,7 @@ const EyeGlasses = () => {
             )}
 
             {/* ✅ WHEN NO FILTER → GROUP BY SHAPE */}
-            {!isFilterActive &&
+            {(!isFilterActive || !isSearchActive) &&
               (() => {
                 // const groupedProducts = groupByShape(products);
                 const groupedProducts = groupByShape(eyeglassesProducts);
@@ -353,12 +390,9 @@ const EyeGlasses = () => {
                           })()}
 
                         {/* PRODUCTS OF THAT SHAPE */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
                           {groupedProducts[shape].map((item) => (
-                            <div
-                              key={item._id}
-                              className="border rounded-xl p-4 shadow-sm"
-                            >
+                            <div key={item._id}>
                               <ProductItem
                                 id={item._id}
                                 name={item.shape}

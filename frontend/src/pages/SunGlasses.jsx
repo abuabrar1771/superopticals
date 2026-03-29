@@ -4,25 +4,27 @@ import { ShopContext } from "../context/ShopContext";
 import ProductItem from "../components/ProductItem";
 import SgFDd from "../components/SgFDd";
 import { useMemo } from "react";
+import Title from "../components/Title";
 
 const SunGlasses = () => {
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
+  const [sortType, setSortType] = useState("relavent");
 
   const [selectedFilters, setSelectedFilters] = useState({});
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [openFilter, setOpenFilter] = useState(null);
 
- useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   const sunglassesProducts = useMemo(() => {
     return products.filter((item) => item.category === "SUN GLASS");
   }, [products]);
 
   // ✅ STEP 2 — APPLY SELECTED FILTERS
   useEffect(() => {
-    let filtered = sunglassesProducts;
+    let filtered = [...sunglassesProducts];
 
     Object.keys(selectedFilters).forEach((key) => {
       if (selectedFilters[key]?.length > 0) {
@@ -31,13 +33,30 @@ const SunGlasses = () => {
         );
       }
     });
+    if (search?.trim() !== "") {
+      filtered = filtered.filter((item) =>
+        (item.name + item.brand + item.description)
+          .toLowerCase()
+          .includes(search.toLowerCase()),
+      );
+    }
+    if (sortType === "low-high") {
+      filtered = [...filtered].sort((a, b) => a.price - b.price);
+    }
 
-    setFilteredProducts(filtered);
-  }, [selectedFilters, sunglassesProducts]);
+    if (sortType === "high-low") {
+      filtered = [...filtered].sort((a, b) => b.price - a.price);
+    }
 
-  const isFilterActive = Object.values(selectedFilters).some(
-    (value) => value && value.length > 0,
-  );
+    setFilteredProducts([...filtered]);
+  }, [selectedFilters, sunglassesProducts, sortType, search]);
+
+  // const isFilterActive = Object.values(selectedFilters).some(
+  //   (value) => value && value.length > 0,
+  // );
+  const isFilterActive =
+    Object.values(selectedFilters).some((value) => value && value.length > 0) ||
+    search?.trim() !== "";
 
   // ✅ GROUP ONLY SUNGLASSES
   const groupByShape = (items) => {
@@ -60,19 +79,27 @@ const SunGlasses = () => {
 
       {/* HERO BANNER */}
       <div className="w-full max-w-[1450px] mx-auto px-4 my-10">
-        <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden">
+        {/* <div className="relative w-full rounded-xl overflow-hidden"> */}
+        {/* <div className="relative w-full aspect-[6/1] rounded-xl overflow-hidden"> */}
+        {/* <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden"> */}
+        {/* <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden"> */}
+        <div className="relative h-[120px] sm:h-[150px] md:h-[180px] lg:h-[250px] rounded-xl overflow-hidden">
           <img
-            src={assets.sg_banner}
+            src={assets.sg_banner_3}
             alt="Sunglasses Banner"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-center"
           />
 
-         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
-          <div className="absolute inset-0 flex items-center justify-end sm:justify-end text-orange-800 sm:pr-8">
+          <div className="absolute inset-0 flex items-center justify-end sm:justify-end text-black sm:pr-8">
             <div className="text-center sm:text-right">
-              <h2 className="text-2xl sm:text-sm md:text-xl font-semibold">Sun Glasses</h2>
-              <p className="text-sm sm:text-lg md:text-xl px-5">Starting at ₹2800</p>
+              <h2 className="text-2xl sm:text-sm md:text-xl font-semibold">
+                Sun Glasses
+              </h2>
+              <p className="text-sm sm:text-lg md:text-xl px-5">
+                Starting at ₹2800
+              </p>
             </div>
           </div>
         </div>
@@ -136,12 +163,24 @@ const SunGlasses = () => {
           </aside>
 
           {/* PRODUCTS AREA */}
-          <main className="w-full mt-6 lg:mt-0">
+          <main className="w-full mt-6 lg:mt-0 self-start">
+            <div className="z-50 bg-white flex justify-between items-center text-base sm:text-2xl mb-6 py-2">
+              <Title text1={"ALL"} text2={"COLLECTIONS"} />
+
+              <select
+                onChange={(e) => setSortType(e.target.value)}
+                className="border-2 border-gray-300 text-sm px-2 py-1 rounded"
+              >
+                <option value="relavent">Sort by Relevant</option>
+                <option value="low-high">Sort by Low to High</option>
+                <option value="high-low">Sort by High to Low</option>
+              </select>
+            </div>
             {/* WHEN FILTER ACTIVE */}
             {isFilterActive && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
                 {filteredProducts.map((item) => (
-                  <div key={item._id} className="border rounded-xl p-4">
+                  <div key={item._id}>
                     <ProductItem
                       id={item._id}
                       name={item.name}
@@ -160,9 +199,9 @@ const SunGlasses = () => {
                 {Object.entries(groupByShape(sunglassesProducts)).map(
                   ([shape, items]) => (
                     <div key={shape}>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
                         {items.map((item) => (
-                          <div key={item._id} className="border rounded-xl p-4">
+                          <div key={item._id}>
                             <ProductItem
                               id={item._id}
                               name={item.name}

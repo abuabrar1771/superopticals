@@ -283,6 +283,17 @@ import pg_fast_ro_3 from "./powered glasses/pg-fast-ro-3.webp"
 import pg_fast_ro_4 from "./powered glasses/pg-fast-ro-4.webp"
 
 import pg_banner_1 from "./powered glasses/pg-banner.webp"
+
+import cl_banner_1 from "./contact lenses/cl-banner-1.webp"
+
+import ac_oas_1 from "./contact lenses/acuvue-oasys.png"
+import ac_oas_2 from "./contact lenses/acuvue-oasys-2.jpg"
+import co_vi_1 from "./contact lenses/cooper-vision-1.png"
+import co_vi_2 from "./contact lenses/cooper-vision-2.webp"
+import cl_basch_yr_1 from "./contact lenses/cl-basch-yr-1.jpg"
+import ac_oas_mon_3 from "./contact lenses/acuvue-oasys-mon-3.jpg"
+import ac_oas_for_1 from "./contact lenses/acuvue-oasys-for-1.jpg"
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 import S_LOGO_WBG from "./S-LOGO-WBG.png";
 import superoptical from "./superopticalwithlogo.png";
@@ -328,7 +339,9 @@ import banner_eg_6 from "./banner-eg-6.jpg";
 import banner_eg_7 from "./banner-eg-7.jpg";
 import banner_eg_8 from "./banner-eg-8.jpg";
 
-import sg_banner from "./rayban-hero-1.jpg";
+// import sg_banner from "./rayban-hero-1.jpg";
+import sg_banner from "./sunglasses/ray-banner-new.jpg";
+import sg_banner_3 from "./sunglasses/ray-banner-3.png";
 
 
 export const assets = {
@@ -374,10 +387,12 @@ export const assets = {
 
   ban_eye,
   sg_banner,
+  sg_banner_3,
   super_footer,
   cg_banner_1,
   cg_banner_2,
-  pg_banner_1
+  pg_banner_1,
+  cl_banner_1,
 };
 export const products = [
   {
@@ -385,7 +400,7 @@ export const products = [
     name: "Full Rim Frame",
     description:"CatEye Eyeglasses for men",
     price: 650,
-    image: [eg_cateye_1],
+    image: [eg_cateye_1,eg_cateye_2,eg_cateye_w1,eg_cateye_w2],
     category: "EYE GLASS",
     gender: "FOR MEN",
     style: "Rimed",
@@ -1448,7 +1463,7 @@ export const products = [
 {
     _id: "EG00132",
     name: "Fastrack",
-    description:"Transparent Wayfarer Computer Glasses for Men and Women",
+    description:"Transparent Wayfarer Computer Glasses for Women",
     price: 1600,
     image: [cg_fast_way_2],
     category: "UV GLASS",
@@ -1881,5 +1896,194 @@ export const products = [
     material: "SPX",
   brand: "FASTRACK", 
 },
-
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>CONTACT LENS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  {
+    _id: "CL001",
+    name: "Acuvue Oasys Daily Disposable",
+    description: "Comfortable Daily Disposable Acuvue Oasys By Johnson And Johnson - 30 lens per Box",
+    price:2850,
+    brand: "Bausch + Lomb",
+    category: "CONTACT_LENS", 
+    subCategory: "DAILY",
+    image:  [ac_oas_2],
+    lensType: "Soft Lens",
+    replacement: "Daily",
+    packSize: "30 Lenses",
+    powerRange: "-0.50 to -10.00",
+    cylinder: null,
+    axis: null,
+    gender: "UNISEX",
+    material: "Hydrogel",
+    color: "Clear",
+    stock: 50,
+    bestseller: true,
+    newArrival: true,
+    date: 1716634345448,
+  },
+  {
+    _id: "CL002",
+    name: "Acuvue Oasys Daily Disposable",
+    description: "Daily Disposable Acuvue Oasys By Johnson And Johnson - 12 lens per Box",
+    price: 2850,
+    brand: "Johnson And Johnson", 
+    category: "CONTACT_LENS", 
+    subCategory: "DAILY",
+    image:  [ac_oas_1],
+    lensType: "Soft Lens",
+    replacement: "Daily",
+    packSize: "30 Lenses",
+    powerRange: "-0.50 to -10.00",
+    cylinder: null,
+    axis: null,
+    gender: "UNISEX",
+    material: "Hydrogel",
+    color: "Clear",
+    stock: 50,
+    bestseller: true,
+    newArrival: true,
+    date: 1716634345448,
+  },
+  {
+    _id: "CL003",
+    name: "Bausch + Lomb SofLens Yearly Disposable",
+    description: "Yearly Disposable Traditional U4 By Bausch and Lomb - 1 lens per Box",
+    price: 950,
+    brand: "Johnson And Johnson", 
+    category: "CONTACT_LENS", 
+    subCategory: "DAILY",
+    image:  [cl_basch_yr_1],
+    lensType: "Soft Lens",
+    replacement: "Yearly",
+    packSize: "1 Lens",
+    powerRange: "-0.50 to -10.00",
+    cylinder: null,
+    axis: null,
+    gender: "UNISEX",
+    material: "Hydrogel",
+    color: "Clear",
+    stock: 10,
+    bestseller: true,
+    newArrival: true,
+    date: 1716634345448,
+  },
+  {
+    _id: "CL004",
+    name: "Acuvue Oasys SofLens Fortnightly Disposable",
+    description: "Fortnightly Disposable Acuvue Vita - 6 lens per Box",
+    price: 2850,
+    brand: "Johnson And Johnson", 
+    category: "CONTACT_LENS", 
+    subCategory: "FORTNIGHTLY",
+    image:  [ac_oas_for_1],
+    lensType: "Soft Lens",
+    replacement: "Fortnightly",
+    packSize: "1 Lens",
+    powerRange: "-0.50 to -10.00",
+    cylinder: null,
+    axis: null,
+    gender: "UNISEX",
+    material: "Hydrogel",
+    color: "Clear",
+    stock: 10,
+    bestseller: true,
+    newArrival: true,
+    date: 1716634345448,
+  },
+   {
+    _id: "CL005",
+    name: "Acuvue Oasys SofLens Monthly Disposable",
+    description: "Monthly Disposable Acuvue Vita - 6 lens per Box",
+    price: 2850,
+    brand: "Johnson And Johnson", 
+    category: "CONTACT_LENS", 
+    subCategory: "DAILY",
+    image:  [ac_oas_mon_3],
+    lensType: "Soft Lens",
+    replacement: "Monthly",
+    packSize: "1 Lens",
+    powerRange: "-0.50 to -10.00",
+    cylinder: null,
+    axis: null,
+    gender: "UNISEX",
+    material: "Hydrogel",
+    color: "Clear",
+    stock: 10,
+    bestseller: true,
+    newArrival: true,
+    date: 1716634345448,
+  },
+ {
+    _id: "CL006",
+    name: "Cooper Vision SofLens Monthly Disposable",
+    description: "Monthly Disposable Aspire Air - 3 Lens Per Box",
+    price: 1150,
+    brand: "Cooper Vision", 
+    category: "CONTACT_LENS", 
+    subCategory: "Monthly",
+    image:  [co_vi_1],
+    lensType: "Soft Lens",
+    replacement: "Monthly",
+    packSize: "1 Lens",
+    powerRange: "-0.50 to -10.00",
+    cylinder: null,
+    axis: null,
+    gender: "UNISEX",
+    material: "Hydrogel",
+    color: "Clear",
+    stock: 10,
+    bestseller: true,
+    newArrival: true,
+    date: 1716634345448,
+  },
+  {
+    _id: "CL007",
+    name: "Cooper Vision SofLens Monthly Disposable",
+    description: "Monthly Disposable Aspire Air - 3 Lens Per Box",
+    price: 1150,
+    brand: "Cooper Vision", 
+    category: "CONTACT_LENS", 
+    subCategory: "Monthly",
+    image:  [co_vi_2],
+    lensType: "Soft Lens",
+    replacement: "Monthly",
+    packSize: "1 Lens",
+    powerRange: "-0.50 to -10.00",
+    cylinder: null,
+    axis: null,
+    gender: "UNISEX",
+    material: "Hydrogel",
+    color: "Clear",
+    stock: 10,
+    bestseller: true,
+    newArrival: true,
+    date: 1716634345448,
+  },
+   
 ];
+// item cart for eyeglasses / sun glasses
+// {
+//   _id: "EG001",
+//   name: "Classic Black Rectangle Eyeglass",
+//   description: "Lightweight frame suitable for power lenses",
+//   price: 1899,
+//   brand: "RayBan",
+
+//   category: "EYEGLASS",
+//   subCategory: "POWER",
+
+//   image: [eg_img1],
+
+//   frameType: "Full Rim",
+//   shape: "Rectangle",
+//   material: "Acetate",
+//   frameSize: "Medium",
+
+//   gender: "MEN",
+//   color: "Black",
+
+//   lensCompatible: true,
+
+//   stock: 20,
+//   bestseller: false,
+//   newArrival: true
+// }

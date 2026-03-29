@@ -15,19 +15,21 @@ import PlaceOrder from './pages/PlaceOrder'
 import Login from './pages/Login'
 import Footer from "./components/Footer";
 import Navbar_New from "./components/Navbar_New"
+import SearchBar from "./components/SearchBar"
 
 const App = () => {
   return (
     <div className="min-h-screen max-w-screen bg-[#e7edeb]">
       <Navbar_New/>
-      
+      <SearchBar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/eyeglasses" element={<EyeGlasses />} />
         <Route path="/sunglasses" element={<SunGlasses />} />
         <Route path="/poweredsunglasses" element={<PoweredSunGlasses />}/>
         <Route path="/computerglasses" element={<ComputerGlasses />}/>
-        <Route path="/contactlense" element={<ContactLenses />}/>
+        <Route path="/contactlenses" element={<ContactLenses />}/>
         <Route path="/accessories" element={<Accessories />}/>
         <Route path="/brands" element={<Brands />}/>
 

@@ -5,17 +5,22 @@ import ProductItem from "../components/ProductItem";
 import CgFDd from "../components/CGFDd.jsx";
 import { useMemo } from "react";
 
+import Title from "../components/Title";
+
 const ComputerGlasses = () => {
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
+  const [sortType, setSortType] = useState("relavent");
 
   const [selectedFilters, setSelectedFilters] = useState({});
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [openFilter, setOpenFilter] = useState(null);
 
+  const isSearchActive = showSearch && search?.trim() !== "";
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   const uvglassesProducts = useMemo(() => {
     return products.filter((item) => item.category === "UV GLASS");
   }, [products]);
@@ -33,9 +38,25 @@ const ComputerGlasses = () => {
         );
       }
     });
+    //APPLY SEARCH
+    if (search?.trim() !== "") {
+      filtered = filtered.filter((item) =>
+        (item.name + item.brand + item.description)
+          .toLowerCase()
+          .includes(search.toLowerCase()),
+      );
+    }
 
-    setFilteredProducts(filtered);
-  }, [selectedFilters, uvglassesProducts]);
+    if (sortType === "low-high") {
+      filtered = filtered.sort((a, b) => a.price - b.price);
+    }
+
+    if (sortType === "high-low") {
+      filtered = filtered.sort((a, b) => b.price - a.price);
+    }
+
+    setFilteredProducts([...filtered]);
+  }, [selectedFilters, uvglassesProducts, sortType, search]);
 
   const isFilterActive = Object.values(selectedFilters).some(
     (value) => value && value.length > 0,
@@ -61,24 +82,28 @@ const ComputerGlasses = () => {
 
       {/* HERO BANNER */}
       <div className="w-full max-w-[1450px] mx-auto px-4 my-10">
-       <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden">
+        <div className="relative h-[120px] sm:h-[150px] md:h-[180px] lg:h-[250px] rounded-xl overflow-hidden">
           <img
             src={assets.cg_banner_1}
-            alt="Sunglasses Banner"
-            className="w-full h-full object-cover"
+            alt="Contact Lens Banner"
+            className="w-full h-full object-center"
           />
-         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
-           <div className="absolute bottom-6 inset-0 flex items-end lg:justify-center sm:justify-end text-orange-800 sm:pr-8">
-            <div className="text-center sm:text-right">
-              <h2 className="text-2xl sm:text-sm md:text-xl font-semibold text-blue-800">Computer UV Glasses</h2>
-              <p className="text-sm sm:text-lg md:text-xl px-5 text-blue-800">Starting at ₹1500</p>
-            </div>
-         </div>
+          <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 text-center">
+            <h2 className="text-[10px] sm:text-xs md:text-sm lg:text-2xl font-semibold text-blue-800">
+              Computer UV Glasses
+            </h2>
+
+            <p className="text-[9px] sm:text-[10px] md:text-xs lg:text-lg text-blue-800">
+              Starting at ₹1500
+            </p>
+          </div>
         </div>
       </div>
 
       {/* MAIN SECTION */}
+
       <div className="w-full flex justify-center pt-10 border-t">
         <div className="w-full max-w-[1450px] px-4 md:px-0 flex flex-col lg:flex-row gap-6 lg:gap-10">
           {/* FILTER SIDEBAR */}
@@ -136,33 +161,57 @@ const ComputerGlasses = () => {
           </aside>
 
           {/* PRODUCTS AREA */}
-          <main className="w-full mt-6 lg:mt-0">
-            {/* WHEN FILTER ACTIVE */}
-            {isFilterActive && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {filteredProducts.map((item) => (
-                  <div key={item._id} className="border rounded-xl p-4">
-                    <ProductItem
-                      id={item._id}
-                      name={item.name}
-                      image={item.image}
-                      description={item.description}
-                      price={item.price}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+          <main className="w-full mt-6 lg:mt-0 self-start">
+            <div className="z-50 bg-white flex justify-between items-center text-base sm:text-2xl mb-6 py-2">
+              <Title text1={"ALL"} text2={"COLLECTIONS"} />
 
-            {/* WHEN NO FILTER → GROUP BY SHAPE */}
-            {!isFilterActive && (
+              <select
+                onChange={(e) => setSortType(e.target.value)}
+                className="border-2 border-gray-300 text-sm px-2 py-1 rounded"
+              >
+                <option value="relavent">Sort by Relevant</option>
+                <option value="low-high">Sort by Low to High</option>
+                <option value="high-low">Sort by High to Low</option>
+              </select>
+            </div>
+            {/* WHEN FILTER ACTIVE */}
+            {isFilterActive || isSearchActive ? (
+              // 🔹 FILTER / SEARCH VIEW
+              filteredProducts.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
+                  {filteredProducts.map((item) => (
+                    <div key={item._id}>
+                      <ProductItem
+                        id={item._id}
+                        name={item.name}
+                        image={item.image}
+                        description={item.description}
+                        price={item.price}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                // NO RESULTS
+                <div className="flex flex-col items-center justify-center mt-16 text-gray-500">
+                  <p className="text-lg font-medium">No products found</p>
+                  <p className="text-sm">Try changing filters or search</p>
+                </div>
+              )
+            ) : (
+              //  DEFAULT GROUPED VIEW
               <div className="space-y-16">
                 {Object.entries(groupByShape(uvglassesProducts)).map(
-                  ([shape, items]) => (
-                    <div key={shape}>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  ([category, items]) => (
+                    <div key={category}>
+                      {/* OPTIONAL CATEGORY TITLE */}
+                      <h2 className="text-xl font-semibold mb-4 capitalize">
+                        {category.replace("_", " ").toLowerCase()}
+                      </h2>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
                         {items.map((item) => (
-                          <div key={item._id} className="border rounded-xl p-4">
+                          <div key={item._id}>
                             <ProductItem
                               id={item._id}
                               name={item.name}

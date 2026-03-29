@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import EgFDd from "../components/EgFDd";
+import CgFDd from "../components/CGFDd";
 
 const CgFilterDropdown = ({
   title,

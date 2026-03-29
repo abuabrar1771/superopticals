@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import EyeglassesDD from "./DropDowns/EyeGlassesDD";
 import EGDd from "./DropDowns/EGDd";
 import SGDd from "./DropDowns/SGDd";
+import { ShopContext } from "../context/ShopContext";
 
 const Navbar_New = () => {
   const [visible, setVisible] = useState(false);
+  const {setShowSearch}= useContext(ShopContext);
+
   return (
     <div className="sticky top-0 bg-white shadow-md z-50" >
     <div className="flex items-center justify-between py-7 px-4 sm:px-10 lg:px-20 font-medium">
@@ -80,7 +83,7 @@ const Navbar_New = () => {
         {/* CONTACT LENS */}
         <div className="relative group flex items-center gap-1">
           <NavLink
-            to="/cotactlenses"
+            to="/contactlenses"
             className={({ isActive }) =>
               `flex items-center gap-1 ${isActive ? "text-cyan-600 font-semibold" : "text-black"}`
             }
@@ -117,7 +120,7 @@ const Navbar_New = () => {
       </ul>
       {/* ------------------END OF MAIN UL ------------------------- */}
       <div className="flex items-center gap-4">
-        <img src={assets.search_icon} alt="" className="w-5 cursor-pointer" />
+        <img onClick={()=>setShowSearch(true)} src={assets.search_icon} alt="" className="w-5 cursor-pointer" />
         <div className="group relative">
           <img
             src={assets.profile_icon}

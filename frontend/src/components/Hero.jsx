@@ -3,7 +3,7 @@ import { assets } from "../assets/assets";
 
 const Hero = () => {
   return (
-    <section className="max-w-7xl mx-auto border border-blue-400 items-center shadow-lg rounded-3xl mt-24">
+    <section className="max-w-7xl mx-auto border border-blue-400 items-center shadow-lg rounded-3xl mt-10">
       <div className="flex flex-col md:flex-row items-center h-[420px]">
 
         {/* LEFT CONTENT */}
