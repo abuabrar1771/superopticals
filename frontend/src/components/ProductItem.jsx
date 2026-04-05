@@ -28,7 +28,7 @@ const ProductItem = ({ id, name, image, price, description, brand }) => {
           >
             <div className="h-40 flex-shrink-0 overflow-hidden">
               <img
-                src={image}
+                src={image[0]}
                 alt={name}
                 className="w-full h-full bg-white object-contain mix-blend-multiply hover:scale-105 transition duration-300"
               />

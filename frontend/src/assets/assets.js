@@ -41,65 +41,22 @@ import eg_geom_5 from "./eyeglasses/eg-geom-5.png";
 import eg_geom_6 from "./eyeglasses/eg-geom-6.png";
 import eg_geom_7 from "./eyeglasses/eg-geom-7.png";
 import eg_geom_8 from "./eyeglasses/eg-geom-8.png";
-import eg_geom_9 from "./eyeglasses/eg-geom-9.png";
-import eg_geom_10 from "./eyeglasses/eg-geom-10.png";
-import eg_geom_11 from "./eyeglasses/eg-geom-11.png";
-import eg_geom_12 from "./eyeglasses/eg-geom-12.jpg";
-import eg_geom_13 from "./eyeglasses/eg-geom-13.jpg";
-import eg_geom_14 from "./eyeglasses/eg-geom-14.jpg";
-import eg_geom_15 from "./eyeglasses/eg-geom-15.jpg";
-import eg_geom_16 from "./eyeglasses/eg-geom-16.jpg";
-import eg_geom_17 from "./eyeglasses/eg-geom-17.jpg";
-import eg_geom_18 from "./eyeglasses/eg-geom-18.jpg";
+
 
 import eg_geom_w1 from "./eyeglasses/eg-geom-w-1.jpg";
 import eg_geom_w2 from "./eyeglasses/eg-geom-w-2.jpg";
 import eg_geom_w3 from "./eyeglasses/eg-geom-w-3.jpg";
 import eg_geom_w4 from "./eyeglasses/eg-geom-w-4.jpg";
-import eg_geom_w5 from "./eyeglasses/eg-geom-w-5.jpg";
-import eg_geom_w6 from "./eyeglasses/eg-geom-w-6.jpg";
-
-import eg_wayfare_1 from "./eyeglasses/eg-wayfare-1.png";
 
 import eg_hr_1 from "./eyeglasses/eg-hr-1.png";
 import eg_hr_2 from "./eyeglasses/eg-hr-2.png";
 import eg_hr_3 from "./eyeglasses/eg-hr-3.jpg";
 import eg_hr_4 from "./eyeglasses/eg-hr-4.jpg";
-import eg_hr_5 from "./eyeglasses/eg-hr-5.jpg";
-import eg_hr_6 from "./eyeglasses/eg-hr-6.jpg";
-import eg_hr_7 from "./eyeglasses/eg-hr-7.jpg";
-import eg_hr_8 from "./eyeglasses/eg-hr-8.jpg";
-import eg_hr_9 from "./eyeglasses/eg-hr-8.jpg";
-import eg_hr_10 from "./eyeglasses/eg-hr-10.jpg";
-
-// import eg_oval_1_1 from "./eg-oval-1-1.png";
-// import eg_oval_1_2 from "./eg-oval-1-2.png";
-// import eg_oval_1_3 from "./eg-oval-1-3.png";
-// import eg_oval_1_4 from "./eg-oval-1-4.png";
 
 import eg_oval_1 from "./eyeglasses/eg-oval-1.png";
 import eg_oval_2 from "./eyeglasses/eg-oval-2.png";
 import eg_oval_3 from "./eyeglasses/eg-oval-3.png";
 import eg_oval_4 from "./eyeglasses/eg-oval-4.png";
-import eg_oval_5 from "./eyeglasses/eg-oval-5.png";
-
-import eg_oval_6 from "./eyeglasses/eg-oval-6.jpg";
-import eg_oval_7 from "./eyeglasses/eg-oval-7.jpg";
-import eg_oval_8 from "./eyeglasses/eg-oval-8.jpg";
-import eg_oval_9 from "./eyeglasses/eg-oval-9.jpg";
-import eg_oval_10 from "./eyeglasses/eg-oval-10.jpg";
-
-// import eg_oval_5_1 from "./eg-oval-5-1.png";
-// import eg_oval_5_2 from "./eg-oval-5-2.png";
-// import eg_oval_5_3 from "./eg-oval-5-3.png";
-// import eg_oval_5_4 from "./eg-oval-5-4.png";
-
-import eg_rect_1 from "./eyeglasses/eg-rect-1.png";
-import eg_rect_2 from "./eyeglasses/eg-rect-2.png";
-import eg_rect_3 from "./eyeglasses/eg-rect-3.png";
-import eg_rect_4 from "./eyeglasses/eg-rect-4.png";
-import eg_rect_5 from "./eyeglasses/eg-rect-5.png";
-import eg_rect_6 from "./eyeglasses/eg-rect-6.png";
 
 import eg_rect_7 from "./eyeglasses/eg-rect-7.webp";
 import eg_rect_8 from "./eyeglasses/eg-rect-8.webp";
@@ -110,55 +67,26 @@ import eg_rect_w_1 from "./eyeglasses/eg-rect-w-1.jpg";
 import eg_rect_w_2 from "./eyeglasses/eg-rect-w-2.jpg";
 import eg_rect_w_3 from "./eyeglasses/eg-rect-w-3.jpg";
 import eg_rect_w_4 from "./eyeglasses/eg-rect-w-4.jpg";
-import eg_rect_w_5 from "./eyeglasses/eg-rect-w-5.jpg";
-import eg_rect_w_6 from "./eyeglasses/eg-rect-w-6.jpg";
-import eg_rect_w_7 from "./eyeglasses/eg-rect-w-7.jpg";
-import eg_rect_w_8 from "./eyeglasses/eg-rect-w-8.jpg";
-import eg_rect_w_9 from "./eyeglasses/eg-rect-w-9.jpg";
-import eg_rect_w_10 from "./eyeglasses/eg-rect-w-10.jpg";
 
-// import eg_rect_6_1 from "./eg-rect-6-1.png";
-// import eg_rect_6_2 from "./eg-rect-6-2.png";
-// import eg_rect_6_3 from "./eg-rect-6-3.png";
-
-import eg_roun_1 from "./eyeglasses/eg-roun-1.png";
 import eg_roun_2 from "./eyeglasses/eg-roun-2.png";
 import eg_roun_3 from "./eyeglasses/eg-roun-3.png";
 import eg_roun_4 from "./eyeglasses/eg-roun-4.png";
 import eg_roun_5 from "./eyeglasses/eg-roun-5.png";
-import eg_roun_6 from "./eyeglasses/eg-roun-6.png";
-import eg_roun_7 from "./eyeglasses/eg-roun-7.png";
-import eg_roun_8 from "./eyeglasses/eg-roun-8.jpg";
-import eg_roun_9 from "./eyeglasses/eg-roun-9.jpg";
-import eg_roun_10 from "./eyeglasses/eg-roun-10.jpg";
 
 import eg_roun_w1 from "./eyeglasses/eg-roun-w1.jpg";
 import eg_roun_w2 from "./eyeglasses/eg-roun-w2.jpg";
 import eg_roun_w3 from "./eyeglasses/eg-roun-w3.jpg";
 import eg_roun_w4 from "./eyeglasses/eg-roun-w4.jpg";
-import eg_roun_w5 from "./eyeglasses/eg-roun-w5.jpg";
-import eg_roun_w6 from "./eyeglasses/eg-roun-w6.jpg";
-import eg_roun_w7 from "./eyeglasses/eg-roun-w7.jpg";
-import eg_roun_w8 from "./eyeglasses/eg-roun-w8.jpg";
-import eg_roun_w9 from "./eyeglasses/eg-roun-w9.jpg";
-import eg_roun_w10 from "./eyeglasses/eg-roun-w10.jpg";
 
 import eg_squre_2 from "./eyeglasses/eg-squre-2.jpg";
 import eg_squre_3 from "./eyeglasses/eg-squre-3.jpg";
 import eg_squre_4 from "./eyeglasses/eg-squre-4.jpg";
 import eg_squre_5 from "./eyeglasses/eg-squre-5.jpg";
-import eg_squre_6 from "./eyeglasses/eg-squre-6.jpg";
-import eg_squre_7 from "./eyeglasses/eg-squre-7.jpg";
-import eg_squre_8 from "./eyeglasses/eg-squre-8.jpg";
-import eg_squre_9 from "./eyeglasses/eg-squre-9.jpg";
-import eg_squre_10 from "./eyeglasses/eg-squre-10.jpg";
 
 import eg_squre_w1 from "./eyeglasses/eg-squre-w-1.jpg";
 import eg_squre_w2 from "./eyeglasses/eg-squre-w-2.jpg";
 import eg_squre_w3 from "./eyeglasses/eg-squre-w-3.jpg";
 import eg_squre_w4 from "./eyeglasses/eg-squre-w-4.jpg";
-import eg_squre_w5 from "./eyeglasses/eg-squre-w-5.jpg";
-import eg_squre_w6 from "./eyeglasses/eg-squre-w-6.jpg";
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>> SUN GLASSES SECTION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -174,74 +102,10 @@ import sg_fast_mirr from "./sunglasses/sg-fast-mirr-1.webp";
 
 import sg_fast_tin_2 from "./sunglasses/sg-fast-tin-2.webp";
 import sg_fast_tin_3 from "./sunglasses/sg-fast-tin-3.webp";
-import sg_fast_tin_4 from "./sunglasses/sg-fast-tin-4.webp";
-import sg_fast_tin_5 from "./sunglasses/sg-fast-tin-5.webp";
-
-import sg_fast_roun1 from "./sunglasses/sg-fast-roun-1.webp";
-import sg_fast_roun2 from "./sunglasses/sg-fast-roun-2.webp";
-
-import sg_fasy_way1 from "./sunglasses/sg-fast-way-1.webp";
-
-import sg_ray_av1 from "./sunglasses/sg-ray-av-1.webp";
-import sg_ray_av2 from "./sunglasses/sg-ray-av-2.webp";
-import sg_ray_av3 from "./sunglasses/sg-ray-av-3.webp";
-import sg_ray_av4 from "./sunglasses/sg-ray-av-4.webp";
-import sg_ray_av5 from "./sunglasses/sg-ray-av-5.webp";
-import sg_ray_av6 from "./sunglasses/sg-ray-av-6.webp";
-import sg_ray_av7 from "./sunglasses/sg-ray-av-7.webp";
-
-import sg_ray_boys_1 from "./sunglasses/sg-ray-boys-1.webp";
-import sg_ray_boys_2 from "./sunglasses/sg-ray-boys-2.webp";
-import sg_ray_boys_3 from "./sunglasses/sg-ray-boys-3.webp";
-
-import sg_ray_boys_av1 from "./sunglasses/sg-ray-boys-av1.webp";
-import sg_ray_boys_av2 from "./sunglasses/sg-ray-boys-av2.webp";
-import sg_ray_boys_av3 from "./sunglasses/sg-ray-boys-av3.webp";
-import sg_ray_boys_av4 from "./sunglasses/sg-ray-boys-av4.webp";
-import sg_ray_boys_av5 from "./sunglasses/sg-ray-boys-av5.webp";
-import sg_ray_boys_av6 from "./sunglasses/sg-ray-boys-av6.webp";
-
-import sg_ray_boys_ro1 from "./sunglasses/sg-ray-boys-ro1.webp";
-
-import sg_ray_clbmas1 from "./sunglasses/sg-ray-clbmas-1.webp";
-import sg_ray_clbmas2 from "./sunglasses/sg-ray-clbmas-2.webp";
-import sg_ray_clbmas3 from "./sunglasses/sg-ray-clbmas-3.webp";
-import sg_ray_clbmas4 from "./sunglasses/sg-ray-clbmas-4.webp";
-
-import sg_ray_pol_4 from "./sunglasses/sg-ray-pol-4.webp";
-import sg_ray_pol_5 from "./sunglasses/sg-ray-pol-5.webp";
-
-import sg_ray_ro1 from "./sunglasses/sg-ray-ro-1.webp";
-import sg_ray_ro2 from "./sunglasses/sg-ray-ro-2.webp";
-import sg_ray_ro3 from "./sunglasses/sg-ray-ro-3.webp";
-import sg_ray_ro4 from "./sunglasses/sg-ray-ro-4.webp";
-import sg_ray_ro5 from "./sunglasses/sg-ray-ro-5.webp";
-import sg_ray_ro6 from "./sunglasses/sg-ray-ro-6.webp";
-import sg_ray_ro7 from "./sunglasses/sg-ray-ro-7.webp";
-import sg_ray_ro8 from "./sunglasses/sg-ray-ro-8.webp";
-import sg_ray_ro9 from "./sunglasses/sg-ray-ro-9.webp";
-
-import sg_ray_sq1 from "./sunglasses/sg-ray-sq-1.webp";
-import sg_ray_sq2 from "./sunglasses/sg-ray-sq-2.webp";
-import sg_ray_sq3 from "./sunglasses/sg-ray-sq-3.webp";
-import sg_ray_sq4 from "./sunglasses/sg-ray-sq-4.webp";
-import sg_ray_sq5 from "./sunglasses/sg-ray-sq-5.webp";
-import sg_ray_sq6 from "./sunglasses/sg-ray-sq-6.webp";
-
-import sg_velo_av2 from "./sunglasses/sg-velo-av-2.webp";
-import sg_velo_av3 from "./sunglasses/sg-velo-av-3.webp";
-import sg_velo_av4 from "./sunglasses/sg-velo-av-4.webp";
-
-import sg_velo_ro1 from "./sunglasses/sg-velo-ro-1.webp";
-
-import sg_velo_sq1 from "./sunglasses/sg-velo-sq-1.webp";
-import sg_velo_sq2 from "./sunglasses/sg-velo-sq-2.webp";
-import sg_velo_sq3 from "./sunglasses/sg-velo-sq-3.webp";
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> COMPUTER GLASSES UV <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 import cg_fast_cat_1 from "./computer glasses/cg-fast-uv-cat-1.webp"
-import cg_fast_cat_2 from "./computer glasses/cg-fast-uv-cat-2.webp"
-import cg_fast_cat_3 from "./computer glasses/cg-fast-uv-cat-3.webp"
+
 
 import cg_fast_rec_1 from "./computer glasses/cg-fast-uv-rec-1.webp"
 import cg_fast_rec_2 from "./computer glasses/cg-fast-uv-rec-2.webp"
@@ -343,9 +207,56 @@ import banner_eg_8 from "./banner-eg-8.jpg";
 import sg_banner from "./sunglasses/ray-banner-new.jpg";
 import sg_banner_3 from "./sunglasses/ray-banner-3.png";
 
+//home page banners and categorys
+
+import category_1 from "../assets/homrpage/cat-1.png"
+import category_2 from "../assets/homrpage/cat-2.png"
+import category_3 from "../assets/homrpage/cat-3.png"
+import category_4 from "../assets/homrpage/cat-4.png"
+import category_5 from "../assets/homrpage/cat-5.png"
+import category_6 from "../assets/homrpage/cat-6.png"
+
+import hero_bauch from "../assets/homrpage/hero-bauch.png"
+import hero_clipon from "../assets/homrpage/hero-clipon.png"
+import hero_contactlens from "../assets/homrpage/hero-contactlens.png"
+import hero_eyeglasses from "../assets/homrpage/hero-eyeglasses.png"
+import hero_fastrack from "../assets/homrpage/hero-fastrack.png"
+import hero_oakley from "../assets/homrpage/hero-oakley.png"
+import hero_rayban from "../assets/homrpage/hero-rayban.png"
+import hero_zeiss from "../assets/homrpage/hero-zeiss.png"
+
+import eye_sun_glasses from "../assets/homrpage/eye-sun-glasses.png"
+import powered_sunglass from "../assets/homrpage/powered glasses.png"
+import computer_glass from "../assets/homrpage/comp-glass.png"
+import clip_on from "../assets/homrpage/clip-on.png"
+import contact_lens from "../assets/homrpage/contact-lens.png"
+import smart_glass from "../assets/homrpage/smart-glass.png"
 
 export const assets = {
-  logo_use,
+  category_1,
+  category_2,
+  category_3,
+  category_4,
+  category_5,
+  category_6,
+  
+  hero_bauch,
+  hero_clipon,
+  hero_contactlens,
+  hero_eyeglasses,
+  hero_fastrack,
+  hero_oakley,
+  hero_rayban,
+  hero_zeiss,
+
+  eye_sun_glasses,
+  powered_sunglass,
+  computer_glass,
+  clip_on,
+  contact_lens,
+  smart_glass,
+
+  // logo_use,
   S_LOGO_WBG,
   superoptical,
   support_img,
@@ -994,7 +905,7 @@ export const products = [
     description:
       "Rectangle Eyeglasses for Men and Men.",
     price: 650,
-    image: eg_rect_10,
+    image: [eg_rect_10],
     category: "EYE GLASS",
     gender: "FOR MEN",
     style: "Rimed",
@@ -1009,7 +920,7 @@ export const products = [
     description:
       "Rectangle Eyeglasses for Men and Women.",
     price: 650,
-    image: eg_rect_w_1,
+    image: [eg_rect_w_1],
     category: "EYE GLASS",
     gender: "FOR WOMEN",
     style: "Rimed",
@@ -1024,7 +935,7 @@ export const products = [
     description:
       "Frame surrounds the entire lens.Most sturdy and durable — great for everyday use and stronger prescriptions. Available in plastic or metal.",
     price: 650,
-    image: eg_rect_w_2,
+    image: [eg_rect_w_2],
     category: "EYE GLASS",
     gender: "FOR WOMEN",
     style: "Rimed",
@@ -1039,7 +950,7 @@ export const products = [
     description:
       "Frame surrounds the entire lens.Most sturdy and durable — great for everyday use and stronger prescriptions. Available in plastic or metal.",
     price: 650,
-    image: eg_rect_w_3,
+    image: [eg_rect_w_3],
     category: "EYE GLASS",
     gender: "FOR WOMEN",
     style: "Rimed",
@@ -1054,7 +965,7 @@ export const products = [
     description:
       "Rectangle Eyeglasses for Men and Women.",
     price: 650,
-    image: eg_rect_w_4,
+    image: [eg_rect_w_4],
     category: "EYE GLASS",
     gender: "FOR WOMEN",
     style: "Rimed",
@@ -1130,7 +1041,7 @@ export const products = [
     description:
       "Round Eyeglasses for Men and Women.",
     price: 575,
-    image: eg_roun_w1,
+    image: [eg_roun_w1],
     category: "EYE GLASS",
     gender: "FOR WOMEN",
     style: "Rimed",
@@ -1175,7 +1086,7 @@ export const products = [
     description:
       "Round Eyeglasses for Men and Women.",
     price: 625,
-    image: eg_roun_w4,
+    image: [eg_roun_w4],
     category: "EYE GLASS",
     gender: "FOR WOMEN",
     style: "Rimed",

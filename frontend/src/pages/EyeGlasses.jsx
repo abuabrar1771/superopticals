@@ -5,10 +5,17 @@ import ProductItem from "../components/ProductItem";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import EgFDd from "../components/EgFDd";
 import { useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Title from "../components/Title";
 
 const EyeGlasses = () => {
+ const navigate = useNavigate();
+
+useEffect(() => {
+  if (location.search) {
+    navigate("/eyeglasses", { replace: true });
+  }
+}, []);
   const location = useLocation();
   const { products } = useContext(ShopContext);
   const [selectedFilters, setSelectedFilters] = useState({});
@@ -19,7 +26,7 @@ const EyeGlasses = () => {
   const [sortType, setSortType] = useState("relavent");
   const { search, showSearch } = useContext(ShopContext);
 
-   const isSearchActive = showSearch && search?.trim() !== "";
+  const isSearchActive = showSearch && search?.trim() !== "";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,8 +44,6 @@ const EyeGlasses = () => {
     const style = query.get("style");
     const material = query.get("material");
     const brand = query.get("brand");
-
-   
 
     const newFilters = {};
 
@@ -95,6 +100,15 @@ const EyeGlasses = () => {
   }, [selectedFilters, eyeglassesProducts, sortType, search, showSearch]);
 
   // GROUPING PRODUCTS
+  const shapeOrder = [
+    "CATEYE",
+    "RECTANGLE",
+    "SQUARE",
+    "OVAL",
+    "ROUNDED",
+    "CLUBMASTER",
+    "GEOMETRIC",
+  ];
   const shapeBanners = {
     ROUND: assets.banner_eg_1,
     SQUARE: assets.banner_eg_2,
@@ -340,72 +354,77 @@ const EyeGlasses = () => {
             )}
 
             {/* ✅ WHEN NO FILTER → GROUP BY SHAPE */}
-            {(!isFilterActive || !isSearchActive) &&
+            {(!isFilterActive && !isSearchActive) && 
               (() => {
                 // const groupedProducts = groupByShape(products);
                 const groupedProducts = groupByShape(eyeglassesProducts);
-                const shapeNames = Object.keys(groupedProducts);
+                const shapeNames = Object.keys(groupedProducts).sort((a, b) => {
+                  const indexA = shapeOrder.indexOf(a);
+                  const indexB = shapeOrder.indexOf(b);
+
+                  return (
+                    (indexA === -1 ? 999 : indexA) -
+                    (indexB === -1 ? 999 : indexB)
+                  );
+                });
 
                 return (
                   <div className="space-y-16">
-                    {shapeNames.map((shape, index) => (
-                      <div key={shape}>
-                        {/* BANNER BETWEEN SHAPES */}
-                        {index !== shapeNames.length - 1 &&
-                          (() => {
-                            const config = shapeBannerConfig[shape] || {};
-                            const bannerImage =
-                              config.image || assets.banner_default;
-                            const textPosition = config.position || "left";
+                    {shapeOrder
+                      .filter((shape) => groupedProducts[shape])
+                      .map((shape) => {
+                        const config = shapeBannerConfig[shape] || {};
+                        const bannerImage =
+                          config.image || assets.banner_default;
+                        const textPosition = config.position || "left";
 
-                            return (
-                              <div className="mt-10">
-                                <div className="relative w-full h-[150px] sm:h-[170px] md:h-[190px] rounded-2xl overflow-hidden">
-                                  {/* IMAGE */}
-                                  <img
-                                    src={bannerImage}
-                                    alt={`${shape} banner`}
-                                    className="w-full h-full object-cover"
-                                  />
+                        return (
+                          <div key={shape}>
+                            {/* ✅ BANNER */}
+                            <div className="mt-10">
+                              <div className="relative w-full h-[150px] sm:h-[170px] md:h-[190px] rounded-2xl overflow-hidden">
+                                <img
+                                  src={bannerImage}
+                                  alt={`${shape} banner`}
+                                  className="w-full h-full object-cover"
+                                />
 
-                                  {/* OPTIONAL OVERLAY */}
-                                  <div className="absolute inset-0 bg-black/30"></div>
+                                <div className="absolute inset-0 bg-black/30"></div>
 
-                                  {/* TEXT */}
-                                  <div
-                                    className={`absolute inset-0 flex ${getTextPositionClass(textPosition)}`}
-                                  >
-                                    <div className="text-white">
-                                      <h2 className="text-2xl md:text-3xl font-semibold">
-                                        {shape} Frames
-                                      </h2>
-                                      <p className="text-sm opacity-90">
-                                        Starting at ₹800
-                                      </p>
-                                    </div>
+                                <div
+                                  className={`absolute inset-0 flex ${getTextPositionClass(
+                                    textPosition,
+                                  )}`}
+                                >
+                                  <div className="text-white">
+                                    <h2 className="text-2xl md:text-3xl font-semibold">
+                                      {shape} Frames
+                                    </h2>
+                                    <p className="text-sm opacity-90">
+                                      Starting at ₹800
+                                    </p>
                                   </div>
                                 </div>
                               </div>
-                            );
-                          })()}
-
-                        {/* PRODUCTS OF THAT SHAPE */}
-                        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
-                          {groupedProducts[shape].map((item) => (
-                            <div key={item._id}>
-                              <ProductItem
-                                id={item._id}
-                                name={item.shape}
-                                image={item.image}
-                                brand={item.brand}
-                                description={item.description}
-                                price={item.price}
-                              />
                             </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
+
+                            {/* ✅ PRODUCTS */}
+                            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
+                              {groupedProducts[shape].map((item) => (
+                                <ProductItem
+                                  key={item._id}
+                                  id={item._id}
+                                  name={item.shape}
+                                  image={item.image}
+                                  brand={item.brand}
+                                  description={item.description}
+                                  price={item.price}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
                   </div>
                 );
               })()}
