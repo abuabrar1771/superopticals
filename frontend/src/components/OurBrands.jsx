@@ -18,19 +18,7 @@ const OurBrands = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <div className="overflow-hidden rounded-lg shadow">
-          <img src={assets.ob_vincent} alt="Vincent" className="w-full h-full object-cover" />
-        </div>
-
-        <div className="overflow-hidden rounded-lg shadow">
-          <img src={assets.ob_hooper} alt="Hooper" className="w-full h-full object-cover" />
-        </div>
-
-        <div className="overflow-hidden rounded-lg shadow">
-          <img src={assets.ob_hustlr} alt="Hustlr" className="w-full h-full object-cover" />
-        </div>
-
-        <div className="overflow-hidden rounded-lg shadow">
-          <img src={assets.ob_john} alt="John Jacobs" className="w-full h-full object-cover" />
+          <img src={assets.ob_fastrack} alt="Fastrack" className="w-full h-full object-cover" />
         </div>
 
         <div className="overflow-hidden rounded-lg shadow">
@@ -38,7 +26,19 @@ const OurBrands = () => {
         </div>
 
         <div className="overflow-hidden rounded-lg shadow">
-          <img src={assets.ob_aqualens} alt="Aqualens" className="w-full h-full object-cover" />
+          <img src={assets.ob_velocity} alt="Velocity" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="overflow-hidden rounded-lg shadow">
+          <img src={assets.ob_kodak} alt="Kodak" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="overflow-hidden rounded-lg shadow">
+          <img src={assets.ob_nikon} alt="Nikon" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="overflow-hidden rounded-lg shadow">
+          <img src={assets.ob_zeiss} alt="Zeiss" className="w-full h-full object-cover" />
         </div>
 
       </div>

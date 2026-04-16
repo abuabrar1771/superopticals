@@ -19,41 +19,42 @@ const PoweredSunGlasses = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const pgglassesProducts = useMemo(() => {
-    return products.filter((item) => item.category === "POWERED GLASS");
-  }, [products]);
+ // Change 1: Match the underscore in the category
+const pgglassesProducts = useMemo(() => {
+  return products.filter((item) => item.category === "POWERED_GLASS");
+}, [products]);
 
-  // ✅ STEP 2 — APPLY SELECTED FILTERS
-  useEffect(() => {
-    let filtered = pgglassesProducts;
+// Change 2: Update the Filter Effect logic
+useEffect(() => {
+  let filtered = [...pgglassesProducts];
 
-    Object.keys(selectedFilters).forEach((key) => {
-      if (selectedFilters[key]?.length > 0) {
-        filtered = filtered.filter((item) =>
-          selectedFilters[key].some(
-            (value) => item[key]?.toUpperCase() === value.toUpperCase(),
-          ),
+  Object.keys(selectedFilters).forEach((key) => {
+    if (selectedFilters[key]?.length > 0) {
+      filtered = filtered.filter((item) => {
+        // Look in specifications OR metadata OR top-level
+        const val = item[key] || item.specifications?.[key] || item.metadata?.[key];
+        return selectedFilters[key].some(
+          (filterVal) => val?.toString().toUpperCase() === filterVal.toUpperCase()
         );
-      }
-    });
-    //Apply search
-    if (search?.trim() !== "") {
-      filtered = filtered.filter((item) =>
-        (item.name + item.brand + item.description)
-          .toLowerCase()
-          .includes(search.toLowerCase()),
-      );}
-
-    if (sortType === "low-high") {
-      filtered = filtered.sort((a, b) => a.price - b.price);
+      });
     }
+  });
 
-    if (sortType === "high-low") {
-      filtered = filtered.sort((a, b) => b.price - a.price);
-    }
+  // Search logic (keep as is, but adding brand check)
+  if (search?.trim() !== "") {
+    filtered = filtered.filter((item) =>
+      (item.name + item.brand + item.description)
+        .toLowerCase()
+        .includes(search.toLowerCase())
+    );
+  }
 
-    setFilteredProducts([...filtered]);
-  }, [selectedFilters, pgglassesProducts, sortType,search]);
+  // Sort logic (Ensure numbers)
+  if (sortType === "low-high") filtered.sort((a, b) => a.price - b.price);
+  if (sortType === "high-low") filtered.sort((a, b) => b.price - a.price);
+
+  setFilteredProducts(filtered);
+}, [selectedFilters, pgglassesProducts, sortType, search]);
 
   const isFilterActive = Object.values(selectedFilters).some(
     (value) => value && value.length > 0,
@@ -89,10 +90,10 @@ const PoweredSunGlasses = () => {
 
           <div className="absolute bottom-6 inset-0 flex items-center lg:justify-start sm:justify-end text-orange-800 sm:pr-8">
             <div className="text-center sm:text-right pl-5">
-              <h2 className="text-3xl sm:text-sm md:text-xl font-semibold text-white">
+              <h2 className="text-4xl sm:text-sm md:text-2xl font-semibold text-white">
                 Powered Glasses
               </h2>
-              <p className="text-sm sm:text-lg md:text-xl text-white">
+              <p className="text-xl sm:text-lg md:text-xl text-white">
                 Starting at ₹2500
               </p>
             </div>
@@ -181,7 +182,7 @@ const PoweredSunGlasses = () => {
                       <ProductItem
                         id={item._id}
                         name={item.name}
-                        image={item.image}
+                        images={item.images}
                         description={item.description}
                         price={item.price}
                       />
@@ -212,7 +213,7 @@ const PoweredSunGlasses = () => {
                             <ProductItem
                               id={item._id}
                               name={item.name}
-                              image={item.image}
+                              images={item.images}
                               description={item.description}
                               price={item.price}
                             />

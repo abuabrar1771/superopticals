@@ -23,7 +23,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="h-[60vh] md:h-[80vh] w-full bg-black p-1">
+    <section className="h-[40vh] sm:h-[50vh] md:h-[80vh] w-full bg-black p-1">
       <div className="relative h-full w-full overflow-hidden border border-white/30 rounded-2xl">
         {/* Images */}
         {images.map((img, index) => (
@@ -31,7 +31,7 @@ const Hero = () => {
             key={index}
             src={img}
             alt="banner"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full object-contain sm:object-cover transition-opacity duration-1000 ${
               index === current ? "opacity-100" : "opacity-0"
             }`}
           />

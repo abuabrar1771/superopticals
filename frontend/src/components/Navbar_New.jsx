@@ -77,7 +77,7 @@ const Navbar_New = () => {
             }
           >
             <span>COMPUTER GLASSES</span>
-            <ChevronDownIcon className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+            
           </NavLink>
         </div>
         {/* CONTACT LENS */}
@@ -89,7 +89,7 @@ const Navbar_New = () => {
             }
           >
             <span>CONTACT LENSES</span>
-            <ChevronDownIcon className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+            
           </NavLink>
         </div>
         {/* ACCESSORIES */}

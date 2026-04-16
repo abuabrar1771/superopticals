@@ -5,69 +5,105 @@ import ProductItem from "../components/ProductItem";
 import SgFDd from "../components/SgFDd";
 import { useMemo } from "react";
 import Title from "../components/Title";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SunGlasses = () => {
-  const { products, search, showSearch } = useContext(ShopContext);
-  const [sortType, setSortType] = useState("relavent");
-
+ const location = useLocation();
+  const { products, currency, search, showSearch  } = useContext(ShopContext);
+  
   const [selectedFilters, setSelectedFilters] = useState({});
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [openFilter, setOpenFilter] = useState(null);
+  const [sortType, setSortType] = useState("relavent");
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  // 1. Get ONLY Sunglasses from Context
   const sunglassesProducts = useMemo(() => {
-    return products.filter((item) => item.category === "SUN GLASS");
+    return products.filter((item) => item.category === "SUN_GLASS");
   }, [products]);
 
-  // ✅ STEP 2 — APPLY SELECTED FILTERS
+  // 2. Sync URL (Mega Dropdown) to State
   useEffect(() => {
-    let filtered = [...sunglassesProducts];
-
-    Object.keys(selectedFilters).forEach((key) => {
-      if (selectedFilters[key]?.length > 0) {
-        filtered = filtered.filter((item) =>
-          selectedFilters[key].includes(item[key]),
-        );
-      }
+    const query = new URLSearchParams(location.search);
+    const newFilters = {};
+    
+    ["gender", "shape", "style", "brand"].forEach((key) => {
+      const val = query.get(key);
+      if (val) newFilters[key] = [val];
     });
-    if (search?.trim() !== "") {
-      filtered = filtered.filter((item) =>
-        (item.name + item.brand + item.description)
-          .toLowerCase()
-          .includes(search.toLowerCase()),
+
+    setSelectedFilters(newFilters);
+  }, [location.search]);
+  // Apply Search Bar Logic
+    if (showSearch && search?.trim()) {
+      const searchLower = search.toLowerCase();
+      filtered = filtered.filter(
+        (item) =>
+          item.name?.toLowerCase().includes(searchLower) ||
+          item.brand?.toLowerCase().includes(searchLower) ||
+          item.description?.toLowerCase().includes(searchLower) ||
+          item.specifications?.shape?.toLowerCase().includes(searchLower),
       );
     }
-    if (sortType === "low-high") {
-      filtered = [...filtered].sort((a, b) => a.price - b.price);
+
+ useEffect(() => {
+  // 1. Start with the correct category (Match your database string exactly)
+  // For Eyeglasses: "EYE_GLASS", For Sunglasses: "SUN_GLASSES"
+  let filtered = products.filter((item) => item.category === "SUN_GLASS"); 
+
+  // 2. Main Filtering Loop
+  Object.keys(selectedFilters).forEach((key) => {
+    const filterValues = selectedFilters[key];
+
+    // If a filter is selected and it isn't "All"
+    if (filterValues && filterValues.length > 0 && !filterValues.includes("All")) {
+      filtered = filtered.filter((item) => {
+        
+        // 🔹 FIX: Look in all 3 possible places (Top Level, Specs, Metadata)
+        const rawValue = 
+          item[key] || 
+          item.specifications?.[key] || 
+          item.metadata?.[key] || 
+          "";
+
+        const itemValue = rawValue.toString().toLowerCase().trim();
+
+        // 🔹 Check if this product matches ANY of the selected checkboxes
+        return filterValues.some((val) => {
+          const targetValue = val.toString().toLowerCase().trim();
+
+          if (key === "gender") {
+            // ✅ SPLIT MATCH: Handles "Men & Women", "Men/Women"
+            const words = itemValue.split(/[\s&/_]+/); 
+            return words.includes(targetValue) || itemValue === "unisex";
+          }
+
+          // ✅ STRICT MATCH: For Shape, Style, etc.
+          return itemValue === targetValue;
+        });
+      });
     }
+  });
 
-    if (sortType === "high-low") {
-      filtered = [...filtered].sort((a, b) => b.price - a.price);
-    }
+  // 3. Search Bar
+  if (showSearch && search?.trim()) {
+    const searchLower = search.toLowerCase();
+    filtered = filtered.filter(
+      (item) =>
+        item.name?.toLowerCase().includes(searchLower) ||
+        item.brand?.toLowerCase().includes(searchLower)
+    );
+  }
 
-    setFilteredProducts([...filtered]);
-  }, [selectedFilters, sunglassesProducts, sortType, search]);
+  // 4. Sort
+  if (sortType === "low-high") filtered.sort((a, b) => a.price - b.price);
+  if (sortType === "high-low") filtered.sort((a, b) => b.price - a.price);
 
-  // const isFilterActive = Object.values(selectedFilters).some(
-  //   (value) => value && value.length > 0,
-  // );
-  const isFilterActive =
-    Object.values(selectedFilters).some((value) => value && value.length > 0) ||
-    search?.trim() !== "";
+  setFilteredProducts(filtered);
+}, [selectedFilters, products, sortType, search, showSearch]);
 
-  // ✅ GROUP ONLY SUNGLASSES
-  const groupByShape = (items) => {
-    return items.reduce((acc, product) => {
-      const shape = product.shape || "Others";
-      if (!acc[shape]) acc[shape] = [];
-      acc[shape].push(product);
-      return acc;
-    }, {});
-  };
-
+const isFilterActive =
+    Object.values(selectedFilters).some((v) => v?.length > 0) ||
+    (showSearch && search?.trim());
   return (
     <>
       {/* PAGE HEADER */}
@@ -184,7 +220,7 @@ const SunGlasses = () => {
                     <ProductItem
                       id={item._id}
                       name={item.name}
-                      image={item.image}
+                      images={item.images}
                       description={item.description}
                       price={item.price}
                     />
@@ -196,16 +232,13 @@ const SunGlasses = () => {
             {/* WHEN NO FILTER → GROUP BY SHAPE */}
             {!isFilterActive && (
               <div className="space-y-16">
-                {Object.entries(groupByShape(sunglassesProducts)).map(
-                  ([shape, items]) => (
-                    <div key={shape}>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
-                        {items.map((item) => (
+                 <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
+                        {sunglassesProducts.map((item) => (
                           <div key={item._id}>
                             <ProductItem
                               id={item._id}
                               name={item.name}
-                              image={item.image}
+                              images={item.images}
                               description={item.description}
                               price={item.price}
                             />
@@ -213,10 +246,7 @@ const SunGlasses = () => {
                         ))}
                       </div>
                     </div>
-                  ),
                 )}
-              </div>
-            )}
           </main>
         </div>
       </div>

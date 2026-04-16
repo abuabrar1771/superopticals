@@ -42,7 +42,6 @@ import eg_geom_6 from "./eyeglasses/eg-geom-6.png";
 import eg_geom_7 from "./eyeglasses/eg-geom-7.png";
 import eg_geom_8 from "./eyeglasses/eg-geom-8.png";
 
-
 import eg_geom_w1 from "./eyeglasses/eg-geom-w-1.jpg";
 import eg_geom_w2 from "./eyeglasses/eg-geom-w-2.jpg";
 import eg_geom_w3 from "./eyeglasses/eg-geom-w-3.jpg";
@@ -104,59 +103,59 @@ import sg_fast_tin_2 from "./sunglasses/sg-fast-tin-2.webp";
 import sg_fast_tin_3 from "./sunglasses/sg-fast-tin-3.webp";
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> COMPUTER GLASSES UV <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-import cg_fast_cat_1 from "./computer glasses/cg-fast-uv-cat-1.webp"
+import cg_fast_uv_cat_1 from "./computer glasses/cg-fast-uv-cat-1.webp";
+import cg_fast_uv_cat_2 from "./computer glasses/cg-fast-uv-cat-2.webp";
 
+import cg_fast_rec_1 from "./computer glasses/cg-fast-uv-rec-1.webp";
+import cg_fast_rec_2 from "./computer glasses/cg-fast-uv-rec-2.webp";
 
-import cg_fast_rec_1 from "./computer glasses/cg-fast-uv-rec-1.webp"
-import cg_fast_rec_2 from "./computer glasses/cg-fast-uv-rec-2.webp"
+import cg_fast_rou_1 from "./computer glasses/cg-fast-uv-rou-1.webp";
+import cg_fast_rou_2 from "./computer glasses/cg-fast-uv-rou-2.webp";
 
-import cg_fast_rou_1 from "./computer glasses/cg-fast-uv-rou-1.webp"
-import cg_fast_rou_2 from "./computer glasses/cg-fast-uv-rou-2.webp"
+import cg_fast_way_1 from "./computer glasses/cg-fast-uv-way-1.webp";
+import cg_fast_way_2 from "./computer glasses/cg-fast-uv-way-2.webp";
+import cg_fast_way_3 from "./computer glasses/cg-fast-uv-way-3.webp";
 
-import cg_fast_way_1 from "./computer glasses/cg-fast-uv-way-1.webp"
-import cg_fast_way_2 from "./computer glasses/cg-fast-uv-way-2.webp"
-import cg_fast_way_3 from "./computer glasses/cg-fast-uv-way-3.webp"
-
-import cg_banner_1 from "./computer glasses/banneruv-glasses.webp"
-import cg_banner_2 from "./computer glasses/banner-uv-glasses-2.webp"
+import cg_banner_1 from "./computer glasses/banneruv-glasses.webp";
+import cg_banner_2 from "./computer glasses/banner-uv-glasses-2.webp";
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 // >>>>>>>>>>>>>>>>POWERED GLASSES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-import pg_fast_av_1 from "./powered glasses/pg-fast-av-1.webp"
-import pg_fast_av_2 from "./powered glasses/pg-fast-av-2.webp"
-import pg_fast_av_3 from "./powered glasses/pg-fast-av-3.webp"
-import pg_fast_av_4 from "./powered glasses/pg-fast-av-4.webp"
+import pg_fast_av_1 from "./powered glasses/pg-fast-av-1.webp";
+import pg_fast_av_2 from "./powered glasses/pg-fast-av-2.webp";
+import pg_fast_av_3 from "./powered glasses/pg-fast-av-3.webp";
+import pg_fast_av_4 from "./powered glasses/pg-fast-av-4.webp";
 
-import pg_fast_geo_1 from "./powered glasses/pg-fast-geo-1.webp"
-import pg_fast_geo_2 from "./powered glasses/pg-fast-geo-2.webp"
-import pg_fast_geo_3 from "./powered glasses/pg-fast-geo-3.webp"
+import pg_fast_geo_1 from "./powered glasses/pg-fast-geo-1.webp";
+import pg_fast_geo_2 from "./powered glasses/pg-fast-geo-2.webp";
+import pg_fast_geo_3 from "./powered glasses/pg-fast-geo-3.webp";
 
-import pg_fast_nav_1 from "./powered glasses/pg-fast-nav-1.webp"
-import pg_fast_nav_2 from "./powered glasses/pg-fast-nav-2.webp"
-import pg_fast_nav_3 from "./powered glasses/pg-fast-nav-3.webp"
-import pg_fast_nav_4 from "./powered glasses/pg-fast-nav-4.webp"
+import pg_fast_nav_1 from "./powered glasses/pg-fast-nav-1.webp";
+import pg_fast_nav_2 from "./powered glasses/pg-fast-nav-2.webp";
+import pg_fast_nav_3 from "./powered glasses/pg-fast-nav-3.webp";
+import pg_fast_nav_4 from "./powered glasses/pg-fast-nav-4.webp";
 
-import pg_fast_ovl_1 from "./powered glasses/pg-fast-ovl-1.webp"
-import pg_fast_ovl_2 from "./powered glasses/pg-fast-ovl-2.webp"
-import pg_fast_ovl_3 from "./powered glasses/pg-fast-ovl-3.webp"
-import pg_fast_ovl_4 from "./powered glasses/pg-fast-ovl-4.webp"
+import pg_fast_ovl_1 from "./powered glasses/pg-fast-ovl-1.webp";
+import pg_fast_ovl_2 from "./powered glasses/pg-fast-ovl-2.webp";
+import pg_fast_ovl_3 from "./powered glasses/pg-fast-ovl-3.webp";
+import pg_fast_ovl_4 from "./powered glasses/pg-fast-ovl-4.webp";
 
-import pg_fast_ro_1 from "./powered glasses/pg-fast-ro-1.webp"
-import pg_fast_ro_2 from "./powered glasses/pg-fast-ro-2.webp"
-import pg_fast_ro_3 from "./powered glasses/pg-fast-ro-3.webp"
-import pg_fast_ro_4 from "./powered glasses/pg-fast-ro-4.webp"
+import pg_fast_ro_1 from "./powered glasses/pg-fast-ro-1.webp";
+import pg_fast_ro_2 from "./powered glasses/pg-fast-ro-2.webp";
+import pg_fast_ro_3 from "./powered glasses/pg-fast-ro-3.webp";
+import pg_fast_ro_4 from "./powered glasses/pg-fast-ro-4.webp";
 
-import pg_banner_1 from "./powered glasses/pg-banner.webp"
+import pg_banner_1 from "./powered glasses/pg-banner.webp";
 
-import cl_banner_1 from "./contact lenses/cl-banner-1.webp"
+import cl_banner_1 from "./contact lenses/cl-banner-1.webp";
 
-import ac_oas_1 from "./contact lenses/acuvue-oasys.png"
-import ac_oas_2 from "./contact lenses/acuvue-oasys-2.jpg"
-import co_vi_1 from "./contact lenses/cooper-vision-1.png"
-import co_vi_2 from "./contact lenses/cooper-vision-2.webp"
-import cl_basch_yr_1 from "./contact lenses/cl-basch-yr-1.jpg"
-import ac_oas_mon_3 from "./contact lenses/acuvue-oasys-mon-3.jpg"
-import ac_oas_for_1 from "./contact lenses/acuvue-oasys-for-1.jpg"
+import ac_oas_1 from "./contact lenses/acuvue-oasys.png";
+import ac_oas_2 from "./contact lenses/acuvue-oasys-2.jpg";
+import co_vi_1 from "./contact lenses/cooper-vision-1.png";
+import co_vi_2 from "./contact lenses/cooper-vision-2.webp";
+import cl_basch_yr_1 from "./contact lenses/cl-basch-yr-1.jpg";
+import ac_oas_mon_3 from "./contact lenses/acuvue-oasys-mon-3.jpg";
+import ac_oas_for_1 from "./contact lenses/acuvue-oasys-for-1.jpg";
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 import S_LOGO_WBG from "./S-LOGO-WBG.png";
@@ -181,12 +180,12 @@ import stripe_logo from "./stripe_logo.png";
 import hero_1 from "./hero-1.png";
 import hero_5 from "./hero-5.png";
 
-import ob_vincent from "./ob_vincent_chase.webp";
-import ob_hustlr from "./ob_hustlr.webp";
-import ob_john from "./ob_johnjacobs.webp";
-import ob_rayban from "./ob_rayban_hero.jpg";
-import ob_aqualens from "./ob_aqualens.webp";
-import ob_hooper from "./ob_hooper.webp";
+import ob_fastrack from "../assets/homrpage/ourbrands/ob-fastrack.jpg";
+import ob_kodak from "../assets/homrpage/ourbrands/ob-kodak.jpg";
+import ob_nikon from "../assets/homrpage/ourbrands/ob-nikon.png";
+import ob_rayban from "../assets/homrpage/ourbrands/ob-rayban-2.png";
+import ob_velocity from "../assets/homrpage/ourbrands/ob-velocity.png";
+import ob_zeiss from "../assets/homrpage/ourbrands/ob-zeisis.png";
 
 import ban_eye from "./banner-eye.webp";
 import egdd from "./eyeglasses.png";
@@ -209,37 +208,33 @@ import sg_banner_3 from "./sunglasses/ray-banner-3.png";
 
 //home page banners and categorys
 
-import category_1 from "../assets/homrpage/cat-1.png"
-import category_2 from "../assets/homrpage/cat-2.png"
-import category_3 from "../assets/homrpage/cat-3.png"
-import category_4 from "../assets/homrpage/cat-4.png"
-import category_5 from "../assets/homrpage/cat-5.png"
-import category_6 from "../assets/homrpage/cat-6.png"
 
-import hero_bauch from "../assets/homrpage/hero-bauch.png"
-import hero_clipon from "../assets/homrpage/hero-clipon.png"
-import hero_contactlens from "../assets/homrpage/hero-contactlens.png"
-import hero_eyeglasses from "../assets/homrpage/hero-eyeglasses.png"
-import hero_fastrack from "../assets/homrpage/hero-fastrack.png"
-import hero_oakley from "../assets/homrpage/hero-oakley.png"
-import hero_rayban from "../assets/homrpage/hero-rayban.png"
-import hero_zeiss from "../assets/homrpage/hero-zeiss.png"
 
-import eye_sun_glasses from "../assets/homrpage/eye-sun-glasses.png"
-import powered_sunglass from "../assets/homrpage/powered glasses.png"
-import computer_glass from "../assets/homrpage/comp-glass.png"
-import clip_on from "../assets/homrpage/clip-on.png"
-import contact_lens from "../assets/homrpage/contact-lens.png"
-import smart_glass from "../assets/homrpage/smart-glass.png"
+import hero_bauch from "../assets/homrpage/hero-bauch.png";
+import hero_clipon from "../assets/homrpage/hero-clipon.png";
+import hero_contactlens from "../assets/homrpage/hero-contactlens.png";
+import hero_eyeglasses from "../assets/homrpage/hero-eyeglasses.png";
+import hero_fastrack from "../assets/homrpage/hero-fastrack.png";
+import hero_oakley from "../assets/homrpage/hero-oakley.png";
+import hero_rayban from "../assets/homrpage/hero-rayban.png";
+import hero_zeiss from "../assets/homrpage/hero-zeiss.png";
+
+import eye_sun_glasses from "../assets/homrpage/eye-sun-glasses.png";
+import powered_sunglass from "../assets/homrpage/powered glasses.png";
+import computer_glass from "../assets/homrpage/comp-glass.png";
+import clip_on from "../assets/homrpage/clip-on.png";
+import contact_lens from "../assets/homrpage/contact-lens.png";
+import smart_glass from "../assets/homrpage/smart-glass.png";
+
+import sv_lens from "../assets/lense type/sv-type.jpg"
+import bf_lens from "../assets/lense type/bf-type.jpg"
+import prog_lens from "../assets/lense type/prog-type.jpg"
+import tf_lens from "../assets/lense type/tf-type.jpg"
+import mf_lens from "../assets/lense type/mf-type.jpg"
 
 export const assets = {
-  category_1,
-  category_2,
-  category_3,
-  category_4,
-  category_5,
-  category_6,
-  
+ 
+
   hero_bauch,
   hero_clipon,
   hero_contactlens,
@@ -277,12 +272,12 @@ export const assets = {
   hero_5,
   hero_1,
 
-  ob_vincent,
-  ob_hooper,
-  ob_hustlr,
-  ob_john,
+  ob_fastrack,
   ob_rayban,
-  ob_aqualens,
+  ob_velocity,
+  ob_kodak,
+  ob_nikon,
+  ob_zeiss,
 
   egdd,
   sgdd,
@@ -304,1672 +299,2167 @@ export const assets = {
   cg_banner_2,
   pg_banner_1,
   cl_banner_1,
+
+  sv_lens,
+ bf_lens,
+ tf_lens,
+ mf_lens,
+ prog_lens,
 };
+export const lensetype = [
+  {
+    _id:"00001",
+    name:"Single Vision",
+    price:500,
+    brand:"ZEISS"
+  },
+  {
+    _id:"00002",
+    name:"Bifocal",
+    price:800,
+    brand:"ZEISS"
+  },
+  {
+    _id:"00003",
+    name:"Progressive",
+    price:1100,
+    brand:"ZEISS"
+  },
+  {
+    _id:"00004",
+    name:"Trifocal",
+    price:1300,
+    brand:"ZEISS"
+  },
+  {
+    _id:"00005",
+    name:"Multifocal",
+    price:1500,
+    brand:"ZEISS"
+  },
+]
+export const lensFeatures = [
+  { _id: "f1", name: "Scratch Resistant", price: 200 },
+  { _id: "f2", name: "Anti-Reflection", price: 350 },
+  { _id: "f3", name: "UV Protection", price: 450 },
+  { _id: "f4", name: "Blue Filter", price: 300 },
+  { _id: "f5", name: "Dust & Water Resistant", price: 250 },
+  { _id: "f6", name: "Auto Cool", price: 250 },
+  
+];
 export const products = [
   {
-    _id: "EG00001",
-    name: "Full Rim Frame",
-    description:"CatEye Eyeglasses for men",
-    price: 650,
-    image: [eg_cateye_1,eg_cateye_2,eg_cateye_w1,eg_cateye_w2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716639845448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00002",
-    name: "Full Rim Frame",
-    description:"CatEye Eyeglasses for men",
-    price: 650,
-    image: [eg_cateye_2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716640945448,
-    bestseller: true,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00003",
-    name: "Full Rim Frame",
-    description:"CatEye Eyeglasses for Women.",
-    price: 650,
-    image: [eg_cateye_w1],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716640945448,
-    bestseller: true,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00004",
-    name: "Full Rim Frame",
-    description:"CatEye Eyeglasses for Women",
-    price: 650,
-    image: [eg_cateye_w2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716640945448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00005",
-    name: "Full Rim Frame",
-    description:"CatEye Eyeglasses for Women.",
-    price: 650,
-    image: [eg_cateye_w3],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716640945448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00006",
-    name: "Full Rim Frame",
-    description:"CatEye Eyeglasses for Women",
-    price: 650,
-    image: [eg_cateye_w4],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716640945448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00007",
-    name: "Full Rim Frame",
-    description:"CatEye Eyeglasses for Women",
-    price: 650,
-    image: [eg_cateye_w5],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716640945448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00008",
-    name: "Full Rim Frame",
-    description:"CatEye Eyeglasses for Women",
-    price: 650,
-    image: [eg_cateye_w6],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716640945448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00009",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for Men",
-    price: 350,
-    image: [eg_clubmaster_2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00010",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for Men",
-    price: 350,
-    image: [eg_clubmaster_3],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00011",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for Men",
-    price: 350,
-    image: [eg_clubmaster_4],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00012",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for Men",
-    price: 350,
-    image: [eg_clubmaster_5],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00013",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for Men",
-    price: 350,
-    image: [eg_clubmaster_6],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00014",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for WoMen.",
-    price: 350,
-    image: [eg_clubmaster_7],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00015",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for WoMen.",
-    price: 350,
-    image: [eg_clubmaster_8],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00016",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for WoMen.",
-    price: 350,
-    image: [eg_clubmaster_9],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00017",
-    name: "Full Rim Frame",
-    description:
-      "Clubmaster Eyeglasses for WoMen.",
-    price: 350,
-    image: [eg_clubmaster_10],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CLUBMASTER",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "FASTRACK", 
-},
-  {
-    _id: "EG00020",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_geom_1],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00021",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_geom_2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00022",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_geom_3],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00023",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_geom_4],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00024",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_geom_5],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00025",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_geom_6],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00026",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_geom_7],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00027",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_geom_8],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00038",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and WoMen.",
-    price: 350,
-    image: [eg_geom_w1],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00039",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and WoMen.",
-    price: 350,
-    image: [eg_geom_w2],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00040",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and WoMen.",
-    price: 350,
-    image: [eg_geom_w3],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00042",
-    name: "Full Rim Frame",
-    description:
-      "Geometric Eyeglasses for Men and WoMen.",
-    price: 350,
-    image: [eg_geom_w4],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "RAYBAN", },
- {
-    _id: "EG00046",
-    name: "Half Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_hr_1],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Half Rimed",
-    shape: "SQUARE",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00047",
-    name: "Half Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_hr_2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Half Rimed",
-    shape: "SQUARE",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "OAKLEY", },
-  {
-    _id: "EG00048",
-    name: "Half Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_hr_3],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Half Rimed",
-    shape: "SQUARE",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "OAKLEY", },
-  {
-    _id: "EG00049",
-    name: "Half Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_hr_4],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Half Rimed",
-    shape: "SQUARE",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "OAKLEY", },
-  {
-    _id: "EG00056",
-    name: "Full Rim Frame",
-    description:
-      "Oval Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_oval_1],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "OAKLEY", },
-  {
-    _id: "EG00057",
-    name: "Full Rim Frame",
-    description:
-      "Oval Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_oval_2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "OAKLEY", },
-  {
-    _id: "EG00058",
-    name: "Full Rim Frame",
-    description:
-      "Oval Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_oval_3],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716638745448,
-    bestseller: true,
-    material: "Injected",
-  brand: "OAKLEY", },
-  {
-    _id: "EG00059",
-    name: "Full Rim Frame",
-    description:
-      "Oval Eyeglasses for Men and Men.",
-    price: 350,
-    image: [eg_oval_4],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716638745448,
-    bestseller: false,
-    material: "Injected",
-  brand: "OAKLEY", },
-   {
-    _id: "EG00072",
-    name: "Full Rim Frame",
-    description:
-      "Rectangle Eyeglasses for Men and Men.",
-    price: 650,
-    image: [eg_rect_7],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716642045448,
-    bestseller: false,
-    material: "Injected",
-  brand: "ZEISS", },
-  {
-    _id: "EG00073",
-    name: "Full Rim Frame",
-    description:
-      "Rectangle Eyeglasses for Men and Men.",
-    price: 650,
-    image: [eg_rect_8],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716642045448,
-    bestseller: false,
-    material: "Injected",
-  brand: "ZEISS", },
-  {
-    _id: "EG00074",
-    name: "Full Rim Frame",
-    description:
-      "Rectangle Eyeglasses for Men and Men.",
-    price: 650,
-    image: [eg_rect_9],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716642045448,
-    bestseller: false,
-    material: "Injected",
-  brand: "ZEISS", },
-  {
-    _id: "EG00075",
-    name: "Full Rim Frame",
-    description:
-      "Rectangle Eyeglasses for Men and Men.",
-    price: 650,
-    image: [eg_rect_10],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716642045448,
-    bestseller: false,
-    material: "Injected",
-  brand: "ZEISS", },
-  {
-    _id: "EG00076",
-    name: "Full Rim Frame",
-    description:
-      "Rectangle Eyeglasses for Men and Women.",
-    price: 650,
-    image: [eg_rect_w_1],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716642045448,
-    bestseller: false,
-    material: "Injected",
-  brand: "ZEISS", },
-  {
-    _id: "EG00077",
-    name: "Full Rim Frame",
-    description:
-      "Frame surrounds the entire lens.Most sturdy and durable — great for everyday use and stronger prescriptions. Available in plastic or metal.",
-    price: 650,
-    image: [eg_rect_w_2],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716642045448,
-    bestseller: true,
-    material: "Injected",
-  brand: "ZEISS", },
-  {
-    _id: "EG00078",
-    name: "Full Rim Frame",
-    description:
-      "Frame surrounds the entire lens.Most sturdy and durable — great for everyday use and stronger prescriptions. Available in plastic or metal.",
-    price: 650,
-    image: [eg_rect_w_3],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716642045448,
-    bestseller: true,
-    material: "Injected",
-  brand: "ZEISS", },
-  {
-    _id: "EG00079",
-    name: "Full Rim Frame",
-    description:
-      "Rectangle Eyeglasses for Men and Women.",
-    price: 650,
-    image: [eg_rect_w_4],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716642045448,
-    bestseller: false,
-    material: "Injected",
-  brand: "ZEISS", 
-},
-  {
-    _id: "EG00087",
-    name: "Full Rim Frame",
-    description:
-      "Round Eyeglasses for Men and Men.",
-    price: 475,
-    image: [eg_roun_2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "ROUNDED",
-    date: 1716649745448,
-    bestseller: true,
-    material: "Metal",
-  brand: "ZEISS", },
-  {
-    _id: "EG00088",
-    name: "Full Rim Frame",
-    description:
-      "Round Eyeglasses for Men and Men.",
-    price: 525,
-    image: [eg_roun_3],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "ROUNDED",
-    date: 1716650845448,
-    bestseller: true,
-    material: "Metal",
-  brand: "ZEISS", },
-  {
-    _id: "EG00089",
-    name: "Full Rim Frame",
-    description:
-      "Round Eyeglasses for Men and Men.",
-    price: 525,
-    image: [eg_roun_4],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "ROUNDED",
-    date: 1716651945448,
-    bestseller: false,
-    material: "Metal",
-  brand: "ZEISS", },
-  {
-    _id: "EG00090",
-    name: "Full Rim Frame",
-    description:
-      "Round Eyeglasses for Men and Men.",
-    price: 525,
-    image: [eg_roun_5],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "ROUNDED",
-    date: 1716653045448,
-    bestseller: false,
-    material: "Metal",
-  brand: "ZEISS", },
-{
-    _id: "EG00096",
-    name: "Full Rim Frame",
-    description:
-      "Round Eyeglasses for Men and Women.",
-    price: 575,
-    image: [eg_roun_w1],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "ROUNDED",
-    date: 1716659645448,
-    bestseller: true,
-    material: "Plastic",
-  brand: "ZEISS", },
-  {
-    _id: "EG00097",
-    name: "Full Rim Frame",
-    description:
-      "Round Eyeglasses for Men and Women.",
-    price: 575,
-    image: [eg_roun_w2],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "ROUNDED",
-    date: 1716660745448,
-    bestseller: true,
-    material: "Plastic",
-  brand: "ZEISS", },
-  {
-    _id: "EG00098",
-    name: "Full Rim Frame",
-    description:
-      "Round Eyeglasses for Men and Women.",
-    price: 625,
-    image: [eg_roun_w3],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "ROUNDED",
-    date: 1716661845448,
-    bestseller: false,
-    material: "Plastic",
-  brand: "ZEISS", },
-  {
-    _id: "EG00099",
-    name: "Full Rim Frame",
-    description:
-      "Round Eyeglasses for Men and Women.",
-    price: 625,
-    image: [eg_roun_w4],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "ROUNDED",
-    date: 1716662945448,
-    bestseller: false,
-    material: "Plastic",
-  brand: "ZEISS",
-},
-{
-    _id: "EG00107",
-    name: "Full Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Men",
-    price: 625,
-    image: [eg_squre_2],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rim Less",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: true,
-    material: "Titanium",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00108",
-    name: "Full Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Men",
-    price: 625,
-    image: [eg_squre_3],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rim Less",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: true,
-    material: "Titanium",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00109",
-    name: "Full Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Men",
-    price: 625,
-    image: [eg_squre_4],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rim Less",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "Titanium",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00110",
-    name: "Full Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Men",
-    price: 625,
-    image: [eg_squre_5],
-    category: "EYE GLASS",
-    gender: "FOR MEN",
-    style: "Rim Less",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "Titanium",
-  brand: "FASTRACK", },
- {
-    _id: "EG00116",
-    name: "Full Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Women",
-    price: 625,
-    image: [eg_squre_w1],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rim Less",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00117",
-    name: "Full Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Women",
-    price: 625,
-    image: [eg_squre_w2],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rim Less",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: true,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00118",
-    name: "Full Rim Frame",
-    description:
-     "Square Eyeglasses for Men and Women",
-    price: 625,
-    image: [eg_squre_w3],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rim Less",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: true,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00119",
-    name: "Full Rim Frame",
-    description:
-      "Square Eyeglasses for Men and Women",
-    price: 625,
-    image: [eg_squre_w4],
-    category: "EYE GLASS",
-    gender: "FOR WOMEN",
-    style: "Rim Less",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK",
+  "_id": "EG00001",
+  "sku": "FMCI672",
+  "name": "CatEye Eyeglasses for men",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_cateye_1, eg_cateye_2, eg_cateye_w1, eg_cateye_w2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "CATEYE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": true,
+    "createdAt": 1716642045448
+  }
 },
   
+  {
+    _id: "EG00002",
+    "sku": "FMCI672",
+  "name": "CatEye Eyeglasses for men",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_cateye_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "CATEYE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+    _id: "EG00003",
+     "sku": "FMCI672",
+  "name": "CatEye Eyeglasses for Women",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_cateye_w2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "CATEYE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+    _id: "EG00004",
+     "sku": "FMCI672",
+  "name": "CatEye Eyeglasses for Women",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_cateye_w3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "CATEYE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00005",
+  "sku": "FMCI672",
+  "name": "Clubmaster Eyeglasses for Men",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_clubmaster_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "CLUBMASTER",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00006",
+  "sku": "FMCI672",
+  "name": "Clubmaster Eyeglasses for Men",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_clubmaster_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "CLUBMASTER",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00007",
+  "sku": "FMCI672",
+  "name": "Clubmaster Eyeglasses for WoMen",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_clubmaster_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "CLUBMASTER",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00008",
+  "sku": "FMCI672",
+  "name": "Clubmaster Eyeglasses for WoMen",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_clubmaster_4],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "CLUBMASTER",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+
+{
+  "_id": "EG00009",
+  "sku": "FMCI672",
+  "name": "Geometric Eyeglasses for Men.",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_geom_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "GEOMETRIC",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00010",
+  "sku": "FMCI672",
+  "name": "Geometric Eyeglasses for Men.",
+  "brand": "FASTRACK",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_geom_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "GEOMETRIC",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00011",
+  "sku": "FMCI672",
+  "name": "Geometric Eyeglasses for WoMen.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_geom_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "GEOMETRIC",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00012",
+  "sku": "FMCI672",
+  "name": "Geometric Eyeglasses for WoMen.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_geom_4],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "GEOMETRIC",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00013",
+  "sku": "FMCI672",
+  "name": "Square Eyeglasses for Men.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_hr_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "SQUARE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00014",
+  "sku": "FMCI672",
+  "name": "Square Eyeglasses for Men.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_hr_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "SQUARE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00015",
+  "sku": "FMCI672",
+  "name": "Square Eyeglasses for WoMen.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_hr_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "SQUARE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00016",
+  "sku": "FMCI672",
+  "name": "Square Eyeglasses for WoMen.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_hr_4],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "SQUARE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00017",
+  "sku": "FMCI672",
+  "name": "Oval eyeglasses for Men.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_oval_4],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "OVAL",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00018",
+  "sku": "FMCI672",
+  "name": "Oval Eyeglasses for Men.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_oval_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "OVAL",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00019",
+  "sku": "FMCI672",
+  "name": "Oval Eyeglasses for WoMen.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_oval_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "OVAL",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00020",
+  "sku": "FMCI672",
+  "name": "Oval Eyeglasses for WoMen.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_oval_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "OVAL",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00021",
+  "sku": "FMCI672",
+  "name": "Rectangle Eyeglasses for Men.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_rect_10],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "RECTANGLE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00022",
+  "sku": "FMCI672",
+  "name": "Rectangle Eyeglasses for Men.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_rect_9],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "RECTANGLE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00023",
+  "sku": "FMCI672",
+  "name": "Rectangle Eyeglasses for WoMen.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_rect_8],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "RECTANGLE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "EG00024",
+  "sku": "FMCI672",
+  "name": "Rectangle Eyeglasses for WoMen.",
+  "brand": "RAYBAN",
+  "category": "EYE_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Vintage charm meets modern edge. These Fastrack Cat-Eye frames feature a sleek silhouette and durable build, making them the ultimate statement accessory for any outfit.",
+  "price": 650,
+  "currency": "INR",
+  "stock": 120,
+  "images": [eg_rect_7],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "RECTANGLE",
+    "material": "Injected / TR90",
+    "size": "Medium",
+    "color": "Brown",
+    "dimensions": {
+      "lensWidth": 52,
+      "bridgeWidth": 18,
+      "templeLength": 140
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+
   // *********************SUN GLASSES**********************************
   {
-    _id: "EG00122",
-    name: "Greay Shaded Fastrack Avoator Cooler",
-    description:
-      "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
-    price: 1625,
-    image: [sg_fast_av1],
-    category: "SUN GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00123",
-    name: "Greay Shaded Fastrack Avoator Cooler",
-    description:
-      "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
-    price: 1625,
-    image: [sg_fast_av2],
-    category: "SUN GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00124",
-    name: "Greay Shaded Fastrack",
-    description:
-      "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
-    price: 1525,
-    image: [sg_fast_av4],
-    category: "SUN GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00125",
-    name: "Greay Shaded Fastrack",
-    description:
-      "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
-    price: 1685,
-    image: [sg_fast_av5],
-    category: "SUN GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00126",
-    name: "Greay Shaded Fastrack",
-    description:
-      "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
-    price: 1825,
-    image: [sg_fast_av6],
-    category: "SUN GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00127",
-    name: "Greay Shaded Fastrack",
-    description:
-      "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
-    price: 1750,
-    image: [sg_fast_av7],
-    category: "SUN GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00128",
-    name: "Greay Shaded Fastrack",
-    description:
-      "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
-    price: 1800,
-    image: [sg_fast_mirr],
-    category: "SUN GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", },
-  {
-    _id: "EG00129",
-    name: "Ray-Ban",
-    description:
-      "Kids eyeglasses combine iconic style with everyday comfort and durability.",
-    price: 1800,
-    image: [sg_fast_tin_2],
-    category: "SUN GLASS",
-    gender: "FOR KIDS",
-    style: "Rimed",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "RAYBAN", },
-  {
-    _id: "EG00130",
-    name: "Ray-Ban",
-    description:
-      "Kids eyeglasses combine iconic style with everyday comfort and durability.",
-    price: 1800,
-    image: [sg_fast_tin_3],
-    category: "SUN GLASS",
-    gender: "FOR KIDS",
-    style: "Rimed",
-    shape: "SQUARE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "RAYBAN", 
-},
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>UV GLASSES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-{
-    _id: "EG00131",
-    name: "Fastrack",
-    description:"Transparent Wayfarer Computer Glasses for Men and Women",
-    price: 1600,
-    image: [ cg_fast_way_1],
-    category: "UV GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "WAYFARER",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00132",
-    name: "Fastrack",
-    description:"Transparent Wayfarer Computer Glasses for Women",
-    price: 1600,
-    image: [cg_fast_way_2],
-    category: "UV GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "WAYFARER",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00133",
-    name: "Fastrack",
-    description:"Transparent Wayfarer Computer Glasses for Men and Women",
-    price: 1600,
-    image: [cg_fast_way_3],
-    category: "UV GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "WAYFARER",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00134",
-    name: "Fastrack",
-    description:"Transparent Round Computer Glasses for Men and Women",
-    price: 1650,
-    image: [cg_fast_rou_1],
-    category: "UV GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "ROUND",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00135",
-    name: "Fastrack",
-    description:"Transparent Round Computer Glasses for Men and Women",
-    price: 1650,
-    image: [cg_fast_rou_2],
-    category: "UV GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "ROUND",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00136",
-    name: "Fastrack",
-    description:"Transparent Rectangle Computer Glasses for Men and Women",
-    price: 1750,
-    image: [cg_fast_rec_1],
-    category: "UV GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00137",
-    name: "Fastrack",
-    description:"Transparent Rectangle Computer Glasses for Men and Women",
-    price: 1750,
-    image: [cg_fast_rec_2],
-    category: "UV GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "RECTANGLE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00138",
-    name: "Fastrack",
-    description:"Transparent CarEye Computer Glasses for Men and Women",
-    price: 1750,
-    image: [cg_fast_cat_1],
-    category: "UV GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00139",
-    name: "Fastrack",
-    description:"Transparent CatEye Computer Glasses for Men and Women",
-    price: 1750,
-    image: [cg_fast_way_2],
-    category: "UV GLASS",
-    gender: "UNISEX",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00140",
-    name: "Fastrack",
-    description:"Transparent CatEye Computer Glasses for Men and Women",
-    price: 1750,
-    image: [cg_fast_way_3],
-    category: "UV GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "CATEYE",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>POWERED GLASSES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-{
-    _id: "EG00141",
-    name: "Fastrack",
-    description:"Prescription Sunglasses for Men and Women",
-    price: 2500,
-    image: [pg_fast_av_1],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00142",
-    name: "Fastrack",
-    description:"Prescription Sunglasses for Men and Women",
-    price: 2500,
-    image: [pg_fast_av_2],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00143",
-    name: "Fastrack",
-    description:"Prescription Sunglasses for Men and Women",
-    price: 2500,
-    image: [pg_fast_av_3],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00144",
-     name: "Fastrack",
-    description:"Aviator Prescription Sunglasses for Men and Women",
-    price: 2500,
-    image: [pg_fast_av_4],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "AVIATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00145",
-    name: "Fastrack",
-    description:"Geometric Prescription Sunglasses for Men and Women",
-    price: 2750,
-    image: [pg_fast_geo_1],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00146",
-     name: "Fastrack",
-    description:"Geometric Prescription Sunglasses for Men and Women",
-    price: 2750,
-    image: [pg_fast_geo_2],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00147",
-    name: "Fastrack",
-    description:"Geometric Prescription Sunglasses for Men and Women",
-    price: 2750,
-    image: [pg_fast_geo_3],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "GEOMETRIC",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00148",
-    name: "Fastrack",
-    description:"Navigator  Prescription Sunglasses for Men and Women",
-    price: 2850,
-    image: [pg_fast_nav_1],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "NAVIGATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00149",
-     name: "Fastrack",
-    description:"Navigator  Prescription Sunglasses for Men and Women",
-    price: 2850,
-    image: [pg_fast_nav_2],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "NAVIGATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK",  
-},
-{
-    _id: "EG00150",
-    name: "Fastrack",
-    description:"Navigator  Prescription Sunglasses for Men and Women",
-    price: 2850,
-    image: [pg_fast_nav_3],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "NAVIGATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00151",
-     name: "Fastrack",
-    description:"Navigator  Prescription Sunglasses for Men and Women",
-    price: 2850,
-    image: [pg_fast_nav_4],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "NAVIGATOR",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00152",
-    name: "Fastrack",
-    description:"Oval Prescription Sunglasses for Men and Women",
-    price: 2400,
-    image: [pg_fast_ovl_1],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00153",
-    name: "Fastrack",
-    description:"Oval Prescription Sunglasses for Men and Women",
-    price: 2400,
-    image: [pg_fast_ovl_2],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00154",
-    name: "Fastrack",
-    description:"Oval Prescription Sunglasses for Men and Women",
-    price: 2400,
-    image: [pg_fast_ovl_3],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00155",
-    name: "Fastrack",
-    description:"Oval Prescription Sunglasses for Men and Women",
-    price: 2450,
-    image: [pg_fast_ovl_3],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00156",
-    name: "Fastrack",
-    description:"Oval Prescription Sunglasses for Men and Women",
-    price: 2450,
-    image: [pg_fast_ovl_4],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "OVAL",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00157",
-    name: "Fastrack",
-    description:"Round Prescription Sunglasses for Men and Women",
-    price: 2650,
-    image: [pg_fast_ro_1],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "ROUND",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00158",
-     name: "Fastrack",
-    description:"Round Prescription Sunglasses for Men and Women",
-    price: 2650,
-    image: [pg_fast_ro_2],
-    category: "POWERED GLASS",
-    gender: "FOR MEN",
-    style: "Rimed",
-    shape: "ROUND",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00159",
-    name: "Fastrack",
-    description:"Round Prescription Sunglasses for Men and Women",
-    price: 2650,
-    image: [pg_fast_ro_3],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "ROUND",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-{
-    _id: "EG00160",
-    name: "Fastrack",
-    description:"Round Prescription Sunglasses for Men and Women",
-    price: 2650,
-    image: [pg_fast_ro_4],
-    category: "POWERED GLASS",
-    gender: "FOR WOMEN",
-    style: "Rimed",
-    shape: "ROUND",
-    date: 1716666245448,
-    bestseller: false,
-    material: "SPX",
-  brand: "FASTRACK", 
-},
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>CONTACT LENS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-  {
-    _id: "CL001",
-    name: "Acuvue Oasys Daily Disposable",
-    description: "Comfortable Daily Disposable Acuvue Oasys By Johnson And Johnson - 30 lens per Box",
-    price:2850,
-    brand: "Bausch + Lomb",
-    category: "CONTACT_LENS", 
-    subCategory: "DAILY",
-    image:  [ac_oas_2],
-    lensType: "Soft Lens",
-    replacement: "Daily",
-    packSize: "30 Lenses",
-    powerRange: "-0.50 to -10.00",
-    cylinder: null,
-    axis: null,
-    gender: "UNISEX",
-    material: "Hydrogel",
-    color: "Clear",
-    stock: 50,
-    bestseller: true,
-    newArrival: true,
-    date: 1716634345448,
+  "_id": "SG00001",
+  "sku": "RMCI856",
+  "name": "Greay Shaded Fastrack Aviator Cooler",
+  "brand": "RAYBAN",
+  "category": "SUN_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
+  "price": 1625,
+  "currency": "INR",
+  "stock": 3,
+  "images": [sg_fast_av1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Aviator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
   },
+  "metadata": {
+    "gender": "All",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
   {
-    _id: "CL002",
-    name: "Acuvue Oasys Daily Disposable",
-    description: "Daily Disposable Acuvue Oasys By Johnson And Johnson - 12 lens per Box",
-    price: 2850,
-    brand: "Johnson And Johnson", 
-    category: "CONTACT_LENS", 
-    subCategory: "DAILY",
-    image:  [ac_oas_1],
-    lensType: "Soft Lens",
-    replacement: "Daily",
-    packSize: "30 Lenses",
-    powerRange: "-0.50 to -10.00",
-    cylinder: null,
-    axis: null,
-    gender: "UNISEX",
-    material: "Hydrogel",
-    color: "Clear",
-    stock: 50,
-    bestseller: true,
-    newArrival: true,
-    date: 1716634345448,
+  "_id": "SG00002",
+  "sku": "RMCI856",
+  "name": "Greay Shaded Fastrack Aviator Cooler",
+  "brand": "FASTRACK",
+  "category": "SUN_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Popular choice with UV-protected gray lenses and stylish gold-rimmed frame.",
+  "price": 1625,
+  "currency": "INR",
+  "stock": 3,
+  "images": [sg_fast_av2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Aviator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
   },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
   {
-    _id: "CL003",
-    name: "Bausch + Lomb SofLens Yearly Disposable",
-    description: "Yearly Disposable Traditional U4 By Bausch and Lomb - 1 lens per Box",
-    price: 950,
-    brand: "Johnson And Johnson", 
-    category: "CONTACT_LENS", 
-    subCategory: "DAILY",
-    image:  [cl_basch_yr_1],
-    lensType: "Soft Lens",
-    replacement: "Yearly",
-    packSize: "1 Lens",
-    powerRange: "-0.50 to -10.00",
-    cylinder: null,
-    axis: null,
-    gender: "UNISEX",
-    material: "Hydrogel",
-    color: "Clear",
-    stock: 10,
-    bestseller: true,
-    newArrival: true,
-    date: 1716634345448,
+  "_id": "SG00003",
+  "sku": "RMCI856",
+  "name": "Ray-Ban Kids tint cooler",
+  "brand": "RAYBAN",
+  "category": "SUN_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Kids sunglasses combine iconic style with everyday comfort and durability.",
+  "price": 1625,
+  "currency": "INR",
+  "stock": 3,
+  "images": [sg_fast_tin_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Square",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
   },
+  "metadata": {
+    "gender": "Kids",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
   {
-    _id: "CL004",
-    name: "Acuvue Oasys SofLens Fortnightly Disposable",
-    description: "Fortnightly Disposable Acuvue Vita - 6 lens per Box",
-    price: 2850,
-    brand: "Johnson And Johnson", 
-    category: "CONTACT_LENS", 
-    subCategory: "FORTNIGHTLY",
-    image:  [ac_oas_for_1],
-    lensType: "Soft Lens",
-    replacement: "Fortnightly",
-    packSize: "1 Lens",
-    powerRange: "-0.50 to -10.00",
-    cylinder: null,
-    axis: null,
-    gender: "UNISEX",
-    material: "Hydrogel",
-    color: "Clear",
-    stock: 10,
-    bestseller: true,
-    newArrival: true,
-    date: 1716634345448,
+  "_id": "SG00004",
+  "sku": "RMCI856",
+  "name": "Ray-Ban combine iconic style",
+  "brand": "RAYBAN",
+  "category": "SUN_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Sunglasses combine iconic style with everyday comfort and durability.",
+  "price": 1625,
+  "currency": "INR",
+  "stock": 3,
+  "images": [sg_fast_tin_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Square",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
   },
-   {
-    _id: "CL005",
-    name: "Acuvue Oasys SofLens Monthly Disposable",
-    description: "Monthly Disposable Acuvue Vita - 6 lens per Box",
-    price: 2850,
-    brand: "Johnson And Johnson", 
-    category: "CONTACT_LENS", 
-    subCategory: "DAILY",
-    image:  [ac_oas_mon_3],
-    lensType: "Soft Lens",
-    replacement: "Monthly",
-    packSize: "1 Lens",
-    powerRange: "-0.50 to -10.00",
-    cylinder: null,
-    axis: null,
-    gender: "UNISEX",
-    material: "Hydrogel",
-    color: "Clear",
-    stock: 10,
-    bestseller: true,
-    newArrival: true,
-    date: 1716634345448,
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "SG00005",
+  "sku": "RMCI856",
+  "name": "Ray-Ban combine iconic style",
+  "brand": "RAYBAN",
+  "category": "SUN_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Sunglasses combine iconic style with everyday comfort and durability.",
+  "price": 1625,
+  "currency": "INR",
+  "stock": 3,
+  "images": [sg_fast_tin_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Square",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
   },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>UV GLASSES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  {
+  "_id": "UV00001",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men and Women",
+  "price": 1625,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_way_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Wayfarer",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "All",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "UV00002",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Women",
+  "price": 1625,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_way_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Wayfarer",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "UV00003",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men",
+  "price": 1825,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_way_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Wayfarer",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
  {
-    _id: "CL006",
-    name: "Cooper Vision SofLens Monthly Disposable",
-    description: "Monthly Disposable Aspire Air - 3 Lens Per Box",
-    price: 1150,
-    brand: "Cooper Vision", 
-    category: "CONTACT_LENS", 
-    subCategory: "Monthly",
-    image:  [co_vi_1],
-    lensType: "Soft Lens",
-    replacement: "Monthly",
-    packSize: "1 Lens",
-    powerRange: "-0.50 to -10.00",
-    cylinder: null,
-    axis: null,
-    gender: "UNISEX",
-    material: "Hydrogel",
-    color: "Clear",
-    stock: 10,
-    bestseller: true,
-    newArrival: true,
-    date: 1716634345448,
+  "_id": "UV00004",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men",
+  "price": 1950,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_rou_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Round",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
   },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
   {
-    _id: "CL007",
-    name: "Cooper Vision SofLens Monthly Disposable",
-    description: "Monthly Disposable Aspire Air - 3 Lens Per Box",
-    price: 1150,
-    brand: "Cooper Vision", 
-    category: "CONTACT_LENS", 
-    subCategory: "Monthly",
-    image:  [co_vi_2],
-    lensType: "Soft Lens",
-    replacement: "Monthly",
-    packSize: "1 Lens",
-    powerRange: "-0.50 to -10.00",
-    cylinder: null,
-    axis: null,
-    gender: "UNISEX",
-    material: "Hydrogel",
-    color: "Clear",
-    stock: 10,
-    bestseller: true,
-    newArrival: true,
-    date: 1716634345448,
+  "_id": "UV00005",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men",
+  "price": 1950,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_rou_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Round",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
   },
-   
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "UV00006",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men",
+  "price": 1950,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_rec_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Rectagle",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+{
+  "_id": "UV00007",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men",
+  "price": 1950,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_rec_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Rectagle",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "UV00008",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men",
+  "price": 1950,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_uv_cat_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Cateye",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "UV00009",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men",
+  "price": 1950,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_uv_cat_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Cateye",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "UV00010",
+  "sku": "UVC2536",
+  "name": "Fastrack Computer Glasses",
+  "brand": "FASTRACK",
+  "category": "UV_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Transparent Wayfarer Computer Glasses for Men",
+  "price": 1550,
+  "currency": "INR",
+  "stock": 3,
+  "images": [cg_fast_way_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Wayfarer",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>POWERED GLASSES<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+{
+  "_id": "PG00001",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Aviator Shape Prescription Sunglasses for Men and Women",
+  "price": 2100,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_av_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Aviator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00002",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Aviator Shape Prescription Sunglasses for Men and Women",
+  "price": 2150,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_av_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Aviator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00003",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Aviator Shape Prescription Sunglasses for Men and Women",
+  "price": 2250,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_av_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Aviator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00004",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Aviator Shape Prescription Sunglasses for Men and Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_av_4],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Aviator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00005",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Geometric Shape Prescription Sunglasses for Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_geo_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Geometric",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00006",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Geometric Shape Prescription Sunglasses for Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_geo_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Geometric",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00007",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Geometric Shape Prescription Sunglasses for Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_geo_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Geometric",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00008",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Navigator Prescription Sunglasses for Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_nav_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Navigator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00009",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Navigator Prescription Sunglasses for Men",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_nav_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Navigator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+ {
+  "_id": "PG00010",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Navigator Prescription Sunglasses for Men",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_nav_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Navigator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00011",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Navigator Prescription Sunglasses for Men",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_nav_4],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Navigator",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+   {
+  "_id": "PG00012",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Oval Prescription Sunglasses for Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_ovl_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Oval",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+   {
+  "_id": "PG00013",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Oval Prescription Sunglasses for Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_ovl_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Oval",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  {
+  "_id": "PG00019",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Oval Prescription Sunglasses for Men",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_ovl_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Oval",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+   {
+  "_id": "PG00014",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Oval Prescription Sunglasses for Men",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_ovl_4],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Oval",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+   {
+  "_id": "PG00015",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Round Prescription Sunglasses for Men",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_ro_1],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Round",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+     {
+  "_id": "PG00016",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Round Prescription Sunglasses for Men",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_ro_2],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Round",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Men",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+       {
+  "_id": "PG00017",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Round Prescription Sunglasses for Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_ro_3],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Round",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+         {
+  "_id": "PG00018",
+  "sku": "PGC5321",
+  "name": "Fastrack Prescription Sun Glass",
+  "brand": "FASTRACK",
+  "category": "POWERED_GLASS",
+  "subCategory": "FULL_RIM",
+  "description": "Round Prescription Sunglasses for Women",
+  "price": 2650,
+  "currency": "INR",
+  "stock": 3,
+  "images": [pg_fast_ro_4],
+  "specifications": {
+    "style": "Rimed",
+    "shape": "Round",
+    "material": "Spx",
+    "size": "Medium",
+    "color": "Greay",
+    "dimensions": {
+      "lensWidth": 0,
+      "bridgeWidth": 0,
+      "templeLength": 0,
+    }
+  },
+  "metadata": {
+    "gender": "Women",
+    "warranty": "6 Months",
+    "bestseller": false,
+    "newArrival": false,
+    "createdAt": 1716642045448
+  }
+},
+  
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>CONTACT LENS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  {
+  "_id": "CL001",
+  "sku": "FMCI650",
+  "name": "Acuvue Oasys Daily Disposable",
+  "brand": "Johnson & Johnson",
+  "category": "CONTACT_LENS",
+  "subCategory": "DAILY",
+  "description": "Premium daily disposable lenses featuring HydraLuxe technology for all-day comfort.",
+  "price": 2850,
+  "currency": "INR",
+  "stock": 50,
+  "images": [ac_oas_2],
+  "specifications": {
+    "lensType": "Soft Lens",
+    "material": "Senofilcon A (Silicone Hydrogel)",
+    "replacement": "Daily",
+    "packSize": "30 Lenses per Box",
+    "powerRange": {
+      "min": -0.50,
+      "max": -10.00,
+      "step": 0.25
+    },
+    "cylinder": null,
+    "axis": null,
+    "color": "Clear",
+    "waterContent": "38%"
+  },
+  "metadata": {
+    "gender": "All",
+    "warranty": "6 Months",
+    "bestseller": true,
+    "newArrival": true,
+    "createdAt": 1716634345448
+  }
+},
+{
+  "_id": "CL002",
+  "sku": "FMCI650",
+  "name": "Acuvue Oasys Daily Disposable",
+  "brand": "Johnson & Johnson",
+  "category": "CONTACT_LENS",
+  "subCategory": "DAILY",
+  "description": "Premium daily disposable lenses featuring HydraLuxe technology for all-day comfort.",
+  "price": 2850,
+  "currency": "INR",
+  "stock": 50,
+  "images": [ac_oas_1],
+  "specifications": {
+    "lensType": "Soft Lens",
+    "material": "Senofilcon A (Silicone Hydrogel)",
+    "replacement": "Daily",
+    "packSize": "30 Lenses per Box",
+    "powerRange": {
+      "min": -0.50,
+      "max": -10.00,
+      "step": 0.25
+    },
+    "cylinder": null,
+    "axis": null,
+    "color": "Clear",
+    "waterContent": "38%"
+  },
+  "metadata": {
+    "gender": "Unisex",
+    "warranty": "6 Months",
+    "bestseller": true,
+    "newArrival": true,
+    "createdAt": 1716634345448
+  }
+},
+{
+  "_id": "CL003",
+  "sku": "FMCI650",
+  "name": "Bausch + Lomb SofLens Yearly Disposable",
+  "brand": "Bausch + Lomb",
+  "category": "CONTACT_LENS",
+  "subCategory": "YEARLY",
+  "description": "Yearly Disposable Traditional U4 By Bausch and Lomb - 1 lens per Box",
+  "price": 2850,
+  "currency": "INR",
+  "stock": 5,
+  "images": [cl_basch_yr_1],
+  "specifications": {
+    "lensType": "Soft Lens",
+    "material": "Senofilcon A (Silicone Hydrogel)",
+    "replacement": "Yearly",
+    "packSize": "1 Lenses per Box",
+    "powerRange": {
+      "min": -0.50,
+      "max": -10.00,
+      "step": 0.25
+    },
+    "cylinder": null,
+    "axis": null,
+    "color": "Clear",
+    "waterContent": "38%"
+  },
+  "metadata": {
+    "gender": "Unisex",
+    "warranty": "6 Months",
+    "bestseller": true,
+    "newArrival": true,
+    "createdAt": 1716634345448
+  }
+},
+{
+  "_id": "CL004",
+  "sku": "FMCI650",
+  "name": "Acuvue Oasys SofLens Fortnightly Disposable",
+  "brand": "Johnson And Johnson",
+  "category": "CONTACT_LENS",
+  "subCategory": "FORTNIGHTLY",
+  "description": "Fortnightly Disposable Acuvue Vita - 6 lens per Box",
+  "price": 2850,
+  "currency": "INR",
+  "stock": 5,
+  "images": [ac_oas_for_1],
+  "specifications": {
+    "lensType": "Soft Lens",
+    "material": "Senofilcon A (Silicone Hydrogel)",
+    "replacement": "Fortnightly",
+    "packSize": "1 Lenses per Box",
+    "powerRange": {
+      "min": -0.50,
+      "max": -10.00,
+      "step": 0.25
+    },
+    "cylinder": null,
+    "axis": null,
+    "color": "Clear",
+    "waterContent": "38%"
+  },
+  "metadata": {
+    "gender": "Unisex",
+    "warranty": "6 Months",
+    "bestseller": true,
+    "newArrival": true,
+    "createdAt": 1716634345448
+  }
+},
+{
+  "_id": "CL005",
+  "sku": "FMCI650",
+  "name": "Acuvue Oasys SofLens Monthly Disposable",
+  "description": "Monthly Disposable Acuvue Vita - 6 lens per Box",
+  "brand": "Johnson And Johnson",
+  "category": "CONTACT_LENS",
+  "subCategory": "MONTHLY",
+  "price": 2850,
+  "currency": "INR",
+  "stock": 5,
+  "images": [ac_oas_mon_3],
+  "specifications": {
+    "lensType": "Soft Lens",
+    "material": "Senofilcon A (Silicone Hydrogel)",
+    "replacement": "Monthly",
+    "packSize": "6 Lenses per Box",
+    "powerRange": {
+      "min": -0.50,
+      "max": -10.00,
+      "step": 0.25
+    },
+    "cylinder": null,
+    "axis": null,
+    "color": "Clear",
+    "waterContent": "38%"
+  },
+  "metadata": {
+    "gender": "Unisex",
+    "warranty": "6 Months",
+    "bestseller": true,
+    "newArrival": true,
+    "createdAt": 1716634345448
+  }
+},
+{
+  "_id": "CL006",
+  "sku": "FMCI650",
+  "name": "Cooper Vision SofLens Monthly Disposable",
+  "description": "Monthly Disposable Aspire Air - 3 Lens Per Box",
+  "brand": "Cooper Vision",
+  "category": "CONTACT_LENS",
+  "subCategory": "MONTHLY",
+  "price": 2850,
+  "currency": "INR",
+  "stock": 5,
+  "images": [co_vi_1],
+  "specifications": {
+    "lensType": "Soft Lens",
+    "material": "Senofilcon A (Silicone Hydrogel)",
+    "replacement": "Monthly",
+    "packSize": "6 Lenses per Box",
+    "powerRange": {
+      "min": -0.50,
+      "max": -10.00,
+      "step": 0.25
+    },
+    "cylinder": null,
+    "axis": null,
+    "color": "Clear",
+    "waterContent": "38%"
+  },
+  "metadata": {
+    "gender": "Unisex",
+    "warranty": "6 Months",
+    "bestseller": true,
+    "newArrival": true,
+    "createdAt": 1716634345448
+  }
+},
+{
+  "_id": "CL007",
+  "sku": "FMCI650",
+  "name": "Cooper Vision SofLens Monthly Disposable",
+  "description": "Monthly Disposable Aspire Air - 3 Lens Per Box",
+  "brand": "Cooper Vision",
+  "category": "CONTACT_LENS",
+  "subCategory": "MONTHLY",
+  "price": 2850,
+  "currency": "INR",
+  "stock": 5,
+  "images": [co_vi_2],
+  "specifications": {
+    "lensType": "Soft Lens",
+    "material": "Senofilcon A (Silicone Hydrogel)",
+    "replacement": "Monthly",
+    "packSize": "3 Lenses per Box",
+    "powerRange": {
+      "min": -0.50,
+      "max": -10.00,
+      "step": 0.25
+    },
+    "cylinder": null,
+    "axis": null,
+    "color": "Clear",
+    "waterContent": "38%"
+  },
+  "metadata": {
+    "gender": "Unisex",
+    "warranty": "6 Months",
+    "bestseller": true,
+    "newArrival": true,
+    "createdAt": 1716634345448
+  }
+},
 ];
 // item cart for eyeglasses / sun glasses
 // {
@@ -1989,7 +2479,7 @@ export const products = [
 //   material: "Acetate",
 //   frameSize: "Medium",
 
-//   gender: "MEN",
+//   gender: "Men",
 //   color: "Black",
 
 //   lensCompatible: true,

@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 const EGDd = () => {
   return (
     <div className="bg-[#e7edeb] rounded-3xl shadow-2xl">
-      <div className="max-w-[1400px] mx-auto px-16 py-10">
+      <div className="max-w-[1400px] mx-auto px-16 py-10 mt-5">
         <div className="grid grid-cols-[120px_120px_120px_220px_1fr] gap-x-12 ">
           {/* COLUMN 1 */}
           <div>

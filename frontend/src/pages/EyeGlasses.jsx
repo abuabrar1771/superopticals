@@ -1,105 +1,98 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 import { assets } from "../assets/assets";
 import { ShopContext } from "../context/ShopContext";
 import ProductItem from "../components/ProductItem";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import EgFDd from "../components/EgFDd";
-import { useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Title from "../components/Title";
 
 const EyeGlasses = () => {
- const navigate = useNavigate();
-
-useEffect(() => {
-  if (location.search) {
-    navigate("/eyeglasses", { replace: true });
-  }
-}, []);
+  const navigate = useNavigate();
   const location = useLocation();
-  const { products } = useContext(ShopContext);
-  const [selectedFilters, setSelectedFilters] = useState({});
-  // const [filteredProducts, setFilteredProducts] = useState(products);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const { products, currency, search, showSearch } = useContext(ShopContext);
 
+  const [selectedFilters, setSelectedFilters] = useState({});
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [openFilter, setOpenFilter] = useState(null);
   const [sortType, setSortType] = useState("relavent");
-  const { search, showSearch } = useContext(ShopContext);
+  const [pageTitle, setPageTitle] = useState("All Eyeglasses");
 
-  const isSearchActive = showSearch && search?.trim() !== "";
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  // 1. Filter only Eyeglass category
   const eyeglassesProducts = useMemo(() => {
-    return products.filter((item) => item.category === "EYE GLASS");
+    return products.filter((item) => item.category === "EYE_GLASS");
   }, [products]);
-  // ....................MENU ITEM PRODUCTS SHOW <<<<<<<<<<<<<<<<<<<<<
+
+  // 2. Sync URL Parameters to State (For Mega-Dropdown support)
   useEffect(() => {
     const query = new URLSearchParams(location.search);
-
-    const gender = query.get("gender");
-    const shape = query.get("shape");
-    const style = query.get("style");
-    const material = query.get("material");
-    const brand = query.get("brand");
-
+    const params = ["gender", "shape", "style", "material", "brand"];
     const newFilters = {};
+    let title = "All Eyeglasses";
 
-    if (gender && gender !== "All") newFilters.gender = [gender];
-    if (shape) newFilters.shape = [shape];
-    if (style) newFilters.style = [style];
-    if (material) newFilters.material = [material];
-    if (brand) newFilters.brand = [brand];
-
-    if (Object.keys(newFilters).length > 0) {
-      setSelectedFilters((prev) =>
-        JSON.stringify(prev) === JSON.stringify(newFilters) ? prev : newFilters,
-      );
-    }
-  }, [location.search]);
-  // ....................MENU ITEM PRODUCTS SHOW END <<<<<<<<<<<<<<<<<<<<<
-  useEffect(() => {
-    let filtered = eyeglassesProducts;
-
-    Object.keys(selectedFilters).forEach((key) => {
-      if (selectedFilters[key]?.length > 0) {
-        filtered = filtered.filter((item) =>
-          selectedFilters[key].some((value) => {
-            if (key === "gender") {
-              // return item.gender === `FOR ${value.toUpperCase()}`;
-              return item.gender?.toUpperCase().includes(value.toUpperCase());
-            }
-
-            return item[key]?.toUpperCase() === value.toUpperCase();
-          }),
-        );
+    params.forEach((param) => {
+      const value = query.get(param);
+      if (value && value !== "All") {
+        newFilters[param] = [value];
+        title = `${value} Eyeglasses`;
       }
     });
-    if (sortType === "low-high") {
-      filtered = filtered.sort((a, b) => a.price - b.price);
+
+    setSelectedFilters(newFilters);
+    setPageTitle(title);
+  }, [location.search]);
+
+  // 3. Main Filter & Sort Logic
+useEffect(() => {
+  let filtered = [...eyeglassesProducts];
+
+  Object.keys(selectedFilters).forEach((key) => {
+    const filterValues = selectedFilters[key];
+    
+    if (filterValues && filterValues.length > 0) {
+      filtered = filtered.filter((item) => {
+        // 1. Get value from top level OR specifications OR metadata
+        const rawValue = item[key] || item.specifications?.[key] || item.metadata?.[key] || "";
+        
+        // 2. Normalize product value: "Men" -> "men"
+        const itemValue = rawValue.toString().toLowerCase().trim();
+
+        return filterValues.some((val) => {
+          // 3. Normalize filter value: "MEN" -> "men"
+          const targetValue = val.toString().toLowerCase().trim();
+
+          // 4. SMART MATCHING
+          if (key === "gender") {
+            // Split "Men & Women" into ["men", "women"]
+            const words = itemValue.split(/[\s&/_]+/);
+            // Returns true if exact word "men" is found OR if product is "unisex"
+            return words.includes(targetValue) || itemValue === "unisex";
+          }
+
+          // For Shape, Style, Brand, etc., keep strict equality
+          return itemValue === targetValue;
+        });
+      });
     }
+  });
 
-    if (sortType === "high-low") {
-      filtered = filtered.sort((a, b) => b.price - a.price);
-    }
-    //APPLY search bar control to search the product
+  // Apply Search Bar Logic
+  if (showSearch && search?.trim()) {
+    const searchLower = search.toLowerCase();
+    filtered = filtered.filter(
+      (item) =>
+        item.name?.toLowerCase().includes(searchLower) ||
+        item.brand?.toLowerCase().includes(searchLower)
+    );
+  }
 
-    if (showSearch && search && search.trim() !== "") {
-      filtered = filtered.filter(
-        (item) =>
-          item.name?.toLowerCase().includes(search.toLowerCase()) ||
-          item.brand?.toLowerCase().includes(search.toLowerCase()) ||
-          item.shape?.toLowerCase().includes(search.toLowerCase()) ||
-          item.description?.toLowerCase().includes(search.toLowerCase()),
-      );
-    }
+  // Apply Sorting
+  if (sortType === "low-high") filtered.sort((a, b) => a.price - b.price);
+  if (sortType === "high-low") filtered.sort((a, b) => b.price - a.price);
 
-    setFilteredProducts([...filtered]);
-  }, [selectedFilters, eyeglassesProducts, sortType, search, showSearch]);
+  setFilteredProducts(filtered);
+}, [selectedFilters, eyeglassesProducts, sortType, search, showSearch]);
 
-  // GROUPING PRODUCTS
+  // 4. Grouping Logic for "No Filter" view
   const shapeOrder = [
     "CATEYE",
     "RECTANGLE",
@@ -109,330 +102,183 @@ useEffect(() => {
     "CLUBMASTER",
     "GEOMETRIC",
   ];
-  const shapeBanners = {
-    ROUND: assets.banner_eg_1,
-    SQUARE: assets.banner_eg_2,
-    RECTANGLE: assets.banner_eg_3,
-    OVAL: assets.banner_eg_4,
-    CATEYE: assets.banner_eg_5,
-    CLUBMASTER: assets.banner_eg_6,
-    GEOMETRIC: assets.banner_eg_7,
-    ROUNDED: assets.banner_eg_8,
-  };
+
   const shapeBannerConfig = {
-    CATEYE: {
-      image: assets.banner_eg_5,
-      position: "left",
-    },
-    CLUBMASTER: {
-      image: assets.banner_eg_6,
-      position: "right",
-    },
-    GEOMETRIC: {
-      image: assets.banner_eg_7,
-      position: "left",
-    },
-    SQUARE: {
-      image: assets.banner_eg_2,
-      position: "right",
-    },
-    OVAL: {
-      image: assets.banner_eg_4,
-      position: "left",
-    },
-    RECTANGLE: {
-      image: assets.banner_eg_3,
-      position: "right",
-    },
-    ROUNDED: {
-      image: assets.banner_eg_1,
-      position: "right",
-    },
-  };
-  const getTextPositionClass = (position) => {
-    switch (position) {
-      case "left":
-        return "items-center justify-start text-left pl-8";
-      case "right":
-        return "items-center justify-end text-right pr-8";
-      case "center":
-        return "items-center justify-center text-center";
-      default:
-        return "items-center justify-start text-left pl-8";
-    }
+    CATEYE: { image: assets.banner_eg_5, position: "left" },
+    CLUBMASTER: { image: assets.banner_eg_6, position: "right" },
+    GEOMETRIC: { image: assets.banner_eg_7, position: "left" },
+    SQUARE: { image: assets.banner_eg_2, position: "right" },
+    OVAL: { image: assets.banner_eg_4, position: "left" },
+    RECTANGLE: { image: assets.banner_eg_3, position: "right" },
+    ROUNDED: { image: assets.banner_eg_1, position: "right" },
   };
 
-  // const isFilterActive = selectedFilters.length > 0; // adjust to your filters
-  const isFilterActive = Object.values(selectedFilters).some(
-    (value) => value && value.length > 0,
-  );
-
-  const groupByShape = (products) => {
-    return products.reduce((acc, product) => {
-      const shape = product.shape || "Others";
+  const groupByShape = (items) => {
+    return items.reduce((acc, product) => {
+      const shape = product.specifications?.shape || product.shape || "Others";
       if (!acc[shape]) acc[shape] = [];
       acc[shape].push(product);
       return acc;
     }, {});
   };
-  const [pageTitle, setPageTitle] = useState("All Eyeglasses");
-  useEffect(() => {
-    const query = new URLSearchParams(location.search);
 
-    const gender = query.get("gender");
-    const shape = query.get("shape");
-    const style = query.get("style");
-    const material = query.get("material");
-    const brand = query.get("brand");
+  const getTextPositionClass = (pos) => {
+    if (pos === "right") return "items-center justify-end text-right pr-8";
+    return "items-center justify-start text-left pl-8";
+  };
 
-    const newFilters = {};
-    let title = "All Eyeglasses";
-
-    if (gender && gender !== "All") {
-      newFilters.gender = [gender];
-      title = `${gender} Eyeglasses`;
-    }
-
-    if (shape) {
-      newFilters.shape = [shape];
-      title = `${shape} Eyeglasses`;
-    }
-
-    if (style) {
-      newFilters.style = [style];
-      title = `${style} Eyeglasses`;
-    }
-
-    if (material) {
-      newFilters.material = [material];
-      title = `${material} Eyeglasses`;
-    }
-    if (brand) {
-      newFilters.brand = [brand];
-      title = `${brand} Eyeglasses`;
-    }
-
-    setSelectedFilters(newFilters);
-    setPageTitle(title);
-  }, [location.search]);
+  const isFilterActive =
+    Object.values(selectedFilters).some((v) => v?.length > 0) ||
+    (showSearch && search?.trim());
 
   return (
-    <>
-      <div>
-        <p className="lg:ml-6 lg:px-20 mt-5 lg:text-3xl sm:text-xl ">
-          Stylish Eyeglasses for Every Face
-        </p>
-      </div>
-      <div className="w-full max-w-[1450px] mx-auto px-4 my-10">
-        <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden">
+    <div className="bg-white">
+      {/* Top Banner */}
+      <div className="w-full max-w-[1450px] mx-auto px-4 pt-10">
+        <div className="relative h-[160px] sm:h-[200px] lg:h-[250px] rounded-xl overflow-hidden shadow-inner">
           <img
             src={assets.ban_eye}
-            alt="Eyeglasses Banner"
+            alt="Banner"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-
-          <div className="absolute inset-0 flex items-center justify-end sm:justify-end text-orange-800 sm:pr-8">
-            <div className="text-center sm:text-right">
-              <h2 className="text-2xl sm:text-sm md:text-xl font-semibold">
-                Frames
-              </h2>
-              <p className="text-sm sm:text-lg md:text-xl px-5">
-                Starting at ₹800
-              </p>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent flex items-center justify-end pr-10">
+            <div className="text-right text-orange-900">
+              <h2 className="text-xl md:text-3xl font-bold">Premium Frames</h2>
+              <p className="text-2xl">Starting at {currency}800</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className=" ">
-        <h1 className="text-2xl mb-4 lg:px-24 font-bold lg:text-3xl sm:text-xl mt-2">
-          {pageTitle}
-        </h1>
+      <div className="max-w-[1450px] mx-auto px-4 py-10">
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Sidebar Filters */}
+          <aside className="w-full lg:w-[260px] shrink-0">
+            <div className="sticky top-24 space-y-4">
+              <div className="flex justify-between items-center border-b pb-2">
+                <p className="text-xl font-bold">FILTERS</p>
+                <button
+                  onClick={() => {
+                    setSelectedFilters({});
+                    navigate("/eyeglasses");
+                  }}
+                  className="text-sm text-blue-600 hover:underline font-medium"
+                >
+                  Reset All
+                </button>
+              </div>
 
-        <p className="lg:px-32 italic mb-4 sm:text-sm">
-          Eyeglasses that blend style and comfort for every face.
-        </p>
-      </div>
-
-      <div className="w-full flex justify-center pt-10 border-t">
-        <div className="w-full max-w-[1450px] px-4 md:px-0 flex flex-col lg:flex-row gap-6 lg:gap-10 ">
-          {/* Filter Options */}
-          <aside className="w-full lg:w-[260px] lg:shrink-0 lg:sticky lg:top-24 h-fit">
-            {/* lg:shrink-0 lg:sticky lg:top-24 h-fit */}
-            <p className="text-xl font-medium flex justify-between gap-2 cursor-pointer mt-8">
-              FILTERS
-              <button
-                onClick={() => setSelectedFilters({})}
-                className="text-sm text-green-400 hover:underline font-bold"
-              >
-                Reset
-              </button>
-            </p>
-
-            {/* ***************************************************** */}
-            <EgFDd
-              title="Gender"
-              field="gender"
-              products={eyeglassesProducts}
-              selectedFilters={selectedFilters}
-              setSelectedFilters={setSelectedFilters}
-              openFilter={openFilter}
-              setOpenFilter={setOpenFilter}
-            />
-
-            <EgFDd
-              title="Frame Shape"
-              field="shape"
-              products={eyeglassesProducts}
-              selectedFilters={selectedFilters}
-              setSelectedFilters={setSelectedFilters}
-              openFilter={openFilter}
-              setOpenFilter={setOpenFilter}
-            />
-
-            <EgFDd
-              title="Material"
-              field="material"
-              products={eyeglassesProducts}
-              selectedFilters={selectedFilters}
-              setSelectedFilters={setSelectedFilters}
-              openFilter={openFilter}
-              setOpenFilter={setOpenFilter}
-            />
-
-            <EgFDd
-              title="Frame Style"
-              field="style"
-              products={eyeglassesProducts}
-              selectedFilters={selectedFilters}
-              setSelectedFilters={setSelectedFilters}
-              openFilter={openFilter}
-              setOpenFilter={setOpenFilter}
-            />
-            <EgFDd
-              title="Brand"
-              field="brand"
-              products={eyeglassesProducts}
-              selectedFilters={selectedFilters}
-              setSelectedFilters={setSelectedFilters}
-              openFilter={openFilter}
-              setOpenFilter={setOpenFilter}
-            />
+              {["gender", "shape", "material", "style", "brand"].map(
+                (field) => (
+                  <EgFDd
+                    key={field}
+                    title={field.charAt(0) + field.slice(1)}
+                    field={field}
+                    products={eyeglassesProducts}
+                    selectedFilters={selectedFilters}
+                    setSelectedFilters={setSelectedFilters}
+                    openFilter={openFilter}
+                    setOpenFilter={setOpenFilter}
+                  />
+                ),
+              )}
+            </div>
           </aside>
-          {/* <section className="max-w-7xl mx-auto px-4 py-10 border border-blue-400 shadow-lg rounded-3xl"> */}
-          <main className="w-full mt-6 lg:mt-0 self-start">
-            <div className=" z-50 bg-white flex justify-between items-center text-base sm:text-2xl mb-6 py-2">
-              <Title text1={"ALL"} text2={"COLLECTIONS"} />
 
+          {/* Main Content */}
+          <main className="flex-1">
+            <div className="flex justify-between items-center mb-8">
+              <Title
+                text1={pageTitle.split(" ")[0]}
+                text2={pageTitle.split(" ").slice(1).join(" ")}
+              />
               <select
                 onChange={(e) => setSortType(e.target.value)}
-                className="border-2 border-gray-300 text-sm px-2 py-1 rounded"
+                className="border-2 border-gray-200 text-lg px-4 py-2 rounded-lg outline-none focus:border-blue-400"
               >
-                <option value="relavent">Sort by Relevant</option>
-                <option value="low-high">Sort by Low to High</option>
-                <option value="high-low">Sort by High to Low</option>
+                <option value="relavent">Sort by: Relevant</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
               </select>
             </div>
-            {/* WHEN FILTER IS ACTIVE → NORMAL GRID */}
 
-            {(isFilterActive || isSearchActive) && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {/* Grid View (When Filtering) */}
+            {isFilterActive ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredProducts.map((item) => (
-                  <div key={item._id}>
-                    <ProductItem
-                      id={item._id}
-                      name={item.shape}
-                      image={item.image}
-                      description={item.description}
-                      brand={item.brand}
-                      price={item.price}
-                    />
-                  </div>
+                  <ProductItem
+                    key={item._id}
+                    id={item._id}
+                    name={item.name}
+                    images={item.images}
+                    price={item.price}
+                    brand={item.brand}
+                    description={item.description}
+                    gender={item.gender}
+                  />
                 ))}
               </div>
-            )}
-
-            {/* ✅ WHEN NO FILTER → GROUP BY SHAPE */}
-            {(!isFilterActive && !isSearchActive) && 
-              (() => {
-                // const groupedProducts = groupByShape(products);
-                const groupedProducts = groupByShape(eyeglassesProducts);
-                const shapeNames = Object.keys(groupedProducts).sort((a, b) => {
-                  const indexA = shapeOrder.indexOf(a);
-                  const indexB = shapeOrder.indexOf(b);
-
-                  return (
-                    (indexA === -1 ? 999 : indexA) -
-                    (indexB === -1 ? 999 : indexB)
-                  );
-                });
-
-                return (
-                  <div className="space-y-16">
-                    {shapeOrder
-                      .filter((shape) => groupedProducts[shape])
-                      .map((shape) => {
-                        const config = shapeBannerConfig[shape] || {};
-                        const bannerImage =
-                          config.image || assets.banner_default;
-                        const textPosition = config.position || "left";
-
-                        return (
-                          <div key={shape}>
-                            {/* ✅ BANNER */}
-                            <div className="mt-10">
-                              <div className="relative w-full h-[150px] sm:h-[170px] md:h-[190px] rounded-2xl overflow-hidden">
-                                <img
-                                  src={bannerImage}
-                                  alt={`${shape} banner`}
-                                  className="w-full h-full object-cover"
-                                />
-
-                                <div className="absolute inset-0 bg-black/30"></div>
-
-                                <div
-                                  className={`absolute inset-0 flex ${getTextPositionClass(
-                                    textPosition,
-                                  )}`}
-                                >
-                                  <div className="text-white">
-                                    <h2 className="text-2xl md:text-3xl font-semibold">
-                                      {shape} Frames
-                                    </h2>
-                                    <p className="text-sm opacity-90">
-                                      Starting at ₹800
-                                    </p>
-                                  </div>
-                                </div>
+            ) : (
+              /* Grouped View (Default) */
+              <div className="space-y-20">
+                {(() => {
+                  const grouped = groupByShape(eyeglassesProducts);
+                  return shapeOrder
+                    .filter((shape) => grouped[shape])
+                    .map((shape) => {
+                      const config = shapeBannerConfig[shape] || {
+                        image: assets.banner_default,
+                        position: "left",
+                      };
+                      return (
+                        <div key={shape} className="space-y-8">
+                          <div className="relative h-[180px] rounded-2xl overflow-hidden group">
+                            <img
+                              src={config.image}
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                              alt={shape}
+                            />
+                            <div className="absolute inset-0 bg-black/30 flex items-center px-10">
+                              <div
+                                className={
+                                  config.position === "right"
+                                    ? "ml-auto text-right"
+                                    : "text-left"
+                                }
+                              >
+                                <h2 className="text-white text-3xl font-bold uppercase tracking-widest">
+                                  {shape}
+                                </h2>
+                                <p className="text-white/80">
+                                  Expertly Crafted Frames
+                                </p>
                               </div>
                             </div>
-
-                            {/* ✅ PRODUCTS */}
-                            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 gap-y-6">
-                              {groupedProducts[shape].map((item) => (
-                                <ProductItem
-                                  key={item._id}
-                                  id={item._id}
-                                  name={item.shape}
-                                  image={item.image}
-                                  brand={item.brand}
-                                  description={item.description}
-                                  price={item.price}
-                                />
-                              ))}
-                            </div>
                           </div>
-                        );
-                      })}
-                  </div>
-                );
-              })()}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {grouped[shape].slice(0, 6).map((item) => (
+                              <ProductItem
+                                key={item._id}
+                                id={item._id}
+                                name={item.name}
+                                images={item.images}
+                                price={item.price}
+                                brand={item.brand}
+                                description={item.description}
+                                gender={item.gender}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    });
+                })()}
+              </div>
+            )}
           </main>
-          {/* </section> */}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

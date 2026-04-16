@@ -25,34 +25,38 @@ const ContactLenses = () => {
 
   // ✅ STEP 2 — APPLY SELECTED FILTERS
   useEffect(() => {
-    let filtered = clglassesProducts;
+  let filtered = [...clglassesProducts];
 
-    Object.keys(selectedFilters).forEach((key) => {
-      if (selectedFilters[key]?.length > 0) {
-        filtered = filtered.filter((item) =>
-          selectedFilters[key].some(
-            (value) => item[key]?.toUpperCase() === value.toUpperCase(),
-          ),
+  Object.keys(selectedFilters).forEach((key) => {
+    if (selectedFilters[key]?.length > 0) {
+      filtered = filtered.filter((item) => {
+        // 🔹 FIX: Look in top-level, specifications, OR metadata
+        const itemValue = item[key] || item.specifications?.[key] || item.metadata?.[key];
+
+        // 🔹 FIX: Convert both to string and Uppercase to ensure "Daily" matches "DAILY"
+        return selectedFilters[key].some(
+          (filterVal) => itemValue?.toString().toUpperCase() === filterVal.toUpperCase()
         );
-      }
-    });
-    if (showSearch && search?.trim() !== "") {
-      filtered = filtered.filter((item) =>
-        (item.name + item.brand + item.description + item.replacement)
-          .toLowerCase()
-          .includes(search.toLowerCase()),
-      );
+      });
     }
-    if (sortType === "low-high") {
-      filtered = filtered.sort((a, b) => a.price - b.price);
-    }
+  });
 
-    if (sortType === "high-low") {
-      filtered = filtered.sort((a, b) => b.price - a.price);
-    }
+  // Apply Search
+  if (showSearch && search?.trim() !== "") {
+    filtered = filtered.filter((item) =>
+      (item.name + item.brand + item.description)
+        .toLowerCase()
+        .includes(search.toLowerCase())
+    );
+  }
 
-    setFilteredProducts([...filtered]);
-  }, [selectedFilters, clglassesProducts, sortType, search]);
+  // Sorting
+  let sorted = [...filtered];
+  if (sortType === "low-high") sorted.sort((a, b) => a.price - b.price);
+  if (sortType === "high-low") sorted.sort((a, b) => b.price - a.price);
+
+  setFilteredProducts(sorted);
+}, [selectedFilters, clglassesProducts, sortType, search, showSearch]);
 
   const isFilterActive = Object.values(selectedFilters).some(
     (value) => value && value.length > 0,
@@ -177,7 +181,7 @@ const ContactLenses = () => {
                       <ProductItem
                         id={item._id}
                         name={item.name}
-                        image={item.image}
+                        images={item.images}
                         description={item.description}
                         price={item.price}
                       />
@@ -208,7 +212,7 @@ const ContactLenses = () => {
                             <ProductItem
                               id={item._id}
                               name={item.name}
-                              image={item.image}
+                              images={item.images}
                               description={item.description}
                               price={item.price}
                             />
