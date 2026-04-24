@@ -1131,7 +1131,7 @@ export const products = [
   "price": 1625,
   "currency": "INR",
   "stock": 3,
-  "images": [sg_fast_av1],
+  "images": [sg_fast_av1,sg_fast_av2,sg_fast_av4,sg_fast_av1],
   "specifications": {
     "style": "Rimed",
     "shape": "Aviator",

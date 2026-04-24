@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SGDd = () => {
   return (
     <div className="bg-[#e7edeb] rounded-3xl shadow-2xl">
-      <div className="max-w-[1400px] mx-auto px-16 py-10 mt-5">
+      <div className="max-w-[1400px] mx-auto px-16 py-10 mt-6">
         <div className="grid grid-cols-[120px_120px_120px_220px_1fr] gap-x-12 ">
           
           {/* COLUMN 1: GENDER & USAGE */}
@@ -92,7 +92,7 @@ const SGDd = () => {
 
           {/* IMAGE SECTION */}
           <div className="flex justify-end">
-            <div className="w-[520px] h-[380px] rounded-3xl overflow-hidden shadow-lg">
+            <div className="w-[630px] h-[320px] rounded-3xl overflow-hidden shadow-lg">
               <img
                 src={assets.sgdd}
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"

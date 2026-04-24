@@ -16,12 +16,17 @@ import Login from './pages/Login'
 import Footer from "./components/Footer";
 import Navbar_New from "./components/Navbar_New"
 import SearchBar from "./components/SearchBar"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import TopHeader from "./components/TopHeader";
 
 const App = () => {
   return (
     <div className="min-h-screen max-w-screen bg-[#e7edeb]">
+      <ToastContainer />
+      <TopHeader />
       <Navbar_New/>
-      <SearchBar />
+      
 
       <Routes>
         <Route path="/" element={<Home />} />

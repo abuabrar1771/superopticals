@@ -6,10 +6,14 @@ import PrescriptionForm from "./PrescriptionForm";
 import LensSelector from "./LensSelector";
 import RelatedProducts from "./RelatedProducts";
 import ProductSpecifications from "../components/ProductSpecifications";
+import { toast } from "react-toastify";
+
 
 const Product = () => {
   const { productId } = useParams();
-  const { products } = useContext(ShopContext);
+
+  // ✅ 1. Combine all context needs into one line at the very top
+  const { products, addToCart } = useContext(ShopContext);
 
   const [showLensConfig, setShowLensConfig] = useState(false);
   const [productData, setProductData] = useState(null);
@@ -19,6 +23,8 @@ const Product = () => {
   const [selectedLens, setSelectedLens] = useState(null);
   const [selectedFeatures, setSelectedFeatures] = useState([]);
 
+  const [quantity, setQuantity] = useState(1);
+  
   useEffect(() => {
     if (products && products.length > 0) {
       const item = products.find((p) => p._id === productId);
@@ -32,17 +38,55 @@ const Product = () => {
 
   // Logic for your specific categories
   const isLensRequired =
-    productData?.category === "EYE_GLASS" ||
-    productData?.category === "POWERED_GLASS";
+    productData?.category === "EYE_GLASS"
+    
 
   const framePrice = productData?.price || 0;
   const lensPrice = selectedLens?.price || 0;
+  const feautersPrice = selectedFeatures?.price || 0;
   const featuresTotal = selectedFeatures.reduce(
     (acc, curr) => acc + curr.price,
     0,
   );
-  const grandTotal = framePrice + lensPrice + featuresTotal;
+  const unitPrice = framePrice + lensPrice + featuresTotal;
+  const grandTotal = unitPrice * quantity
 
+  // ✅ New state for prescription
+  const [prescription, setPrescription] = useState(null);
+
+  const handleAddToCart = async () => {
+  // 1. Validation for eyeglasses
+  if (isLensRequired && showLensConfig) {
+    if (!selectedLens || !prescription) {
+      toast.error("Please complete lens and prescription selection.");
+      return;
+    }
+  }
+
+  // 2. Prepare the object (Match the keys exactly)
+  const dataForCart = {
+    _id: productData._id,
+    name: productData.name,
+    image: image, // Use the 'image' state from your component
+    lens: isLensRequired ? selectedLens : { name: "Standard UV Lens", price: 0 },
+    features: selectedFeatures,
+    prescription: prescription,
+    totalAmount: grandTotal, // Your price * quantity
+    quantity: quantity       // Your quantity state
+  };
+
+  // 3. Call the function
+  
+  addToCart(dataForCart); 
+
+  console.log("Items added to cart ")
+
+  toast.success("Added to Cart Successfully!", {
+  position: "top-center",
+  autoClose: 2000,
+  theme: "colored",
+  });
+  }
   if (!productData)
     return <div className="p-20 text-center">Loading Product...</div>;
 
@@ -121,9 +165,39 @@ const Product = () => {
                     Select Lens & Power
                   </button>
                 ) : (
-                  <button className="flex-1 bg-black text-white py-4 rounded-full font-bold hover:bg-gray-800 transition-all">
-                    Add to Cart — ₹{framePrice}
-                  </button>
+                  <div className="flex flex-col gap-4 w-full">
+                    {/* Quantity Selector */}
+                    <div className="flex items-center gap-3 mb-2">
+                      <p className="text-sm font-semibold uppercase text-gray-500">
+                        Quantity:
+                      </p>
+                      <div className="flex items-center border border-gray-300 rounded-lg">
+                        <button
+                          onClick={() =>
+                            setQuantity((prev) => Math.max(1, prev - 1))
+                          }
+                          className="px-4 py-2 hover:bg-gray-100 border-r"
+                        >
+                          –
+                        </button>
+                        <span className="px-6 font-bold">{quantity}</span>
+                        <button
+                          onClick={() => setQuantity((prev) => prev + 1)}
+                          className="px-4 py-2 hover:bg-gray-100 border-l"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Add to Cart Button */}
+                    <button
+                      onClick={handleAddToCart}
+                      className="flex-1 bg-black text-white py-4 rounded-full font-bold hover:bg-gray-800 transition-all"
+                    >
+                      Add to Cart — ₹{framePrice * quantity}
+                    </button>
+                  </div>
                 )}
               </div>
               {/* PRODUCT INFORMATION */}
@@ -151,7 +225,11 @@ const Product = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
               <div className="lg:col-span-2 space-y-10">
-                <PrescriptionForm />
+                <PrescriptionForm
+                  onUpdatePrescription={(data) => {
+                    setPrescription(data);
+                  }}
+                />
                 <LensSelector
                   onUpdateLens={(lens) => setSelectedLens(lens)}
                   onUpdateFeatures={(feats) => setSelectedFeatures(feats)}
@@ -164,23 +242,53 @@ const Product = () => {
                   <h3 className="text-lg font-bold border-b pb-4 mb-4">
                     Summary
                   </h3>
+
+                  {/* 1. Frame Price */}
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-600">Frame Price</span>
-                    <span>₹{framePrice}</span>
+                    <span className="font-medium">₹{framePrice}</span>
                   </div>
+
+                  {/* 2. Lens Price */}
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-600">
                       Lens: {selectedLens?.name || "Not Selected"}
                     </span>
-                    <span>₹{lensPrice}</span>
+                    <span className="font-medium">₹{lensPrice}</span>
                   </div>
+
+                  {/* 3. Individual Features List */}
+                  {selectedFeatures.length > 0 && (
+                    <div className="mt-4 pt-4 border-t border-gray-50">
+                      <p className="text-xs font-bold text-gray-400 uppercase mb-2">
+                        Selected Features
+                      </p>
+                      {selectedFeatures.map((feature, index) => (
+                        <div
+                          key={index}
+                          className="flex justify-between mb-2 text-sm"
+                        >
+                          <span className="text-gray-600">{feature.name}</span>
+                          <span className="text-gray-900">
+                            + ₹{feature.price}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* 4. Total Calculation */}
                   <div className="border-t-2 border-dashed pt-4 mt-6 flex justify-between items-center">
                     <span className="text-lg font-bold">Total Amount</span>
                     <span className="text-3xl font-black text-blue-600">
                       ₹{grandTotal}
                     </span>
                   </div>
-                  <button className="w-full bg-black text-white py-4 rounded-xl font-bold mt-6 hover:bg-gray-800">
+
+                  <button
+                    onClick={handleAddToCart}
+                    className="w-full bg-black text-white py-4 rounded-xl font-bold mt-6 hover:bg-gray-800 transition-colors"
+                  >
                     Add to Cart
                   </button>
                 </div>

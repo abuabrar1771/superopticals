@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 const EGDd = () => {
   return (
     <div className="bg-[#e7edeb] rounded-3xl shadow-2xl">
-      <div className="max-w-[1400px] mx-auto px-16 py-10 mt-5">
+      <div className="max-w-[1400px] mx-auto px-16 py-10 mt-6">
         <div className="grid grid-cols-[120px_120px_120px_220px_1fr] gap-x-12 ">
           {/* COLUMN 1 */}
           <div>
@@ -22,19 +22,6 @@ const EGDd = () => {
               </Link>
             ))}
           </div>
-          {/* <div>
-           <h3 className="font-semibold mt-6 mb-3">COLLECTION</h3>
-            {["EyeX", "Tees", "Signature", "Spiderman", "Hipster"].map((i) => (
-              <Link
-                key={i}
-                to={`products/EYE GLASS?`}
-                className="block text-sm text-gray-600 hover:text-black py-1"
-              >
-                {i}
-              </Link>
-            ))}
-          </div> */}
-
           {/* COLUMN 2 */}
           <div>
             <h3 className="font-semibold mb-3">SHAPE</h3>
@@ -122,7 +109,7 @@ const EGDd = () => {
 
           {/* IMAGE */}
           <div className="flex justify-end">
-            <div className="w-[520px] h-[380px] rounded-3xl overflow-hidden">
+            <div className="w-[630px] h-[320px] rounded-3xl overflow-hidden">
               <img
                 src={assets.egdd}
                 className="w-full h-full object-cover"

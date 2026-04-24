@@ -24,32 +24,40 @@ const pgglassesProducts = useMemo(() => {
   return products.filter((item) => item.category === "POWERED_GLASS");
 }, [products]);
 
-// Change 2: Update the Filter Effect logic
 useEffect(() => {
   let filtered = [...pgglassesProducts];
 
+  // 1. Sidebar Filters logic
   Object.keys(selectedFilters).forEach((key) => {
     if (selectedFilters[key]?.length > 0) {
       filtered = filtered.filter((item) => {
         // Look in specifications OR metadata OR top-level
         const val = item[key] || item.specifications?.[key] || item.metadata?.[key];
+        
+        // Use val?.toString() to prevent crash if val is undefined
         return selectedFilters[key].some(
-          (filterVal) => val?.toString().toUpperCase() === filterVal.toUpperCase()
+          (filterVal) => val?.toString().toLowerCase() === filterVal.toLowerCase()
         );
       });
     }
   });
 
-  // Search logic (keep as is, but adding brand check)
-  if (search?.trim() !== "") {
-    filtered = filtered.filter((item) =>
-      (item.name + item.brand + item.description)
-        .toLowerCase()
-        .includes(search.toLowerCase())
-    );
+  // 2. Search logic (Fixed the crash here)
+  if (search && search.trim() !== "") {
+    const searchTerm = search.toLowerCase();
+    filtered = filtered.filter((item) => {
+      // Use optional chaining and empty strings as fallbacks
+      const name = item.name?.toLowerCase() || "";
+      const brand = item.brand?.toLowerCase() || "";
+      const desc = item.description?.toLowerCase() || "";
+      
+      return name.includes(searchTerm) || 
+             brand.includes(searchTerm) || 
+             desc.includes(searchTerm);
+    });
   }
 
-  // Sort logic (Ensure numbers)
+  // 3. Sort logic
   if (sortType === "low-high") filtered.sort((a, b) => a.price - b.price);
   if (sortType === "high-low") filtered.sort((a, b) => b.price - a.price);
 
