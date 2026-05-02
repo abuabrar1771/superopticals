@@ -1488,7 +1488,7 @@ export const products = [
   "images": [cg_fast_rec_2],
   "specifications": {
     "style": "Rimed",
-    "shape": "Rectagle",
+    "shape": "Rectangle",
     "material": "Spx",
     "size": "Medium",
     "color": "Greay",
