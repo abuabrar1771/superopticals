@@ -26,9 +26,9 @@ connectCloudinary();
 
 app.use(express.json());
 app.use(cors({
-  origin: '*', // In production, replace '*' with your actual frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'token'] 
+  origin: ["https://superopticals.vercel.app", "https://your-admin-domain.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
 
 //api endpoints
