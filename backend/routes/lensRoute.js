@@ -1,19 +1,11 @@
-import express from 'express'
-import { addLensType, deleteLensType, getAllLensType, updateLensType } from '../controllers/lensType.js';
-import { addLensFeature, deleteFeature, getAllLensFeatures, updateFeature } from '../controllers/lensFeatures.js';
-
-
-
+import express from 'express';
 const lensRouter = express.Router();
+import { updateLensPrice, getAllLensConfigs } from '../controllers/lensController.js';
 
-lensRouter.post('/add',addLensType)
-lensRouter.post('/update',updateLensType)
-lensRouter.post('/delete',deleteLensType)
-lensRouter.get('/getall',getAllLensType)
+// Route for updating/creating price
+lensRouter.post('/update-price', updateLensPrice);
 
-lensRouter.post('/addfeature',addLensFeature)
-lensRouter.post('/updatefeature',updateFeature)
-lensRouter.post('/deletefeature',deleteFeature)
-lensRouter.get('/getallfeature',getAllLensFeatures)
+// Route for fetching current settings
+lensRouter.get('/all', getAllLensConfigs);
 
 export default lensRouter;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiOutlineCloudUpload, HiOutlineTrash } from "react-icons/hi";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios"; // Added axios for better request handling
@@ -26,7 +26,25 @@ const AddProduct = ({ token }) => {
   const [subCategory, setSubCategory] = useState(
     categoryMap[mainCategories[0]][0],
   );
+  //auto generated sku code
+  useEffect(() => {
+    const fetchGeneratedSKU = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/product/next-sku",
+        );
+        if (response.data.success) {
+          // This updates your formData state with the backend's code
+          setFormData((prev) => ({ ...prev, sku: response.data.sku }));
+        }
+      } catch (error) {
+        console.error("Error pre-fetching SKU:", error);
+      }
+    };
 
+    fetchGeneratedSKU();
+  }, []); // Runs once on mount
+  //
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
     setCategory(selectedCategory);
@@ -40,9 +58,7 @@ const AddProduct = ({ token }) => {
     }));
   };
   //
-
-  const [images, setImages] = useState([]);
-  const [formData, setFormData] = useState({
+  const emptyForm = {
     sku: "",
     name: "",
     brand: "",
@@ -65,7 +81,10 @@ const AddProduct = ({ token }) => {
       bestseller: false,
       newArrival: false,
     },
-  });
+  };
+
+  const [images, setImages] = useState([]);
+  const [formData, setFormData] = useState(emptyForm);
 
   const FRAME_SHAPES = [
     "Round",
@@ -109,6 +128,9 @@ const AddProduct = ({ token }) => {
       const keys = name.split(".");
       setFormData((prev) => {
         let updated = JSON.parse(JSON.stringify(prev));
+
+        if (!updated[keys[0]]) updated[keys[0]] = {};
+
         if (keys.length === 3) {
           updated[keys[0]][keys[1]][keys[2]] = val;
         } else {
@@ -137,7 +159,7 @@ const AddProduct = ({ token }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const toastId = toast.loading("Uploading product...");
-
+    console.log("Data being sent to backend:", formData)
     try {
       const data = new FormData();
 
@@ -187,12 +209,21 @@ const AddProduct = ({ token }) => {
 
       if (response.data.success) {
         toast.update(toastId, {
-          render: "Success!",
+          render: "Added Product Details Successfully!",
           type: "success",
           isLoading: false,
-          autoClose: 3000,
+          autoClose: 2000,
         });
+        const lastSku = response.data.sku;
+        const lastNumber = parseInt(lastSku.split("-")[1]);
+        const nextSku = `SO-${(lastNumber + 1).toString().padStart(4, "0")}`;
         // Reset logic here
+        setFormData({
+          ...emptyForm, // Spread the empty values
+          sku: nextSku, // Set the new calculated SKU
+        });
+        setImages([]);
+        setColor("");
       }
     } catch (error) {
       console.error("Submission Error:", error);
@@ -287,10 +318,9 @@ const AddProduct = ({ token }) => {
               <input
                 name="sku"
                 value={formData.sku}
-                onChange={handleChange}
-                className="w-full mt-1 p-2.5 border border-slate-500 rounded-lg outline-none focus:border-cyan-500"
-                placeholder="SO-123"
-                required
+                readOnly={true} // Users can't type in it
+                className="w-full mt-1 p-2.5 border border-slate-300 rounded-lg bg-slate-100 text-slate-500 cursor-not-allowed"
+                placeholder="Generating SKU..."
               />
             </div>
           </section>
@@ -393,7 +423,7 @@ const AddProduct = ({ token }) => {
                 </label>
                 <select
                   name="specifications.shape"
-                  value={formData.specifications.shape}
+                  value={formData.specifications?.shape || ""}
                   onChange={handleChange}
                   className="w-full mt-1 p-2 border border-slate-500 rounded-md bg-white"
                 >
@@ -411,7 +441,7 @@ const AddProduct = ({ token }) => {
                 </label>
                 <select
                   name="specifications.size"
-                  value={formData.specifications.size}
+                  value={formData.specifications?.size || ""}
                   onChange={handleChange}
                   className="w-full mt-1 p-2 border border-slate-500 rounded-md bg-white"
                 >
@@ -427,7 +457,7 @@ const AddProduct = ({ token }) => {
                 </label>
                 <select
                   name="specifications.material" // Change from specifications.size
-                  value={formData.specifications.material}
+                  value={formData.specifications?.material || ""}
                   onChange={handleChange}
                   className="w-full mt-1 p-2 border border-slate-500 rounded-md bg-white"
                   required
@@ -506,7 +536,7 @@ const AddProduct = ({ token }) => {
               </label>
               <select
                 name="metadata.gender"
-                value={formData.metadata.gender}
+                value={formData.metadata?.gender || ""}
                 onChange={handleChange}
                 className="mt-1 p-2.5 border border-slate-500 rounded-lg bg-white"
                 required
@@ -525,7 +555,7 @@ const AddProduct = ({ token }) => {
                   type="checkbox"
                   name="metadata.bestseller"
                   onChange={handleChange}
-                  checked={formData.metadata.bestseller}
+                  checked={formData.metadata?.bestseller || false}
                   className="w-5 h-5 rounded border-slate-500 text-cyan-600 focus:ring-cyan-500"
                 />
                 <span className="text-sm text-slate-700 font-medium group-hover:text-cyan-600">
@@ -537,7 +567,7 @@ const AddProduct = ({ token }) => {
                   type="checkbox"
                   name="metadata.newArrival"
                   onChange={handleChange}
-                  checked={formData.metadata.newArrival}
+                  checked={formData.metadata?.newArrival || false}
                   className="w-5 h-5 rounded border-slate-500 text-cyan-600 focus:ring-cyan-500"
                 />
                 <span className="text-sm text-slate-700 font-medium group-hover:text-cyan-600">

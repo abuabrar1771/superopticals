@@ -46,19 +46,21 @@ const SunGlasses = () => {
     }
 
  useEffect(() => {
-  // 1. Start with the correct category (Match your database string exactly)
-  // For Eyeglasses: "EYE_GLASS", For Sunglasses: "SUN_GLASSES"
-  let filtered = products.filter((item) => item.category === "SUN_GLASS"); 
+  // 1. Start by filtering for Sunglasses. 
+  // We use .toUpperCase() and .trim() to ensure a perfect match with your DB.
+  let filtered = products.filter((item) => 
+    item.category?.toString().toUpperCase().trim() === "SUN_GLASS"
+  );
 
-  // 2. Main Filtering Loop
+  // 2. Apply the filters selected by the user
   Object.keys(selectedFilters).forEach((key) => {
     const filterValues = selectedFilters[key];
 
-    // If a filter is selected and it isn't "All"
+    // Only filter if the user has actually checked a box and it's not "All"
     if (filterValues && filterValues.length > 0 && !filterValues.includes("All")) {
       filtered = filtered.filter((item) => {
         
-        // 🔹 FIX: Look in all 3 possible places (Top Level, Specs, Metadata)
+        // 🔹 Look for the value in the item directly, or inside specifications/metadata
         const rawValue = 
           item[key] || 
           item.specifications?.[key] || 
@@ -67,38 +69,43 @@ const SunGlasses = () => {
 
         const itemValue = rawValue.toString().toLowerCase().trim();
 
-        // 🔹 Check if this product matches ANY of the selected checkboxes
+        // Check if the item matches ANY of the values selected in that filter category
         return filterValues.some((val) => {
           const targetValue = val.toString().toLowerCase().trim();
 
+          // Special logic for Gender to handle combined strings like "Men & Women"
           if (key === "gender") {
-            // ✅ SPLIT MATCH: Handles "Men & Women", "Men/Women"
             const words = itemValue.split(/[\s&/_]+/); 
             return words.includes(targetValue) || itemValue === "unisex";
           }
 
-          // ✅ STRICT MATCH: For Shape, Style, etc.
+          // Strict match for everything else (Shape, Style, Material)
           return itemValue === targetValue;
         });
       });
     }
   });
 
-  // 3. Search Bar
+  // 3. Apply Search Bar Logic
   if (showSearch && search?.trim()) {
     const searchLower = search.toLowerCase();
     filtered = filtered.filter(
       (item) =>
         item.name?.toLowerCase().includes(searchLower) ||
-        item.brand?.toLowerCase().includes(searchLower)
+        item.brand?.toLowerCase().includes(searchLower) ||
+        item.description?.toLowerCase().includes(searchLower)
     );
   }
 
-  // 4. Sort
+  // 4. Apply Sorting
   if (sortType === "low-high") filtered.sort((a, b) => a.price - b.price);
   if (sortType === "high-low") filtered.sort((a, b) => b.price - a.price);
 
   setFilteredProducts(filtered);
+  
+  // Debugging: Log this to see if products are being lost at this stage
+  console.log("Filtered Products Count:", filtered.length);
+
 }, [selectedFilters, products, sortType, search, showSearch]);
 
 const isFilterActive =

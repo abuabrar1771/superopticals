@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
@@ -8,10 +8,19 @@ import { ShopContext } from "../context/ShopContext";
 
 const Navbar_New = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch, getCartCount } = useContext(ShopContext);
-
+  
+  // Use 'token' and 'setToken' from Context if available, 
+  // otherwise manage it locally like this:
+  const { setShowSearch, getCartCount, token, setToken, logout } = useContext(ShopContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, [setToken]);
+  
   return (
     <div className="sticky top-0 bg-white shadow-md z-50">
       <div className="flex items-center justify-between py-7 px-4 sm:px-10 lg:px-20 font-medium">
@@ -41,7 +50,7 @@ const Navbar_New = () => {
 
             {/* MEGA DROPDOWN */}
             
-            <div className="fixed left-0 top-[85px] w-screen hidden group-hover:block z-50 pt-4">
+            <div className="fixed left-0 top-[112px] w-screen hidden group-hover:block z-50 pt-4">
               <EGDd />
             </div>
           </div>
@@ -58,7 +67,7 @@ const Navbar_New = () => {
             </NavLink>
 
             {/* MEGA DROPDOWN */}
-            <div className="fixed left-0 top-[85px] w-screen hidden group-hover:block z-50 pt-4">
+            <div className="fixed left-0 top-[112px] w-screen hidden group-hover:block z-50 pt-4">
               <SGDd />
             </div>
           </div>
@@ -123,32 +132,30 @@ const Navbar_New = () => {
         </ul>
         {/* ------------------END OF MAIN UL ------------------------- */}
         <div className="flex items-center gap-4">
-          {/* <img
-            onClick={() => setShowSearch(true)}
-            src={assets.search_icon}
-            alt=""
-            className="w-5 cursor-pointer"
-          /> */}
+          
           <div className="group relative">
             <img
-              onClick={() => navigate("/Login")}
+              onClick={() => token ? null : navigate("/Login")}
               src={assets.profile_icon}
               alt=""
               className="w-5 cursor-pointer"
             />
+            {/* drop down menu */}
+            {token &&
             <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
               <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-400 text-black rounded  ">
-                <p className="cursor-pointer hover:bg-gray-600 hover:text-white px-2 py-1 rounded">
+                <p onClick={() => navigate('/profile')} className="cursor-pointer hover:bg-gray-600 hover:text-white px-2 py-1 rounded">
                   My Profile
                 </p>
-                <p className="cursor-pointer hover:bg-gray-600 hover:text-white px-2 py-1 rounded">
+                <p onClick={() => navigate('/orders')} className="cursor-pointer hover:bg-gray-600 hover:text-white px-2 py-1 rounded">
                   Orders
                 </p>
-                <p className="cursor-pointer hover:bg-gray-600 hover:text-white px-2 py-1 rounded">
+                <p onClick={logout} className="cursor-pointer hover:bg-gray-600 hover:text-white px-2 py-1 rounded">
                   LogOut
                 </p>
               </div>
             </div>
+            }
           </div>
           <Link to="/cart" className="relative">
             <img src={assets.cart_icon} className="w-5 min-w-5" alt="Cart" />

@@ -8,7 +8,7 @@ import {
   HiOutlineLogout,
 } from "react-icons/hi"; // Heroicons set
 import { Link, NavLink } from "react-router-dom";
-import { assets } from "../assets/assets";
+// import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
@@ -30,7 +30,7 @@ const Navbar = ({ setToken }) => {
   return (
     <div className="flex items-center py-2 px-[4%] justify-between border-b bg-white">
       <Link to="/">
-        <img src={assets.logo} className="w-40 sm:w-52 lg:w-60" alt="Logo" />
+        {/* <img src={assets.superoptical} className="w-40 sm:w-52 lg:w-60" alt="Logo" /> */}
       </Link>
       
       <button 

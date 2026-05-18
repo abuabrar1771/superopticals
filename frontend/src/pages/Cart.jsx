@@ -1,168 +1,109 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
-import Title from "../components/Title";
-import { assets } from "../assets/assets";
-import { Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import OrderSummary from "../components/OrderSummary";
 
 const Cart = () => {
-  const { currency, cartItems, updateQuantity, getCartAmount } =
-    useContext(ShopContext);
-  const [cartData, setCartData] = useState([]);
+  const { cartItems, currency, getCartAmount, delivery_fee, updateCartQuantity, setCartItems } = useContext(ShopContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setCartData(cartItems);
-  }, [cartItems]);
+  const removeItem = (index) => {
+    const updated = cartItems.filter((_, i) => i !== index);
+    setCartItems(updated);
+    localStorage.setItem("cart", JSON.stringify(updated));
+  };
 
   return (
-    <div className="border-t pt-14 px-4 max-w-7xl mx-auto">
-      {cartData.length === 0 ? (
-        <div className="py-10 text-center">
-          <div className="text-3xl mb-10">
-            <Title text1={"YOUR"} text2={"CART"} />
-          </div>
-          <p className="text-gray-400 text-lg">Your shopping bag is empty.</p>
-          <button
-            onClick={() => navigate("/")}
-            className="mt-4 bg-black text-white px-8 py-2 rounded-md uppercase text-sm"
-          >
-            Continue Shopping
-          </button>
-        </div>
-      ) : (
-        /* MAIN FLEX CONTAINER */
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
-          {/* LEFT SIDE WRAPPER */}
-          <div className="flex-1 w-full">
-            {/* Title for Left Side */}
-            <div className="text-3xl mb-10">
-              <Title text1={"YOUR"} text2={"CART"} />
+    <div className="pt-14 px-4 sm:px-[5vw] md:px-[7vw]">
+      <h2 className="text-2xl font-bold mb-10 uppercase tracking-tight">Your Shopping Cart</h2>
+
+      {/* MAIN CONTAINER: Flex/Grid for Side-by-Side */}
+      <div className="flex flex-col lg:flex-row gap-10">
+        
+        {/* LEFT SIDE: CART ITEMS (66% Width) */}
+        <div className="flex-1 lg:w-2/3 space-y-6">
+          {cartItems.length === 0 ? (
+            <div className="p-10 border-2 border-dashed rounded-xl text-center text-gray-400">
+              Your cart is empty
             </div>
-
-            {/* --- This container and everything below it moves left --- */}
-            <div className="sm:ml-[-20px]">
-              {/* Table Header */}
-              <div className="hidden sm:grid grid-cols-[4fr_1fr_1fr_0.5fr] items-start py-3 px-2 border-b text-sm font-bold uppercase text-gray-500 tracking-wider">
-                <p>Product Details</p>
-                <p className="text-center">Price</p>
-                <p className="text-center">Total</p>
-                <p className="text-right">Action</p>
-              </div>
-
-              {/* Table Body */}
-              <div className="divide-y divide-gray-100">
-                {cartData.map((item, index) => (
-                  <div
-                    key={index}
-                    className="py-6 grid grid-cols-[3fr_1fr_1fr] sm:grid-cols-[4fr_1fr_1fr_0.5fr] items-center gap-4 hover:bg-gray-50 transition-colors px-2"
-                  >
-                    {/* ... 1. PRODUCT INFO ... */}
-                    <div className="flex items-center gap-4 sm:gap-6">
-                      <div className="w-20 sm:w-24 bg-white border border-gray-100 p-2 rounded-lg flex-shrink-0">
-                        <img
-                          className="w-full h-full object-contain"
-                          src={item.image}
-                          alt={item.name}
-                        />
-                      </div>
-                      <div className="overflow-hidden">
-                        <p className="text-sm sm:text-base font-bold text-gray-900 truncate">
-                          {item.name}
-                        </p>
-                        <p className="sm:hidden text-xs text-gray-500 mt-1">
-                          {currency}
-                          {item.unitPrice ||
-                            item.totalAmount / item.quantity}{" "}
-                          per unit
-                        </p>
-                        <div className="mt-2 flex flex-wrap gap-2 items-center">
-                          <div className="flex items-center border border-gray-300 rounded overflow-hidden">
-                            <input
-                              onChange={(e) =>
-                                e.target.value === "" || e.target.value === "0"
-                                  ? null
-                                  : updateQuantity(
-                                      item.tempId || item._id,
-                                      Number(e.target.value),
-                                    )
-                              }
-                              className="w-12 sm:w-16 px-1 sm:px-2 py-1 text-center text-sm outline-none bg-white"
-                              type="number"
-                              min={1}
-                              defaultValue={item.quantity}
-                            />
-                          </div>
-                          {item.lens && (
-                            <span className="text-[10px] bg-blue-50 px-2 py-0.5 rounded text-blue-600 font-medium">
-                              {item.lens.name || item.lens}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* 2. UNIT PRICE */}
-                    <div className="hidden sm:block text-center">
-                      <p className="text-gray-900 font-medium">
-                        {currency}
-                        {item.unitPrice ||
-                          Number(item.totalAmount) / Number(item.quantity)}
-                      </p>
-                    </div>
-
-                    {/* 3. TOTAL AMOUNT */}
-                    <div className="text-center">
-                      <p className="font-bold text-base sm:text-lg text-black">
-                        {currency}
-                        {item.totalAmount}
-                      </p>
-                    </div>
-
-                    {/* 4. ACTION */}
-                    <div className="text-right">
-                      <button
-                        onClick={() =>
-                          updateQuantity(item.tempId || item._id, 0)
-                        }
-                        className="p-2 hover:bg-red-50 rounded-full transition-colors group"
-                      >
-                        <div className="relative h-5 w-5 ml-auto">
-                          <img
-                            src={assets.bin_icon}
-                            className="h-5 w-5 block group-hover:hidden"
-                            alt="delete"
-                          />
-                          <div className="hidden group-hover:block">
-                            <Trash2 className="h-5 w-5 text-red-500" />
-                          </div>
-                        </div>
-                      </button>
-                    </div>
+          ) : (
+            cartItems.map((item, index) => (
+              <div key={index} className="flex gap-4 p-4 bg-white border rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <img src={item.image} className="w-24 h-24 object-cover rounded-lg border" alt="" />
+                
+                <div className="flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-bold text-gray-900">{item.name}</h3>
+                    <p className="text-xs text-gray-500 mt-1">{item.lens?.name || "Standard Lens"}</p>
                   </div>
-                ))}
+
+                  {/* Quantity Controller & Price */}
+                  <div className="flex justify-between items-center mt-4">
+                    <div className="flex items-center border rounded-lg overflow-hidden">
+                      <button 
+                        onClick={() => updateCartQuantity(index, item.quantity - 1)}
+                        className="px-3 py-1 bg-gray-50 hover:bg-gray-200 border-r"
+                      > – </button>
+                      <span className="px-4 font-medium">{item.quantity}</span>
+                      <button 
+                        onClick={() => updateCartQuantity(index, item.quantity + 1)}
+                        className="px-3 py-1 bg-gray-50 hover:bg-gray-200 border-l"
+                      > + </button>
+                    </div>
+                    <p className="font-bold text-lg">{currency}{item.totalAmount}</p>
+                  </div>
+                </div>
+
+                <button onClick={() => removeItem(index)} className="text-gray-300 hover:text-red-500 self-start">
+                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                   </svg>
+                </button>
               </div>
-            </div>
-          </div>
+            ))
+          )}
+        </div>
 
-          {/* RIGHT SIDE: SUMMARY & CHECKOUT */}
-          <div className="lg:w-[520px] w-full sticky top-10">
-            {/* Title for Right Side - Now Aligned with Left Side */}
-            <div className="text-3xl mb-10">
-              <Title text1={"ORDER"} text2={"SUMMARY"} />
-            </div>
+        {/* RIGHT SIDE: ORDER SUMMARY (33% Width) */}
+        <div className="lg:w-1/3">
+          <div className="bg-gray-50 p-6 rounded-2xl border sticky top-10">
+            <h3 className="text-xl font-bold mb-6 border-b pb-4">Order Summary</h3>
+            
+            <div className="space-y-4">
+              <div className="flex justify-between text-gray-600">
+                <span>Subtotal</span>
+                <span>{currency}{getCartAmount()}</span>
+              </div>
+              <div className="flex justify-between text-gray-600">
+                <span>Shipping Fee</span>
+                <span>{currency}{delivery_fee}</span>
+              </div>
+              <div className="flex justify-between text-gray-600">
+                <span>Tax (GST)</span>
+                <span>Calculated at checkout</span>
+              </div>
+              
+              <hr className="my-4" />
+              
+              <div className="flex justify-between text-xl font-black">
+                <span>Total</span>
+                <span className="text-blue-600">{currency}{getCartAmount() + delivery_fee}</span>
+              </div>
 
-            <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-              <OrderSummary
-                currency={currency}
-                getCartAmount={getCartAmount}
-                navigate={navigate}
-              />
+              <button 
+                onClick={() => navigate('/PlaceOrder')}
+                className="w-full bg-black text-white py-4 rounded-xl font-bold mt-6 hover:bg-gray-800 transition-all shadow-lg active:scale-95"
+              >
+                Checkout Now
+              </button>
+
+              <p className="text-[10px] text-center text-gray-400 mt-4 px-4 uppercase tracking-widest">
+                Safe & Secure Payments Only
+              </p>
             </div>
           </div>
         </div>
-      )}
+
+      </div>
     </div>
   );
 };

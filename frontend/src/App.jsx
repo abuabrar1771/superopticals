@@ -5,48 +5,64 @@ import EyeGlasses from "./pages/EyeGlasses";
 import SunGlasses from "./pages/SunGlasses";
 import PoweredSunGlasses from "./pages/PoweredSunGlasses";
 import ComputerGlasses from "./pages/ComputerGlasses";
-import ContactLenses from "./pages/ContactLenses"
-import Accessories from "./pages/Accessories"
-import Brands from "./pages/Brands"
-import Product from "./pages/Product"
-import Orders from "./pages/Orders"
-import Cart from "./pages/Cart"
-import PlaceOrder from './pages/PlaceOrder'
-import Login from './pages/Login'
+import ContactLenses from "./pages/ContactLenses";
+import Accessories from "./pages/Accessories";
+import Brands from "./pages/Brands";
+import Product from "./pages/Product";
+import Orders from "./pages/Orders";
+import Cart from "./pages/Cart";
+import PlaceOrder from './pages/PlaceOrder';
+import Login from './pages/Login';
 import Footer from "./components/Footer";
-import Navbar_New from "./components/Navbar_New"
-import SearchBar from "./components/SearchBar"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import Navbar_New from "./components/Navbar_New";
+import SearchBar from "./components/SearchBar";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import TopHeader from "./components/TopHeader";
+
+// 💡 IMPORT YOUR SHOP CONTEXT PROVIDER HERE
+import ShopContextProvider from "./context/ShopContext"; 
 
 const App = () => {
   return (
-    <div className="min-h-screen max-w-screen bg-[#e7edeb]">
-      <ToastContainer />
-      <TopHeader />
-      <Navbar_New/>
-      
+    // ✅ FIX: Wrap your entire application inside the Context Provider container!
+    <ShopContextProvider>
+      <div className="min-h-screen max-w-screen bg-[#e7edeb]">
+        <ToastContainer
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        
+        {/* Now these child elements can successfully listen to token and userProfile state streams! */}
+        <TopHeader />
+        <Navbar_New />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/eyeglasses" element={<EyeGlasses />} />
-        <Route path="/sunglasses" element={<SunGlasses />} />
-        <Route path="/poweredsunglasses" element={<PoweredSunGlasses />}/>
-        <Route path="/computerglasses" element={<ComputerGlasses />}/>
-        <Route path="/contactlenses" element={<ContactLenses />}/>
-        <Route path="/accessories" element={<Accessories />}/>
-        <Route path="/brands" element={<Brands />}/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/eyeglasses" element={<EyeGlasses />} />
+          <Route path="/sunglasses" element={<SunGlasses />} />
+          <Route path="/poweredsunglasses" element={<PoweredSunGlasses />} />
+          <Route path="/computerglasses" element={<ComputerGlasses />} />
+          <Route path="/contactlenses" element={<ContactLenses />} />
+          <Route path="/accessories" element={<Accessories />} />
+          <Route path="/brands" element={<Brands />} />
 
-        <Route path="/Product/:productId" element={<Product/>}/> 
-        <Route path="/Cart" element={<Cart/>} />
-        <Route path="/Login" element={<Login/>} />
-        <Route path="/PlaceOrder" element={<PlaceOrder/>}/>
-        <Route path="/Orders" element={<Orders/>}/>
-      </Routes>
-      
-      <Footer/>
-    </div>
+          <Route path="/Product/:productId" element={<Product />} /> 
+          <Route path="/Cart" element={<Cart />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/PlaceOrder" element={<PlaceOrder />} />
+          <Route path="/Orders" element={<Orders />} />
+        </Routes>
+        
+        <Footer />
+      </div>
+    </ShopContextProvider>
   );
 };
 

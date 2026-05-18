@@ -1,42 +1,52 @@
 import productModel from "../models/productModels.js";
 import { v2 as cloudinary } from "cloudinary";
 
+const getNextSku = async (req, res) => {
+  try {
+    // 1. Find the single latest product based on creation date
+    const lastProduct = await productModel.findOne().sort({ createdAt: -1 });
+
+    if (!lastProduct) {
+      // If database is empty, start at 1
+      return res.json({ success: true, sku: "SO-0001" });
+    }
+
+    // 2. Get the number from the last SKU (SO-0003 -> 3)
+    const lastSku = lastProduct.sku; // e.g., "SO-0003"
+    const lastNumber = parseInt(lastSku.split("-")[1]); 
+
+    // 3. Increment
+    const nextNumber = lastNumber + 1;
+    const autoSKU = `SO-${nextNumber.toString().padStart(4, "0")}`;
+
+    res.json({ success: true, sku: autoSKU });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// backend/controllers/productController.js
+
+
 const addProduct = async (req, res) => {
   try {
-    // 1. Destructure the fields sent by FormData
-    const {
-      name,
-      description,
-      price,
-      category,
-      subCategory,
-      stock,
-      sku,
-      brand,
-      specifications,
-      metadata,
-      currency,
-    } = req.body;
+    // 1. Destructure the fields
+    const { name, description, price, category, subCategory, stock, brand, specifications, metadata, currency,sku } = req.body;
 
-    // 2. Access images from req.files (Object format for upload.fields)
-    const image1 = req.files.image1 ? req.files.image1[0] : null;
-    const image2 = req.files.image2 ? req.files.image2[0] : null;
-    const image3 = req.files.image3 ? req.files.image3[0] : null;
-    const image4 = req.files.image4 ? req.files.image4[0] : null;
-    const image5 = req.files.image5 ? req.files.image5[0] : null;
+    // 3. Handle Images (Keep your existing multer/cloudinary logic)
+    const imageFiles = [
+      req.files.image1 ? req.files.image1[0] : null,
+      req.files.image2 ? req.files.image2[0] : null,
+      req.files.image3 ? req.files.image3[0] : null,
+      req.files.image4 ? req.files.image4[0] : null,
+      req.files.image5 ? req.files.image5[0] : null,
+    ].filter((item) => item !== null);
 
-    const imageFiles = [image1, image2, image3, image4, image5].filter(
-      (item) => item !== null,
-    );
-
-    // 3. Upload to Cloudinary
     let imagesUrl = await Promise.all(
       imageFiles.map(async (item) => {
-        let result = await cloudinary.uploader.upload(item.path, {
-          resource_type: "image",
-        });
+        let result = await cloudinary.uploader.upload(item.path, { resource_type: "image" });
         return result.secure_url;
-      }),
+      })
     );
 
     // 4. Prepare data for Database
@@ -51,11 +61,7 @@ const addProduct = async (req, res) => {
       stock: Number(stock),
       images: imagesUrl,
       currency: currency || "₹",
-      // Parse strings back to objects
-      specifications:
-        typeof specifications === "string"
-          ? JSON.parse(specifications)
-          : specifications,
+      specifications: typeof specifications === "string" ? JSON.parse(specifications) : specifications,
       metadata: typeof metadata === "string" ? JSON.parse(metadata) : metadata,
       date: Date.now(),
     };
@@ -63,7 +69,7 @@ const addProduct = async (req, res) => {
     const product = new productModel(productData);
     await product.save();
 
-    res.json({ success: true, message: "Product Added Successfully" });
+    res.json({ success: true, message: "Product Added Successfully", sku: sku });
   } catch (error) {
     console.log("Backend Error:", error);
     res.status(500).json({ success: false, message: error.message });
@@ -179,4 +185,5 @@ export {
   updateProduct,
   removeProduct,
   getSingleProduct,
+  getNextSku,
 };

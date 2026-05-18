@@ -1,23 +1,27 @@
 import validator from "validator";
-import bcrypt, { genSalt } from "bcrypt";
+import bcrypt from "bcrypt";
 import userModel from "../models/userModels.js";
 import jwt from "jsonwebtoken";
 
+// Helper function to create JWT token
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET);
 };
-// route for user login
+
+// ---------------- 1. USER LOGIN ----------------
 const loginUser = async (req, res) => {
   try {
     const { mobileNum, password } = req.body;
     const user = await userModel.findOne({ mobileNum });
 
+    // ✅ FIX: Added missing 'return' statement to prevent server crashes
     if (!user) {
-      res.json({
+      return res.json({
         success: false,
-        message: "User doesn't exists",
+        message: "User doesn't exist",
       });
     }
+
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (isMatch) {
@@ -25,11 +29,15 @@ const loginUser = async (req, res) => {
       res.json({
         success: true,
         token,
+        user: {
+          fullname: user.fullname,
+          mobileNum: user.mobileNum
+        }
       });
     } else {
       res.json({
         success: false,
-        message: "Invalid Credential",
+        message: "Invalid Credentials",
       });
     }
   } catch (error) {
@@ -41,13 +49,13 @@ const loginUser = async (req, res) => {
   }
 };
 
-//route for user signup
+// ---------------- 2. USER SIGNUP / REGISTER ----------------
 const registerUser = async (req, res) => {
   try {
     const { fullname, mobileNum, password } = req.body;
-    //checking mobilenumber already exisits or not
+    
+    // Checking mobile number already exists or not
     const exists = await userModel.findOne({ mobileNum });
-
     if (exists) {
       return res.json({
         success: false,
@@ -55,7 +63,7 @@ const registerUser = async (req, res) => {
       });
     }
 
-    // validating mobilenumber format & strong password
+    // Validating mobile number format & strong password
     if (!validator.isMobilePhone(mobileNum, "en-IN")) {
       return res.json({
         success: false,
@@ -65,9 +73,10 @@ const registerUser = async (req, res) => {
     if (password.length < 8) {
       return res.json({
         success: false,
-        message: "Please Enter minimum 8 charactor ",
+        message: "Please Enter minimum 8 characters",
       });
     }
+
     // Hashing user password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -79,12 +88,17 @@ const registerUser = async (req, res) => {
     });
 
     const user = await newUser.save();
-
     const token = createToken(user._id);
 
+    // ✅ FIX: Pass down the token properties directly so signups log in instantly
     res.json({
       success: true,
-      message: `Token Genrated ${token}`,
+      message: "Account Created Successfully",
+      token,
+      user: {
+        fullname: user.fullname,
+        mobileNum: user.mobileNum
+      }
     });
   } catch (error) {
     console.log("catch error - " + error);
@@ -94,7 +108,8 @@ const registerUser = async (req, res) => {
     });
   }
 };
-//route for admin login
+
+// ---------------- 3. ADMIN LOGIN ----------------
 const adminLogin = async (req, res) => {
   try {
     const { mobileNum, password } = req.body;
@@ -103,18 +118,18 @@ const adminLogin = async (req, res) => {
       mobileNum === process.env.ADMIN_MOBILENUM &&
       password === process.env.ADMIN_PASSWORD
     ) {
-      const token = jwt.sign(mobileNum+password , process.env.JWT_SECRET);
+      const token = jwt.sign(mobileNum + password, process.env.JWT_SECRET);
       
       res.json({
         success: true,
-        message: "Admin Loggedin Successfully",
+        message: "Admin Logged in Successfully",
         token
       });
     } else {
-        console.log("user mobile number"+mobileNum)
+      console.log("user mobile number: " + mobileNum);
       res.json({
         success: false,
-        message: "Invalid Credential",
+        message: "Invalid Credentials",
       });
     }
   } catch (error) {
@@ -126,4 +141,42 @@ const adminLogin = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser, adminLogin };
+// ---------------- 4. GET USER DATA ----------------
+const getUserData = async (req, res) => {
+  try {
+    // ✅ CRITICAL FIX: Changed from req.userId to req.body.userId 
+    // to match exactly where your authUser middleware stores it!
+    const userId = req.body.userId; 
+
+    if (!userId) {
+      return res.json({
+        success: false,
+        message: "Authorization Failed. User ID missing."
+      });
+    }
+
+    const user = await userModel
+      .findById(userId)
+      .select("-password");
+
+    if (!user) {
+      return res.json({
+        success: false,
+        message: "User not found in database."
+      });
+    }
+
+    res.json({
+      success: true,
+      user
+    });
+
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+export { loginUser, registerUser, adminLogin, getUserData };

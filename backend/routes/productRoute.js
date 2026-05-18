@@ -5,9 +5,11 @@ import {
   totalProductList,
   getSingleProduct,
   updateProduct,
+  getNextSku,
 } from "../controllers/productController.js";
 import upload from "../middleware/multer.js";
 import adminAuth from "../middleware/adminAuth.js";
+import productModel from "../models/productModels.js"
 
 const productRouter = express.Router();
 
@@ -28,5 +30,8 @@ productRouter.post("/remove", adminAuth, removeProduct);
 
 productRouter.get("/list", totalProductList);
 productRouter.get("/single", getSingleProduct);
+
+productRouter.get("/next-sku", getNextSku);
+
 
 export default productRouter;

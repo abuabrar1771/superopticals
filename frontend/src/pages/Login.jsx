@@ -1,110 +1,151 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { ShopContext } from "../context/ShopContext";
 
-const Login = ({ setToken }) => {
+const Login = ({ isCheckout = false }) => {
   const [currentState, setCurrentState] = useState("Login");
-  const [useOtp, setUseOtp] = useState(false);
   const navigate = useNavigate();
+  
+  // ✅ CHG: Pull getUserProfile directly out of your context wrapper hooks
+  const { backendUrl, setToken, token, getUserProfile } = useContext(ShopContext);
 
-  // State for form inputs
   const [mobileNumber, setMobileNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (token && !isCheckout) {
+      // navigate('/');
+    }
+  }, [token]);
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-
     try {
+      // Ensure we don't double-prefix if user typed it
+      const cleanMobile = mobileNumber.startsWith('91') ? mobileNumber.slice(2) : mobileNumber;
+      const fullMobileNum = `+91${cleanMobile}`;
+      
       if (currentState === 'Login') {
-        // We add the '+91' because your .env has it!
-        const fullMobileNum = `+91${mobileNumber}`;
-
-        console.log("Attempting Login with:", fullMobileNum);
-
-        const response = await axios.post("http://localhost:4000/api/user/admin", { 
+        const response = await axios.post(`${backendUrl}/api/user/login`, { 
           mobileNum: fullMobileNum, 
           password 
         });
 
         if (response.data.success) {
-          // 1. Save token to LocalStorage
+          // 1. Assign token variables to memory engines
+          setToken(response.data.token);
           localStorage.setItem('token', response.data.token);
           
-          // 2. Update state in App.js (if applicable)
-          if (setToken) setToken(response.data.token);
-
-          toast.success("Welcome back, Admin!");
+          // 2. ✅ CHG: Explicitly run profile data sync right here before changing pages
+          if (getUserProfile) {
+            await getUserProfile(response.data.token);
+          }
           
-          // 3. Redirect to the Add Product page
-          navigate('/add'); 
+          toast.success("Welcome back!");
+          if (!isCheckout) navigate('/');
         } else {
           toast.error(response.data.message);
         }
       } else {
-        // Placeholder for Sign Up logic if needed
-        toast.info("Sign up logic not yet implemented on backend");
+        const response = await axios.post(`${backendUrl}/api/user/register`, {
+          fullname: name,
+          mobileNum: fullMobileNum,
+          password
+        });
+        
+        if(response.data.success) {
+          // 1. Assign token variables to memory engines
+          setToken(response.data.token);
+          localStorage.setItem('token', response.data.token);
+          
+          // 2. ✅ CHG: Explicitly run profile data sync right here before changing pages
+          if (getUserProfile) {
+            await getUserProfile(response.data.token);
+          }
+          
+          toast.success("Account Created Successfully!");
+          if (!isCheckout) navigate('/');
+        } else {
+          toast.error(response.data.message);
+        }
       }
     } catch (error) {
-      console.error(error);
-      toast.error(error.response?.data?.message || "Server Error");
+      toast.error(error.response?.data?.message || "Internal Server Error");
     }
   };
 
   return (
-    <form
-      onSubmit={onSubmitHandler}
-      className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-10 gap-4 text-gray-800"
-    >
-      <div className="inline-flex items-center gap-2 mb-2 mt-3">
-        <p className="prata-regular text-3xl uppercase tracking-tighter">
-          {currentState}
-        </p>
-        <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
-      </div>
+    <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-10">
+      <form 
+        onSubmit={onSubmitHandler} 
+        className="flex flex-col items-center w-full max-w-[450px] gap-4 text-gray-800 p-8 border rounded-xl shadow-lg bg-white"
+      >
+        <div className="inline-flex items-center gap-2 mb-4">
+          <p className="prata-regular text-3xl uppercase tracking-tighter font-semibold">
+            {currentState}
+          </p>
+          <hr className="border-none h-[2px] w-10 bg-gray-800" />
+        </div>
 
-      {/* Mobile Number Input */}
-      <div className="flex w-full border border-gray-800 rounded overflow-hidden">
-        <span className="bg-gray-100 px-3 py-2 border-r border-gray-800 text-gray-500 text-sm flex items-center">
-          +91
-        </span>
-        <input
-          type="tel"
-          value={mobileNumber}
-          onChange={(e) => setMobileNumber(e.target.value)}
-          pattern="[0-9]{10}"
-          className="w-full px-3 py-2 outline-none"
-          placeholder="Mobile Number"
-          required
+        {currentState === 'Sign Up' && (
+          <input 
+            type="text" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-black outline-none transition-all" 
+            placeholder="Full Name" 
+            required 
+          />
+        )}
+
+        <div className="flex w-full border border-gray-300 rounded-md overflow-hidden focus-within:border-black transition-all">
+          <span className="bg-gray-100 px-3 py-2 text-gray-500 text-sm flex items-center font-medium border-r">
+            +91
+          </span>
+          <input 
+            type="tel" 
+            value={mobileNumber} 
+            onChange={(e) => setMobileNumber(e.target.value)} 
+            pattern="[0-9]{10}" 
+            className="w-full px-4 py-2 outline-none" 
+            placeholder="Mobile Number" 
+            required 
+          />
+        </div>
+
+        <input 
+          type="password" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-black outline-none transition-all" 
+          placeholder="Password" 
+          required 
         />
-      </div>
 
-      {/* Password Input */}
-      {!useOtp && (
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-800 rounded outline-none"
-          placeholder="Password"
-          required
-        />
-      )}
+        <div className="w-full flex justify-between text-sm mt-[-4px]">
+          <p className="cursor-pointer text-gray-500 hover:text-black transition-all">
+            Forgot password?
+          </p>
+          <p 
+            onClick={() => setCurrentState(currentState === 'Login' ? 'Sign Up' : 'Login')} 
+            className="cursor-pointer text-blue-600 font-medium hover:underline"
+          >
+            {currentState === "Login" ? "Create account" : "Login Here"}
+          </p>
+        </div>
 
-      {/* Login Buttons & Toggles */}
-      <div className="w-full flex justify-between text-xs mt-[-8px]">
-        <p onClick={() => setUseOtp(!useOtp)} className="cursor-pointer text-blue-600 hover:underline">
-          {useOtp ? "Login with Password" : "Login with OTP"}
-        </p>
-        <p onClick={() => setCurrentState(currentState === 'Login' ? 'Sign Up' : 'Login')} className="cursor-pointer hover:text-black">
-          {currentState === "Login" ? "Create account" : "Login Here"}
-        </p>
-      </div>
-
-      <button className="bg-black text-white font-light px-8 py-2.5 mt-4 rounded w-full active:bg-gray-700 transition-all">
-        {currentState === "Login" ? "Sign In" : "Create Account"}
-      </button>
-    </form>
+        <button 
+          type="submit"
+          className="bg-black text-white px-8 py-3 mt-4 rounded-md w-full uppercase font-bold tracking-widest text-sm hover:bg-gray-800 active:scale-[0.98] transition-all"
+        >
+          {currentState === "Login" ? "Sign In" : "Sign Up"}
+        </button>
+      </form>
+    </div>
   );
 };
 

@@ -1,94 +1,94 @@
-import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
-import { assets } from "../assets/assets";
 import PrescriptionForm from "./PrescriptionForm";
 import LensSelector from "./LensSelector";
 import RelatedProducts from "./RelatedProducts";
 import ProductSpecifications from "../components/ProductSpecifications";
 import { toast } from "react-toastify";
 
-
 const Product = () => {
   const { productId } = useParams();
 
-  // ✅ 1. Combine all context needs into one line at the very top
-  const { products, addToCart } = useContext(ShopContext);
+  const { products, addToCart, token } = useContext(ShopContext); // ✅ FIX
 
   const [showLensConfig, setShowLensConfig] = useState(false);
   const [productData, setProductData] = useState(null);
   const [image, setImage] = useState("");
 
-  // Calculation States
   const [selectedLens, setSelectedLens] = useState(null);
   const [selectedFeatures, setSelectedFeatures] = useState([]);
-
   const [quantity, setQuantity] = useState(1);
-  
+  const [prescription, setPrescription] = useState(null);
+
   useEffect(() => {
-    if (products && products.length > 0) {
+    if (products?.length > 0) {
       const item = products.find((p) => p._id === productId);
       if (item) {
         setProductData(item);
-        // ✅ Match your data key: "images"
         setImage(item.images?.[0] || "");
       }
     }
   }, [productId, products]);
 
-  // Logic for your specific categories
-  const isLensRequired =
-    productData?.category === "EYE_GLASS"
-    
+  const isLensRequired = productData?.category === "EYE_GLASS";
 
   const framePrice = productData?.price || 0;
   const lensPrice = selectedLens?.price || 0;
-  const feautersPrice = selectedFeatures?.price || 0;
+
   const featuresTotal = selectedFeatures.reduce(
-    (acc, curr) => acc + curr.price,
-    0,
+    (acc, curr) => acc + (curr.price || 0),
+    0
   );
-  const unitPrice = framePrice + lensPrice + featuresTotal;
-  const grandTotal = unitPrice * quantity
 
-  // ✅ New state for prescription
-  const [prescription, setPrescription] = useState(null);
+  const grandTotal = (framePrice + lensPrice + featuresTotal) * quantity;
 
-  const handleAddToCart = async () => {
-  // 1. Validation for eyeglasses
-  if (isLensRequired && showLensConfig) {
-    if (!selectedLens || !prescription) {
-      toast.error("Please complete lens and prescription selection.");
-      return;
-    }
-  }
+  // ✅ FIXED ADD TO CART
+ const handleAddOrdinary = () => {
+    const dataForCart = {
+      itemId: productData._id,
+      name: productData.name,
+      // Fixed to use 'image' state or the first index of images
+      image: image || productData.images?.[0], 
+      lens: { name: "No Lens / Frame Only", price: 0 },
+      totalAmount: framePrice * quantity, 
+      quantity: quantity,
+      isConfigured: false
+    };
 
-  // 2. Prepare the object (Match the keys exactly)
-  const dataForCart = {
-    _id: productData._id,
-    name: productData.name,
-    image: image, // Use the 'image' state from your component
-    lens: isLensRequired ? selectedLens : { name: "Standard UV Lens", price: 0 },
-    features: selectedFeatures,
-    prescription: prescription,
-    totalAmount: grandTotal, // Your price * quantity
-    quantity: quantity       // Your quantity state
+    addToCart(dataForCart);
+    toast.success("Added to Cart");
   };
 
-  // 3. Call the function
-  
-  addToCart(dataForCart); 
+  // ✅ FIXED: Lens Configured Add to Cart
+  const handleAddToCart = () => {
+    // 1. Validation check
+    if (isLensRequired && !selectedLens) {
+      toast.error("Please select a lens type");
+      return;
+    }
 
-  console.log("Items added to cart ")
+    const dataForCart = {
+      itemId: productData._id,
+      name: productData.name,
+      image: image || productData.images?.[0],
+      lens: selectedLens || { name: "Standard", price: 0 },
+      prescription: prescription,
+      features: selectedFeatures || [],
+      totalAmount: grandTotal,
+      quantity: quantity,
+      isConfigured: true
+    };
 
-  toast.success("Added to Cart Successfully!", {
-  position: "top-center",
-  autoClose: 2000,
-  theme: "colored",
-  });
-  }
-  if (!productData)
+    // This must be INSIDE the curly braces
+    addToCart(dataForCart);
+    toast.success("Added to Cart with Configuration");
+    setShowLensConfig(false); // Optional: close config view after adding
+  };
+
+  if (!productData) {
     return <div className="p-20 text-center">Loading Product...</div>;
+  }
 
   return (
     <div className="border-t-2 pt-10 flex justify-center bg-gray-50 min-h-screen">
@@ -192,7 +192,7 @@ const Product = () => {
 
                     {/* Add to Cart Button */}
                     <button
-                      onClick={handleAddToCart}
+                      onClick={handleAddOrdinary}
                       className="flex-1 bg-black text-white py-4 rounded-full font-bold hover:bg-gray-800 transition-all"
                     >
                       Add to Cart — ₹{framePrice * quantity}
@@ -286,7 +286,7 @@ const Product = () => {
                   </div>
 
                   <button
-                    onClick={handleAddToCart}
+                     onClick={handleAddToCart}
                     className="w-full bg-black text-white py-4 rounded-xl font-bold mt-6 hover:bg-gray-800 transition-colors"
                   >
                     Add to Cart
@@ -300,5 +300,6 @@ const Product = () => {
     </div>
   );
 };
+// 
 
 export default Product;

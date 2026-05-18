@@ -2,11 +2,16 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
     mongoose.connection.on('connected', () => {
-        // This will log exactly which database you are hitting
-        console.log(`DB Connected to: ${mongoose.connection.name}`); 
+        console.log(`✅ DB Connected to: ${mongoose.connection.name}`); 
     });
 
-    await mongoose.connect(`${process.env.MONGODB_URI}`);
-   
+    try {
+        // This will now work because the .env string is fixed
+        await mongoose.connect(process.env.MONGODB_URI);
+    } catch (error) {
+        console.error("❌ MongoDB Connection Error:", error.message);
+        process.exit(1);
+    }
 }
+
 export default connectDB;

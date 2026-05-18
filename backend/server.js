@@ -6,6 +6,13 @@ import connectCloudinary from './config/cloudinary.js';
 import userRouter from './routes/userRoute.js';
 import productRouter from './routes/productRoute.js';
 import lensRouter from './routes/lensRoute.js';
+import cartRouter from './routes/cartRoute.js';
+import orderRouter from './routes/orderRoute.js';
+
+// DNS 
+import dns from 'node:dns';
+dns.setDefaultResultOrder('ipv4first');
+
 
 // App Config
 
@@ -28,7 +35,9 @@ app.use(cors({
 
 app.use('/api/user',userRouter);
 app.use('/api/product',productRouter)
-app.use('/api/lenstype',lensRouter)
+app.use('/api/lens', lensRouter);
+app.use('/api/cart',cartRouter)
+app.use("/api/order", orderRouter);
 
 app.get('/',(req,res)=>{
 res.send("API WORKING")
