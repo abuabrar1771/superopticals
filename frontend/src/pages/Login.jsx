@@ -8,24 +8,15 @@ const Login = ({ isCheckout = false }) => {
   const [currentState, setCurrentState] = useState("Login");
   const navigate = useNavigate();
   
-  // ✅ CHG: Pull getUserProfile directly out of your context wrapper hooks
   const { backendUrl, setToken, token, getUserProfile } = useContext(ShopContext);
 
   const [mobileNumber, setMobileNumber] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
 
-  // Redirect if already logged in
-  useEffect(() => {
-    if (token && !isCheckout) {
-      // navigate('/');
-    }
-  }, [token]);
-
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      // Ensure we don't double-prefix if user typed it
       const cleanMobile = mobileNumber.startsWith('91') ? mobileNumber.slice(2) : mobileNumber;
       const fullMobileNum = `+91${cleanMobile}`;
       
@@ -36,17 +27,23 @@ const Login = ({ isCheckout = false }) => {
         });
 
         if (response.data.success) {
-          // 1. Assign token variables to memory engines
           setToken(response.data.token);
           localStorage.setItem('token', response.data.token);
           
-          // 2. ✅ CHG: Explicitly run profile data sync right here before changing pages
+          // 🌟 CRITICAL CONNECT: Store the complete user profile payload (including role: 'admin')
+          if (response.data.user) {
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+          }
+          
           if (getUserProfile) {
             await getUserProfile(response.data.token);
           }
           
-          toast.success("Welcome back!");
-          if (!isCheckout) navigate('/');
+          toast.success(response.data.message || "Welcome back!");
+          if (!isCheckout) {
+            navigate('/');
+            window.location.reload(); // Instantly triggers navbar update to show the button
+          }
         } else {
           toast.error(response.data.message);
         }
@@ -58,17 +55,22 @@ const Login = ({ isCheckout = false }) => {
         });
         
         if(response.data.success) {
-          // 1. Assign token variables to memory engines
           setToken(response.data.token);
           localStorage.setItem('token', response.data.token);
           
-          // 2. ✅ CHG: Explicitly run profile data sync right here before changing pages
+          if (response.data.user) {
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+          }
+          
           if (getUserProfile) {
             await getUserProfile(response.data.token);
           }
           
           toast.success("Account Created Successfully!");
-          if (!isCheckout) navigate('/');
+          if (!isCheckout) {
+            navigate('/');
+            window.location.reload();
+          }
         } else {
           toast.error(response.data.message);
         }
@@ -127,9 +129,7 @@ const Login = ({ isCheckout = false }) => {
         />
 
         <div className="w-full flex justify-between text-sm mt-[-4px]">
-          <p className="cursor-pointer text-gray-500 hover:text-black transition-all">
-            Forgot password?
-          </p>
+          <p className="cursor-pointer text-gray-500 hover:text-black transition-all">Forgot password?</p>
           <p 
             onClick={() => setCurrentState(currentState === 'Login' ? 'Sign Up' : 'Login')} 
             className="cursor-pointer text-blue-600 font-medium hover:underline"

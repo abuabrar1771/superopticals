@@ -26,9 +26,13 @@ connectCloudinary();
 
 app.use(express.json());
 app.use(cors({
-  origin: ["https://superopticals.vercel.app", "https://your-admin-domain.vercel.app"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  origin: [
+    'http://localhost:5173',  // Your main frontend development server
+    'http://localhost:5174',  // Your admin panel development server
+    'https://superopticals.vercel.app' // Your live production frontend url
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // Allows session cookies or auth headers if needed
 }));
 
 //api endpoints

@@ -12,40 +12,44 @@ const createToken = (id) => {
 const loginUser = async (req, res) => {
   try {
     const { mobileNum, password } = req.body;
-    const user = await userModel.findOne({ mobileNum });
 
-    // ✅ FIX: Added missing 'return' statement to prevent server crashes
-    if (!user) {
+    // 1. Check if the user trying to sign in on the storefront is the Admin
+    if (mobileNum === process.env.ADMIN_MOBILENUM && password === process.env.ADMIN_PASSWORD) {
+      const token = jwt.sign({ mobileNum, role: 'admin' }, process.env.JWT_SECRET);
       return res.json({
-        success: false,
-        message: "User doesn't exist",
+        success: true,
+        token,
+        user: {
+          fullname: "System Administrator",
+          mobileNum: mobileNum,
+          role: "admin" // 🔑 Tells Navbar_New to show the red button
+        }
       });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    // 2. Otherwise, check standard customers database entries
+    const user = await userModel.findOne({ mobileNum });
+    if (!user) {
+      return res.json({ success: false, message: "User doesn't exist" });
+    }
 
+    const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) {
-      const token = createToken(user._id);
-      res.json({
+      const token = jwt.sign({ id: user._id, role: 'customer' }, process.env.JWT_SECRET);
+      return res.json({
         success: true,
         token,
         user: {
           fullname: user.fullname,
-          mobileNum: user.mobileNum
+          mobileNum: user.mobileNum,
+          role: "customer" // 🔒 Standard buyer, button remains hidden
         }
       });
     } else {
-      res.json({
-        success: false,
-        message: "Invalid Credentials",
-      });
+      return res.json({ success: false, message: "Invalid Credentials" });
     }
   } catch (error) {
-    console.log(error);
-    res.json({
-      success: false,
-      message: error.message,
-    });
+    res.json({ success: false, message: error.message });
   }
 };
 
@@ -85,6 +89,7 @@ const registerUser = async (req, res) => {
       fullname,
       mobileNum,
       password: hashedPassword,
+      roll:'user'
     });
 
     const user = await newUser.save();
@@ -118,15 +123,20 @@ const adminLogin = async (req, res) => {
       mobileNum === process.env.ADMIN_MOBILENUM &&
       password === process.env.ADMIN_PASSWORD
     ) {
-      const token = jwt.sign(mobileNum + password, process.env.JWT_SECRET);
+      // It is best practice to pass an object payload into jwt.sign
+      const token = jwt.sign({ mobileNum, role: 'admin' }, process.env.JWT_SECRET);
       
       res.json({
         success: true,
         message: "Admin Logged in Successfully",
-        token
+        token,
+        user: {
+          fullname: "System Administrator",
+          mobileNum: mobileNum,
+          role: "admin" // 🌟 Sending this tells frontend to reveal the button
+        }
       });
     } else {
-      console.log("user mobile number: " + mobileNum);
       res.json({
         success: false,
         message: "Invalid Credentials",
@@ -142,40 +152,37 @@ const adminLogin = async (req, res) => {
 };
 
 // ---------------- 4. GET USER DATA ----------------
+// backend/controllers/userController.js -> getUserData
 const getUserData = async (req, res) => {
   try {
-    // ✅ CRITICAL FIX: Changed from req.userId to req.body.userId 
-    // to match exactly where your authUser middleware stores it!
     const userId = req.body.userId; 
 
     if (!userId) {
+      return res.json({ success: false, message: "Authorization Failed. User ID missing." });
+    }
+
+    // 🌟 FIX: If the middleware flagged this as the Admin, return static admin details instantly
+    if (userId === "ADMIN_USER" || req.body.isAdmin) {
       return res.json({
-        success: false,
-        message: "Authorization Failed. User ID missing."
+        success: true,
+        user: {
+          fullname: "System Administrator",
+          mobileNum: process.env.ADMIN_MOBILENUM,
+          role: "admin"
+        }
       });
     }
 
-    const user = await userModel
-      .findById(userId)
-      .select("-password");
-
+    // Standard Customer database lookup
+    const user = await userModel.findById(userId).select("-password");
     if (!user) {
-      return res.json({
-        success: false,
-        message: "User not found in database."
-      });
+      return res.json({ success: false, message: "User not found in database." });
     }
 
-    res.json({
-      success: true,
-      user
-    });
+    res.json({ success: true, user });
 
   } catch (error) {
-    res.json({
-      success: false,
-      message: error.message
-    });
+    res.json({ success: false, message: error.message });
   }
 };
 
