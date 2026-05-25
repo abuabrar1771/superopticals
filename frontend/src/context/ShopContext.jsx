@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 export const ShopContext = createContext();
 
+// 🌟 CRITICAL GLOBAL CONFIGURATION: Forces Axios to attach your HttpOnly cookie to every request
+axios.defaults.withCredentials = true;
+
 const ShopContextProvider = (props) => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const currency = "₹";
@@ -12,10 +15,18 @@ const ShopContextProvider = (props) => {
   const navigate = useNavigate();
 
   // ---------------- STATE DECLARATIONS ----------------
-  const [token, setToken] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : null);
+  // 🌟 Token now acts as a reactive Boolean UI toggle flag instead of a raw key string
+  const [token, setToken] = useState(
+    localStorage.getItem("token") === "true" ? true : null,
+  );
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]); // Array layout for cart lists
-  const [userProfile, setUserProfile] = useState(null); // Stores full database user information
+  const [cartItems, setCartItems] = useState([]);
+  
+  // 🌟 FIX: Automatically hydrate userProfile from your localStorage backup right on boot!
+  const [userProfile, setUserProfile] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
 
@@ -34,49 +45,33 @@ const ShopContextProvider = (props) => {
     }
   };
 
-  
   // ---------------- FETCH USER PROFILE ----------------
-const getUserProfile = async (currentToken) => {
-  // Use the explicitly passed token first, otherwise fall back to state token
-  const activeToken = currentToken || token;
-  
-  if (!activeToken) {
-    console.log("No token available to fetch user profile.");
-    return;
-  }
+  const getUserProfile = async (directProfileData = null) => {
+    if (directProfileData) {
+      setUserProfile(directProfileData);
+      setToken(true);
+      localStorage.setItem("token", "true");
+      localStorage.setItem("user", JSON.stringify(directProfileData)); // 🌟 Save backup
+      return;
+    }
 
-  try {
-    // ✅ Axios POST syntax: URL -> Empty Body -> Headers Config Object
-    const res = await axios.post(
-      `${backendUrl}/api/user/profile`, 
-      {}, 
-      {
-        headers: { token: activeToken },
+    try {
+      const res = await axios.post(`${backendUrl}/api/user/profile`, {});
+
+      if (res.data.success) {
+        setUserProfile(res.data.user);
+        setToken(true);
+        localStorage.setItem("token", "true");
+        localStorage.setItem("user", JSON.stringify(res.data.user)); // 🌟 Save backup
+      } else {
+        if (token) logout();
       }
-    );
-
-    if (res.data.success) {
-      // 1. Update global user profile state
-      setUserProfile(res.data.user);
-    } else {
-      // 2. Handle cases where backend sends success: false with an error message
-      console.log("Backend profile sync failed:", res.data.message);
-      toast.error(res.data.message || "Failed to load user profile data.");
+    } catch (err) {
+      if (err.response?.status === 401 || err.response?.status === 403) {
+        logout();
+      }
     }
-  } catch (err) {
-    // 3. Handle network errors or server crashes
-    console.error("Network error fetching user profile:", err.message);
-    
-    // Fallback: extract backend specific messages if available
-    const errorMessage = err.response?.data?.message || "Error syncing user details.";
-    toast.error(errorMessage);
-    
-    // Automatically log out if the backend returns an unauthorized status code (expired token)
-    if (err.response?.status === 401) {
-      logout();
-    }
-  }
-};
+  };
 
   // ---------------- ADD TO CART (ARRAY BASED) ----------------
   const addToCart = (itemDetail) => {
@@ -90,17 +85,14 @@ const getUserProfile = async (currentToken) => {
 
   // ---------------- UPDATE CART QUANTITY ----------------
   const updateCartQuantity = (index, newQuantity) => {
-    if (newQuantity < 1) return; // Block negative quantities
+    if (newQuantity < 1) return;
 
     setCartItems((prev) => {
       const updatedCart = [...prev];
       const item = updatedCart[index];
 
       if (item) {
-        // Calculate unit price from current total / current quantity tracking parameters
         const unitPrice = item.totalAmount / (item.quantity || 1);
-
-        // Mutate array indices safely
         item.quantity = newQuantity;
         item.totalAmount = unitPrice * newQuantity;
       }
@@ -112,7 +104,10 @@ const getUserProfile = async (currentToken) => {
 
   // ---------------- CART TOTALS CALCULATORS ----------------
   const getCartAmount = () => {
-    return cartItems.reduce((total, item) => total + (Number(item.totalAmount) || 0), 0);
+    return cartItems.reduce(
+      (total, item) => total + (Number(item.totalAmount) || 0),
+      0,
+    );
   };
 
   const getCartCount = () => {
@@ -121,59 +116,43 @@ const getUserProfile = async (currentToken) => {
 
   // ---------------- CLEAR CART DATA ----------------
   const clearCart = () => {
-    setCartItems([]); // Correctly maintains structural state array integrity
-    localStorage.removeItem("cart"); // Purges browser local memory traces entirely
+    setCartItems([]);
+    localStorage.removeItem("cart");
   };
 
   // ---------------- AUTHENTICATION LOGOUT ----------------
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("cart");
+    localStorage.removeItem("user"); // Purge old static data profile hooks
     setToken(null);
-    setUserProfile(null); // Resets username layout rendering targets back to default values
+    setUserProfile(null);
     setCartItems([]);
     toast.success("Logged out successfully");
     navigate("/");
   };
 
-  // ---------------- LIFECYCLE RUNTIME MANAGEMENT ----------------
+  // ---------------- LIFECYCLE RUNTIME HYDRATION ----------------
   useEffect(() => {
     getProductsData();
 
-    // Check, parse and hydrate browser local memory components on initial page mount
+    // Hydrate cart data from local storage
     const localCart = localStorage.getItem("cart");
     if (localCart) {
       try {
         setCartItems(JSON.parse(localCart));
       } catch (error) {
-        console.error("Cart hydration execution exception:", error);
+        console.error("Cart hydration exception:", error);
         setCartItems([]);
       }
     }
-  }, []);
 
-  // Sync profile data retrieval dependencies instantly upon authentication transitions
-  // Inside ShopContext.jsx
-
-useEffect(() => {
-  getProductsData();
-
-  // Restore cart from memory
-  const localCart = localStorage.getItem("cart");
-  if (localCart) {
-    try {
-      setCartItems(JSON.parse(localCart));
-    } catch (error) {
-      setCartItems([]);
+    // 🌟 Check cookie validity with backend upon app load if token layout state is flag active
+    const localTokenFlag = localStorage.getItem("token");
+    if (localTokenFlag === "true") {
+      getUserProfile();
     }
-  }
-
-  // ✅ Run ONLY ONCE when the app first loads in the browser
-  const savedToken = localStorage.getItem("token");
-  if (savedToken) {
-    getUserProfile(savedToken);
-  }
-}, []); // 💡 Empty array means it won't fire again when token state changes dynamically
+  }, []);
 
   // ---------------- VALUE INJECTION DISPATCH MAPPING ----------------
   const value = {
@@ -202,9 +181,7 @@ useEffect(() => {
   };
 
   return (
-    <ShopContext.Provider value={value}>
-      {props.children}
-    </ShopContext.Provider>
+    <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
   );
 };
 

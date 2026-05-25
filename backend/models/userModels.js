@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema(
     fullname: { type: String, required: true },
     mobileNum: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    roll: { type: String, default: 'user' }
+    role: { type: String, default: 'user' } // 🌟 Normalized from 'roll' to 'role'
   }, 
   {
     minimize: false,

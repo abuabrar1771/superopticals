@@ -1,15 +1,35 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"; // Added for seamless UI toast notifications
 
 const Cart = () => {
-  const { cartItems, currency, getCartAmount, delivery_fee, updateCartQuantity, setCartItems } = useContext(ShopContext);
+  // 🌟 Added 'token' extraction out of context to check user login status natively
+  const { cartItems, currency, getCartAmount, delivery_fee, updateCartQuantity, setCartItems, token } = useContext(ShopContext);
   const navigate = useNavigate();
 
   const removeItem = (index) => {
     const updated = cartItems.filter((_, i) => i !== index);
     setCartItems(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
+  };
+
+  // 🛡️ Secure Gatekeeper Handler for the Checkout Trigger
+  const handleCheckoutClick = () => {
+    // Check if the cart is completely empty first
+    if (cartItems.length === 0) {
+      toast.error("Your cart is empty. Please add items before checking out.");
+      return;
+    }
+
+    if (!token) {
+      // 🚀 Redirect Strategy: Send unknown guests to login, appending a tracking redirect parameter
+      toast.info("Please sign in or create an account to secure your order details.");
+      navigate('/login?redirect=checkout');
+    } else {
+      // 🛒 Logged-in Customer: Route them directly to your standard checkout screen path
+      navigate('/PlaceOrder');
+    }
   };
 
   return (
@@ -89,8 +109,9 @@ const Cart = () => {
                 <span className="text-blue-600">{currency}{getCartAmount() + delivery_fee}</span>
               </div>
 
+              {/* 🔄 CHANGED: Replaced native anonymous arrow navigation with our secure handler function */}
               <button 
-                onClick={() => navigate('/PlaceOrder')}
+                onClick={handleCheckoutClick}
                 className="w-full bg-black text-white py-4 rounded-xl font-bold mt-6 hover:bg-gray-800 transition-all shadow-lg active:scale-95"
               >
                 Checkout Now

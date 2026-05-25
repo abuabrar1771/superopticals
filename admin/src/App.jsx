@@ -9,6 +9,7 @@ import GetSingleProduct from "./pages/Inventory/GetSingleProduct";
 import ProductList from "./pages/Inventory/ProductList";
 import Orders from "./pages/Orders"; 
 import LensConfig from "./pages/LensConfig";
+import StoreBilling from "./pages/Inventory/StoreBilling"; // 🌟 IMPORTED THE NEW RETAILED POS COMPONENT
 
 // Make sure your imports for Toastify remain at the top
 import { ToastContainer } from "react-toastify";
@@ -61,7 +62,7 @@ const App = () => {
 
       <div className="flex flex-1">
         
-        {/* ─── YOUR UPDATED TOAST CONTAINER CONFIGURATION HERE ─── */}
+        {/* Toast Container Config */}
         <ToastContainer
           autoClose={1000}
           hideProgressBar={false}
@@ -91,6 +92,13 @@ const App = () => {
                     </div>
                   }
                 />
+                
+                {/* 🌟 NEW RETAIL BILLING COUNTER ROUTE LINK INTEGRATION */}
+                <Route
+                  path="/billing"
+                  element={<StoreBilling backendUrl={backendUrl} />}
+                />
+
                 <Route
                   path="/addproduct"
                   element={<AddProduct token={token} />}

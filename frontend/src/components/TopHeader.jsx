@@ -1,5 +1,14 @@
 import React, { useContext } from "react";
-import { Search, User, MapPin, Phone, X, LogOut, Package } from "lucide-react";
+import {
+  Search,
+  User,
+  MapPin,
+  Phone,
+  X,
+  LogOut,
+  Package,
+  ShieldCheck,
+} from "lucide-react"; 
 import { useNavigate } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 
@@ -14,6 +23,9 @@ const TopHeader = () => {
     userProfile,
     logout,
   } = useContext(ShopContext);
+
+  // 🛡️ Determine if the currently logged-in account is an administrator
+  const isAdmin = userProfile?.role === "admin";
 
   return (
     <div className="bg-black text-white text-[12px] sm:text-sm h-12 px-4 sm:px-[5%] transition-all duration-300 flex items-center">
@@ -75,51 +87,72 @@ const TopHeader = () => {
               </div>
             )}
           </div>
-          {/* AUTH SECTION (DYNAMIC) */}
+
+          {/* AUTH SECTION (DYNAMIC POP-UP ON HOVER) */}
           <div
-            className={`relative group items-center gap-2 border-l border-gray-800 pl-6 whitespace-nowrap ${showSearch ? "hidden sm:flex" : "flex"}`}
+            className={`relative group flex items-center gap-2 border-l border-gray-800 pl-6 h-12 cursor-pointer whitespace-nowrap ${showSearch ? "hidden sm:flex" : "flex"}`}
           >
-            {/* ✅ FIX: Depend primarily on token availability. Fallback gracefully if userProfile is loading. */}
-            {token ? (
-              /* LOGGED IN VIEW */
-              <div className="flex items-center gap-2 cursor-pointer">
-                <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-[10px] font-bold">
-                  {userProfile?.fullname
-                    ? userProfile.fullname.charAt(0).toUpperCase()
+            {/* 🌟 Check both token or profile memory to render logged-in layout */}
+            {token || userProfile ? (
+              <div className="flex items-center gap-2 h-full relative group">
+                {/* Profile avatar avatar badge icon */}
+                <div
+                  className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white ${isAdmin ? "bg-amber-500" : "bg-blue-600"}`}
+                >
+                  {userProfile
+                    ? (userProfile.fullname || userProfile.name || "U").charAt(0).toUpperCase()
                     : "U"}
                 </div>
-                <span className="uppercase tracking-[0.15em] font-medium text-[13px] text-blue-400">
+
+                {/* 🌟 Dynamic Username display */}
+                <span
+                  className={`uppercase tracking-[0.15em] font-medium text-[13px] ${isAdmin ? "text-amber-400" : "text-blue-400"}`}
+                >
                   Hi,{" "}
-                  {userProfile?.fullname
-                    ? userProfile.fullname.split(" ")[0]
-                    : "Customer"}
+                  {userProfile
+                    ? (userProfile.fullname || userProfile.name || "Customer").split(" ")[0]
+                    : "User"}
                 </span>
 
-                {/* DROPDOWN MENU */}
-                <div className="absolute top-full right-0 hidden group-hover:block pt-2 z-[999]">
-                  {/* Adjusted background classes to make it dark and text white/gray for a premium look */}
-                  <div className="bg-black text-white shadow-2xl rounded-md py-2 w-40 border border-gray-800">
+                {/* 🌟 POP-UP DROPDOWN MENU (FIXED MECHANICS) */}
+                {/* Changed top alignment to top-10 to perfectly anchor beneath cursor pathing */}
+                <div className="absolute top-10 right-0 invisible opacity-0 group-hover:visible group-hover:opacity-100 pt-2 z-[99999] transition-all duration-200">
+                  <div className="bg-neutral-900 text-white border border-neutral-800 shadow-2xl rounded-lg py-1.5 w-40 pointer-events-auto">
+                    {/* Admin Redirect Link */}
+                    {isAdmin && (
+                      <a
+                        href="http://localhost:5174"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 text-amber-400 hover:bg-neutral-800 cursor-pointer text-xs font-semibold transition-colors"
+                      >
+                        <ShieldCheck size={13} /> Admin Panel
+                      </a>
+                    )}
+
                     <div
                       onClick={() => navigate("/orders")}
-                      className="flex items-center gap-2 px-4 py-2 hover:bg-gray-900 cursor-pointer text-xs"
+                      className="flex items-center gap-2 px-4 py-2 hover:bg-neutral-800 cursor-pointer text-xs text-gray-200 transition-colors"
                     >
-                      <Package size={14} /> My Orders
+                      <Package size={13} /> My Orders
                     </div>
-                    <hr className="my-1 border-gray-800" />
+
+                    <hr className="border-neutral-800 my-1" />
+
                     <div
                       onClick={logout}
-                      className="flex items-center gap-2 px-4 py-2 hover:bg-red-950/40 text-red-500 cursor-pointer text-xs font-semibold"
+                      className="flex items-center gap-2 px-4 py-2 hover:bg-red-950/30 text-red-400 cursor-pointer text-xs font-semibold transition-colors"
                     >
-                      <LogOut size={14} /> Logout
+                      <LogOut size={13} /> Logout
                     </div>
                   </div>
                 </div>
               </div>
             ) : (
-              /* LOGGED OUT VIEW */
+              /* USER IS LOGGED OUT VIEW */
               <div
                 onClick={() => navigate("/login")}
-                className="flex items-center gap-2 cursor-pointer hover:text-gray-300 transition-all"
+                className="flex items-center gap-2 cursor-pointer hover:text-gray-300 transition-all h-full"
               >
                 <User size={15} />
                 <span className="uppercase tracking-[0.15em] font-medium text-[13px]">

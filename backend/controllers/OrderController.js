@@ -1,5 +1,6 @@
 import userModel from "../models/userModels.js";
 import orderModel from "../models/OrderModel.js";
+import productModel from "../models/productModel.js"; // 🌟 Added import for stock lookup
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 
@@ -8,6 +9,57 @@ const razorpayInstance = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
+
+// ---------------------------------------------------------------------
+// 🌟 UNIFIED STOCK DEDUCTION ENGINE HELPER
+// ---------------------------------------------------------------------
+// Loops through items, checking if they are a standard base model or nested matrix variant
+const deductInventoryStock = async (items) => {
+  try {
+    if (!items || items.length === 0) return;
+
+    const operations = items.map(async (item) => {
+      // Extract target properties. Fallback to item._id if productId isn't explicitly passed
+      const productId = item.productId || item._id; 
+      const deductionAmount = Number(item.quantity || 1);
+
+      if (!productId) return;
+
+      if (!item.isVariant) {
+        // Option A: Deduct stock from a standard physical item (Frames, Sunglasses, Accessories)
+        await productModel.findByIdAndUpdate(
+          productId,
+          { $inc: { stock: -deductionAmount } }
+        );
+      } else if (item.isVariant && item.variantSku) {
+        // Option B: Deduct stock from a specialized lens/contact matrix entry matching variantSku
+        await productModel.findOneAndUpdate(
+          { _id: productId, "variants.sku": item.variantSku },
+          { $inc: { "variants.$.stock": -deductionAmount } }
+        );
+      }
+    });
+
+    await Promise.all(operations);
+    console.log(`📦 Inventory updated: Successfully deducted quantities for ${items.length} items.`);
+  } catch (error) {
+    // Log to console, but don't crash payment routes if an unexpected inventory calculation mismatch happens
+    console.error("🚨 Critical inventory reduction alert error:", error.message);
+  }
+};
+
+// Helper function to sanitize items and remove invalid string IDs (like "0")
+const sanitizeOrderItems = (itemsArray) => {
+  if (!itemsArray) return [];
+  return itemsArray.map(item => {
+    const cleanItem = { ...item };
+    // If _id exists but isn't a valid 24-character hex MongoDB ID, delete it
+    if (cleanItem._id && cleanItem._id.length !== 24) {
+      delete cleanItem._id;
+    }
+    return cleanItem;
+  });
+};
 
 // 1. Place Order via COD
 const placeOrder = async (req, res) => {
@@ -24,27 +76,33 @@ const placeOrder = async (req, res) => {
       return res.status(404).json({ success: false, message: "User account not found." });
     }
 
-    const finalItems = items && items.length > 0 ? items : user.cartData;
+    let rawItems = items && items.length > 0 ? items : user.cartData;
 
-    if (!finalItems || finalItems.length === 0) {
+    if (!rawItems || rawItems.length === 0) {
       return res.status(400).json({ success: false, message: "Cannot place order: Cart data is empty." });
     }
 
+    // ─── FIX: SANITIZE ITEMS BEFORE PASSING TO MONGOOSE ───
+    const sanitizedItems = sanitizeOrderItems(rawItems);
+
     const order = new orderModel({
       userId,
-      items: finalItems, 
+      items: sanitizedItems, 
       amount: amount, 
       address,
       paymentMethod: req.body.paymentMethod || "cod",
       payment: req.body.paymentMethod === "cod" ? false : true,
-      status: "Processing", // Good practice to explicitly set default status
+      status: "Processing", 
       date: Date.now()
     });
 
     await order.save();
 
+    // 🌟 TRIGGER AUTOMATIC INVENTORY DEDUCTION (COD FLOW)
+    await deductInventoryStock(sanitizedItems);
+
     // Wipe out data from DB user profile cart
-    await userModel.findByIdAndUpdate(userId, { cartData: {} }); // Adjusted to {} if your schema uses an object layout
+    await userModel.findByIdAndUpdate(userId, { cartData: {} }); 
 
     return res.status(200).json({ 
       success: true, 
@@ -103,7 +161,7 @@ const placeOrderRazorpay = async (req, res) => {
     const { amount } = req.body; 
 
     const options = {
-      amount: Math.round(amount * 100), // Math.round avoids subtle floating-point issues with decimals
+      amount: Math.round(amount * 100), 
       currency: "INR",
       receipt: `receipt_${Date.now()}`,
     };
@@ -121,7 +179,6 @@ const verifyRazorpay = async (req, res) => {
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature, orderData } = req.body;
     
-    // Safely extract identity from your authentication middleware token check
     const userId = req.body.userId || req.userId;
 
     if (!userId) {
@@ -137,18 +194,18 @@ const verifyRazorpay = async (req, res) => {
 
     if (razorpay_signature === expectedSign) {
       
+      // ─── FIX: SANITIZE ITEMS HERE TOO BEFORE SAVING ONLINE ORDER ───
+      const sanitizedOnlineItems = sanitizeOrderItems(orderData.items);
+
       // 2. Signature matches! Create your database order entry
       const newOrder = new orderModel({
         userId: userId, 
-        items: orderData.items,
+        items: sanitizedOnlineItems, 
         address: orderData.address,
         amount: orderData.amount, 
-        
-        // ─── SAVING THE VALUE TO YOUR NEW SCHEMA FIELD ───
         paidAmount: orderData.amount, 
-        
         paymentMethod: "Online (UPI / Cards)",
-        payment: true, // Mark the order as paid!
+        payment: true, 
         status: "Processing",
         date: Date.now()
       });
@@ -156,8 +213,12 @@ const verifyRazorpay = async (req, res) => {
       // 3. Save the document instance to MongoDB
       await newOrder.save();
 
-      // 4. Clear user shopping cart collection upon successful checkout validation
-      await userModel.findByIdAndUpdate(userId, { cartData: [] });
+      // 🌟 TRIGGER AUTOMATIC INVENTORY DEDUCTION (RAZORPAY FLOW)
+      // Only runs once payment signature has been cryptographically confirmed!
+      await deductInventoryStock(sanitizedOnlineItems);
+
+      // 4. Clear user shopping cart collection
+      await userModel.findByIdAndUpdate(userId, { cartData: {} });
 
       res.json({ success: true, message: "Payment verified and order placed successfully!" });
     } else {

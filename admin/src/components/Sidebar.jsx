@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
   const navItems = [
     { name: "Dashboard", path: "/", icon: <HiOutlineViewGrid /> },
+    { name: "Store Billing 🧾", path: "/billing", icon: <HiOutlineSparkles /> }, // 🌟 New Retail Counter Path Integration
     { name: "Add Product", path: "/addproduct", icon: <HiOutlinePlusCircle /> },
     { name: "All Products", path: "/productlist", icon: <HiOutlineShoppingBag /> },
     { name: "Lens Config", path: "/updateLensPrice", icon: <HiOutlineBeaker /> },

@@ -49,7 +49,7 @@ const Orders = () => {
     fetchUserOrders();
   }, [token, backendUrl]);
 
-  // 1. Dynamic Status Calculator based on 24h / 48h rules
+  // Dynamic Status Calculator based on 24h / 48h rules
   const getDynamicStatus = (orderDate, currentBackendStatus) => {
     if (currentBackendStatus?.toLowerCase().includes("delivered")) {
       return "Delivered";
@@ -120,7 +120,7 @@ const Orders = () => {
               key={order._id || index}
               className="border border-gray-200 rounded-lg shadow-sm bg-white overflow-hidden"
             >
-              {/* Header section: Uses the calculated status text */}
+              {/* Header section */}
               <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 sm:px-6 flex flex-wrap justify-between items-center gap-2 text-xs sm:text-sm text-gray-600">
                 <div className="flex flex-col sm:flex-row sm:gap-6">
                   <p>
@@ -155,12 +155,12 @@ const Orders = () => {
 
               {/* Body section: Products list map container */}
               <div className="px-4 py-2 sm:px-6 divide-y divide-gray-100">
-                {order.items?.map((item, itemIndex) => {
-                  const targetId = item._id || item.id || item.productId;
+                {order.items?.map((item) => {
+                  const targetId = item.productId || item._id || item.id;
                   const matchedProduct = products.find(
                     (p) => p._id === targetId || p.id === targetId,
                   );
-
+                  console.log("MATCHING DEBUG:", { item, matchedProduct });
                   const productName =
                     matchedProduct?.name ||
                     item.name ||
@@ -180,7 +180,7 @@ const Orders = () => {
 
                   return (
                     <div
-                      key={itemIndex}
+                      key={targetId} // Fixed itemIndex key mutation to prevent image flickering
                       className="flex flex-col sm:flex-row sm:items-center justify-between py-4 gap-4"
                     >
                       <div className="flex items-center gap-4">
@@ -188,9 +188,6 @@ const Orders = () => {
                           src={productImage}
                           alt={productName}
                           className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded border border-gray-100 bg-gray-50 flex-shrink-0"
-                          onError={(e) => {
-                            e.target.src = "https://via.placeholder.com/150";
-                          }}
                         />
                         <div>
                           <p className="font-medium text-gray-900 text-sm sm:text-base mb-1">

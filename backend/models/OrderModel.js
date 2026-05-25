@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const orderSchema = new mongoose.Schema({
   userId: { 
     type: mongoose.Schema.Types.ObjectId, 
-    ref: 'user', // Assumes your user model is named 'user'
+    ref: 'user', 
     required: true 
   },
   items: [
@@ -13,14 +13,15 @@ const orderSchema = new mongoose.Schema({
       price: Number,
       quantity: Number,
       image: String
-    }
+    },
+    { _id: false } // 👈 ADD THIS LINE HERE to stop Mongoose from generating/validating _id for items
   ],
   amount: { type: Number, required: true },
   address: { type: Object, required: true },
   status: { type: String, default: "Order Placed" },
   payment: { type: Boolean, default: false }, 
-  paymentMethod :{type:String,default:'COD'},
-  paidAmount:{ type: Number},
+  paymentMethod: { type: String, default: 'COD' },
+  paidAmount: { type: Number },
   date: { type: Date, default: Date.now }
 });
 
